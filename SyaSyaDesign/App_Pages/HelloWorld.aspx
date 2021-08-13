@@ -1,12 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="HelloWorld.aspx.cs" Inherits="SyaSyaDesign.App_Pages.HelloWorld" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/SyasyaDesign.Master" AutoEventWireup="true" CodeBehind="HelloWorld.aspx.cs" Inherits="SyaSyaDesign.App_Pages.HelloWorld" %>
 
-<!DOCTYPE html>
+<asp:Content ID="headContent" ContentPlaceHolderID="head" runat="server">
+    <title>Hello Woeld</title>
+</asp:Content>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
+<asp:Content ID="bodyContent" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
     <form id="form1" runat="server">
         <div>
             <h1>Hello Azure</h1>
@@ -29,5 +27,4 @@
         <asp:Button ID="btn_add_user" runat="server" OnClick="btn_add_user_Click" Text="Button" />
         <br />
     </form>
-</body>
-</html>
+</asp:Content>
