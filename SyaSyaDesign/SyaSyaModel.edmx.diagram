@@ -8,6 +8,9 @@
         <EntityTypeShape EntityType="syasyadbModel.Order" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="syasyadbModel.User" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="syasyadbModel.FK_Order_User" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="syasyadbModel.Product" Width="1.5" PointX="3" PointY="3.875" />
+        <EntityTypeShape EntityType="syasyadbModel.ProductCategory" Width="1.5" PointX="0.75" PointY="4.25" />
+        <AssociationConnector Association="syasyadbModel.FK_Product_Category" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

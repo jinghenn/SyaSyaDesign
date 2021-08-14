@@ -54,7 +54,7 @@
                 </div>
             </div>
         </nav>
-        <div class="container mt-4">
+        <div class="mt-4">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder" runat="server">
             </asp:ContentPlaceHolder>
         </div>
