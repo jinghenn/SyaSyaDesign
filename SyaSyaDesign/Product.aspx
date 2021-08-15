@@ -34,6 +34,7 @@
                 background-color: #e2e2e2;
             }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </asp:Content>
 
 <asp:Content ID="bodyContent" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
@@ -54,8 +55,9 @@
                             </asp:DropDownList>
                         </div>
                         <div class="input-group-sm d-flex" style="width: 250px; align-items: baseline">
-                            <input class="form-control" type="text" placeholder="Search" />
-                            <button class="input-group-text">search</button>
+                            <input id="searchBox" class="form-control" type="text" placeholder="Product name" />
+                            <asp:HiddenField runat="server" ID="hiddenSearchBox" />
+                            <asp:Button ID="btnSearch" CssClass="input-group-text" runat="server" Text="Search" OnClientClick="return validateSearch()" OnClick="btnSearch_Click"/>
                         </div>
                     </div>
                 </div>
@@ -93,5 +95,27 @@
                 </div>
             </div>
         </div>
+
     </form>
+    <script>
+        function getUrlVars() {
+            var vars = [], hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < hashes.length; i++) {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
+        $(document).ready(function () {
+            var keyword = getUrlVars()["search"];
+            $("#searchBox").val(keyword);
+        })
+        function validateSearch() {
+            var keyword = document.getElementById("searchBox").value;
+            document.getElementById("<%= hiddenSearchBox.ClientID %>").value = keyword;
+            return keyword.length !== 0;
+        }
+    </script>
 </asp:Content>
