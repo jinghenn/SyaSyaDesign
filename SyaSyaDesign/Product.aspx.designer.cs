@@ -24,6 +24,24 @@ namespace SyaSyaDesign.App_Pages
         protected global::System.Web.UI.HtmlControls.HtmlForm product_form;
 
         /// <summary>
+        /// categoryTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl categoryTitle;
+
+        /// <summary>
+        /// ddlSort control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSort;
+
+        /// <summary>
         /// rpt_product_category control.
         /// </summary>
         /// <remarks>
@@ -33,15 +51,6 @@ namespace SyaSyaDesign.App_Pages
         protected global::System.Web.UI.WebControls.Repeater rpt_product_category;
 
         /// <summary>
-        /// category_title control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl category_title;
-
-        /// <summary>
         /// rpt_product_item control.
         /// </summary>
         /// <remarks>
@@ -49,5 +58,14 @@ namespace SyaSyaDesign.App_Pages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rpt_product_item;
+
+        /// <summary>
+        /// lblNoProduct control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblNoProduct;
     }
 }
