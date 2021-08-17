@@ -7,83 +7,110 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SyaSyaDesign.App_Pages
+namespace SyaSyaDesign
 {
 
 
-    public partial class Product
+    public partial class ManageProduct
     {
 
         /// <summary>
-        /// product_form control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm product_form;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// categoryTitle control.
+        /// gvProduct control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl categoryTitle;
+        protected global::System.Web.UI.WebControls.GridView gvProduct;
 
         /// <summary>
-        /// ddlSort control.
+        /// txtNewProductName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSort;
+        protected global::System.Web.UI.WebControls.TextBox txtNewProductName;
 
         /// <summary>
-        /// searchBox control.
+        /// txtNewPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText searchBox;
+        protected global::System.Web.UI.WebControls.TextBox txtNewPrice;
 
         /// <summary>
-        /// btnSearch control.
+        /// txtNewQuantity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearch;
+        protected global::System.Web.UI.WebControls.TextBox txtNewQuantity;
 
         /// <summary>
-        /// rpt_product_category control.
+        /// vldQuantityType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rpt_product_category;
+        protected global::System.Web.UI.WebControls.CompareValidator vldQuantityType;
 
         /// <summary>
-        /// rpt_product_item control.
+        /// vldQuantityRange control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rpt_product_item;
+        protected global::System.Web.UI.WebControls.RangeValidator vldQuantityRange;
 
         /// <summary>
-        /// lblNoProduct control.
+        /// txtNewAttributeId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblNoProduct;
+        protected global::System.Web.UI.WebControls.TextBox txtNewAttributeId;
+
+        /// <summary>
+        /// ddlNewCategory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlNewCategory;
+
+        /// <summary>
+        /// btnInsert control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnInsert;
+
+        /// <summary>
+        /// dsCategory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource dsCategory;
     }
 }

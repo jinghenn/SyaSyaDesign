@@ -12,28 +12,18 @@ namespace SyaSyaDesign
     using System;
     using System.Collections.Generic;
     
-    public partial class Order
+    public partial class PaymentMethod
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Order()
+        public PaymentMethod()
         {
-            this.OrderDetails = new HashSet<OrderDetail>();
             this.Payments = new HashSet<Payment>();
         }
     
-        public int OrderID { get; set; }
-        public int UserID { get; set; }
-        public string RecipientName { get; set; }
-        public string EmailAddress { get; set; }
-        public string ContactNumber { get; set; }
-        public string DeliveryAddress { get; set; }
-        public System.DateTime Date { get; set; }
-        public double Total { get; set; }
-        public string DeliveryStatus { get; set; }
+        public int PaymentMethodID { get; set; }
+        public string PMDescription { get; set; }
+        public bool IsActive { get; set; }
     
-        public virtual User User { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Payment> Payments { get; set; }
     }

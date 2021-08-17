@@ -7,7 +7,6 @@ using System.Web.Script.Services;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using SyaSyaDesign;
 namespace SyaSyaDesign.App_Pages
 {
     public partial class Product : System.Web.UI.Page
@@ -29,6 +28,7 @@ namespace SyaSyaDesign.App_Pages
             if (!Page.IsPostBack)
             {
                 ddlSort.SelectedValue = sort;
+                searchBox.Value = keyword;
                 //Display available product category in side bar
                 rpt_product_category.DataSource = categories;
                 rpt_product_category.DataBind();
@@ -50,7 +50,7 @@ namespace SyaSyaDesign.App_Pages
         protected void ddlSort_SelectedIndexChanged(object sender, EventArgs e)
         {
             var value = ddlSort.SelectedValue;
-            var q = keyword == "" ? "": $"&search={keyword}";
+            var q = keyword == "" ? "" : $"&search={keyword}";
             Response.Redirect($"~/Product.aspx?category={category_id}&sort={value}{q}");
         }
         protected List<SyaSyaDesign.Product> GetProduct()
@@ -64,22 +64,22 @@ namespace SyaSyaDesign.App_Pages
             }
             else
             {
-                products = db.Products.ToList();
+                products = db.Products.Where(p => p.category_id == category_id).ToList();
             }
             switch (sort)
             {
                 case LOW_TO_HIGH:
-                    products = products.Where(p => p.category_id == category_id).OrderBy(p => p.price).ToList();
+                    products = products.OrderBy(p => p.price).ToList();
                     break;
                 case HIGH_TO_LOW:
-                    products = products.Where(p => p.category_id == category_id).OrderByDescending(p => p.price).ToList();
+                    products = products.OrderByDescending(p => p.price).ToList();
                     break;
                 case POPULAR:
                     //TODO: change the function to return popular item
-                    products = products.Where(p => p.category_id == category_id).OrderByDescending(p => p.product_id).ToList();
+                    products = products.OrderByDescending(p => p.product_id).ToList();
                     break;
                 default:
-                    products = products.Where(p => p.category_id == category_id).OrderByDescending(p => p.product_id).ToList();       
+                    products = products.OrderByDescending(p => p.product_id).ToList();
                     break;
             }
             return products;
@@ -87,11 +87,10 @@ namespace SyaSyaDesign.App_Pages
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            if(hiddenSearchBox.Value != "")
-            {
-                Response.Redirect($"~/Product.aspx?category={category_id}&sort={sort}&search={hiddenSearchBox.Value}");
-            }
-            
+            var rawValue = searchBox.Value;
+            var kw = rawValue == "" ? "" : $"&search={rawValue}";
+            Response.Redirect($"~/Product.aspx?category={category_id}&sort={sort}{kw}");
+
         }
     }
 }

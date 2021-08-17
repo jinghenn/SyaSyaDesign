@@ -32,7 +32,9 @@
                 font-size: 22px;
             }
         }
+
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </asp:Content>
 
 <asp:Content ID="bodyContent" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
@@ -47,18 +49,30 @@
                         <asp:Label ID="lblPrice" Text="" CssClass="label mt-5" runat="server" />
                         <hr />
                     </div>
-                    
+
                     <div>
                         <asp:Label Text="SIZE" CssClass="label" runat="server" />
                         <hr />
                     </div>
-                    
+
                     <div class="container">
-                        <asp:Button ID="btn_add_cart" CssClass="btn-dark w-100 mx-auto py-3 rounded-1 fw-bold" Text="ADD TO CART" runat="server" />
+                        <div class="d-flex flex-row align-items-center flex-wrap">
+                            <div class="me-3 d-flex flex-nowrap mb-3" style="width:130px">
+                                <button id="btnMinus" class="btn btn-outline-secondary">
+                                    <i class="bi bi-dash"></i>
+                                </button>
+                                <asp:TextBox ID="txtQuantity" CssClass="form-control" runat="server" Text="0"/>
+                                <button id="btnPlus" class="btn btn-outline-secondary" runat="server">
+                                    <i class="bi bi-plus"></i>
+                                </button>
+                            </div>
+                            <asp:Button ID="btn_add_cart" CssClass="btn-dark mx-auto flex-grow-1 mb-3 py-3 rounded-1 fw-bold" 
+                                Text="ADD TO CART" OnClick="btn_add_cart_Click" OnClientClick="return checkQuantity()" runat="server" />
+                        </div>
                     </div>
                     <div class="w-100">
                         <asp:Label Text="Product Measurement" CssClass="label mt-5" runat="server" />
-                        <table class="table table-bordered table-sm text-uppercase table-responsive-lg text-center" style="font-size:12px">
+                        <table class="table table-bordered table-sm text-uppercase table-responsive-lg text-center" style="font-size: 12px">
                             <tr class="fw-bold">
                                 <td>size</td>
                                 <td>Shoulder</td>
@@ -113,4 +127,20 @@
             </div>
         </div>
     </form>
+    <script>
+        $(document).ready(function () {
+            $("#btnMinus").click(function () {
+                event.preventDefault();
+                $("input[name$='txtQuantity']").val(function (i, oldval) {
+                    return parseInt(oldval, 10) + 1;
+                });
+            })
+            
+        })
+        function checkQuantity() {
+            var quantity = $("input[name$='txtQuantity']").val();
+            return quantity > 0;
+        }
+        
+    </script>
 </asp:Content>

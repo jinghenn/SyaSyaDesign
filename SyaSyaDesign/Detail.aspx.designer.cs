@@ -42,6 +42,24 @@ namespace SyaSyaDesign
         protected global::System.Web.UI.WebControls.Label lblPrice;
 
         /// <summary>
+        /// txtQuantity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtQuantity;
+
+        /// <summary>
+        /// btnPlus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnPlus;
+
+        /// <summary>
         /// btn_add_cart control.
         /// </summary>
         /// <remarks>

@@ -51,6 +51,9 @@
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Linq.Dynamic.Core, Version=1.2.12.0, Culture=neutral, PublicKeyToken=0f07ec44de6ac832, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.Core.1.2.12\lib\net46\System.Linq.Dynamic.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -78,6 +81,7 @@
   <ItemGroup>
     <Content Include="Detail.aspx" />
     <Content Include="HelloWorld.aspx" />
+    <Content Include="ManageProduct.aspx" />
     <Content Include="Product.aspx" />
     <Content Include="SyaSyaModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -92,6 +96,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cart.cs">
+      <DependentUpon>SyaSyaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Detail.aspx.cs">
       <DependentUpon>Detail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -105,6 +112,22 @@
     </Compile>
     <Compile Include="HelloWorld.aspx.designer.cs">
       <DependentUpon>HelloWorld.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ManageProduct.aspx.cs">
+      <DependentUpon>ManageProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManageProduct.aspx.designer.cs">
+      <DependentUpon>ManageProduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OrderDetail.cs">
+      <DependentUpon>SyaSyaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Payment.cs">
+      <DependentUpon>SyaSyaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentMethod.cs">
+      <DependentUpon>SyaSyaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Product.aspx.cs">
       <DependentUpon>Product.aspx</DependentUpon>

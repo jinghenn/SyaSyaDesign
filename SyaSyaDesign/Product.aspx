@@ -55,9 +55,8 @@
                             </asp:DropDownList>
                         </div>
                         <div class="input-group-sm d-flex" style="width: 250px; align-items: baseline">
-                            <input id="searchBox" class="form-control" type="text" placeholder="Product name" />
-                            <asp:HiddenField runat="server" ID="hiddenSearchBox" />
-                            <asp:Button ID="btnSearch" CssClass="input-group-text" runat="server" Text="Search" OnClientClick="return validateSearch()" OnClick="btnSearch_Click"/>
+                            <input id="searchBox" class="form-control" type="text" runat="server" placeholder="Product name" />
+                            <asp:Button ID="btnSearch" CssClass="input-group-text" runat="server" Text="Search" OnClick="btnSearch_Click"/>
                         </div>
                     </div>
                 </div>
@@ -73,10 +72,10 @@
                                 </ItemTemplate>
                             </asp:Repeater>
                         </div>
-                        <div id="product-list" class="d-flex flex-fill flex-row w-75">
+                        <div id="product-list" class="d-flex flex-fill flex-row flex-wrap w-75">
                             <asp:Repeater ID="rpt_product_item" runat="server">
                                 <ItemTemplate>
-                                    <div class="card me-2 mb-2" style="width: 13rem">
+                                    <div class="card me-2 mb-2" style="width: 200px">
                                         <a href="Detail.aspx?product_id=<%# Eval("product_id")%>">
                                             <img src="https://via.placeholder.com/150" class="card-img-top" alt="..."></a>
                                         <div class="card-body">
@@ -97,7 +96,7 @@
         </div>
 
     </form>
-    <script>
+    <%--<script>
         function getUrlVars() {
             var vars = [], hash;
             var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
@@ -115,7 +114,8 @@
         function validateSearch() {
             var keyword = document.getElementById("searchBox").value;
             document.getElementById("<%= hiddenSearchBox.ClientID %>").value = keyword;
-            return keyword.length !== 0;
+            //return keyword.length !== 0;
+            return true
         }
-    </script>
+    </script>--%>
 </asp:Content>
