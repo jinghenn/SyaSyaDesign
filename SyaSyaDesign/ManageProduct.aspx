@@ -114,20 +114,23 @@
 
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:LinkButton ID="btnEdit" CssClass="btn btn-primary btn-sm" runat="server" CommandName="Edit">
-                    <i class="bi bi-pencil"></i>
-                                </asp:LinkButton>
-                                <asp:LinkButton ID="btnDelete" CssClass="btn btn-danger btn-sm" runat="server" CommandName="Delete">
-                    <i class="bi bi-trash"></i>
-                                </asp:LinkButton>
+                                <div class="d-flex flex-nowrap">
+                                    <asp:LinkButton ID="btnEdit" CssClass="btn btn-primary btn-sm" runat="server" CommandName="Edit">
+                                        <i class="bi bi-pencil"></i>
+                                    </asp:LinkButton>
+                                    <asp:LinkButton ID="btnDelete" CssClass="btn btn-danger btn-sm" runat="server" CommandName="Delete">
+                                        <i class="bi bi-trash"></i>
+                                    </asp:LinkButton>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:LinkButton ID="btnUpdate" CssClass="btn btn-success btn-sm" runat="server" CommandName="Update" ValidationGroup="product">
-                    <i class="bi bi-check"></i>
-                                </asp:LinkButton>
-                                <asp:LinkButton ID="btnCancel" CssClass="btn btn-danger btn-sm" Text="Cancel" runat="server" CommandName="Cancel">
-                    <i class="bi bi-x"></i>
-                                </asp:LinkButton>
+                                <div class="d-flex flex-nowrap">
+                                    <asp:LinkButton ID="btnUpdate" CssClass="btn btn-success btn-sm" runat="server" CommandName="Update" ValidationGroup="product">
+                                        <i class="bi bi-check"></i>
+                                    </asp:LinkButton>
+                                    <asp:LinkButton ID="btnCancel" CssClass="btn btn-danger btn-sm" Text="Cancel" runat="server" CommandName="Cancel">
+                                        <i class="bi bi-x"></i>
+                                    </asp:LinkButton>
+                                </div>
                             </EditItemTemplate>
 
                         </asp:TemplateField>
