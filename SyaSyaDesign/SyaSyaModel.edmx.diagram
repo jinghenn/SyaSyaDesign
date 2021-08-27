@@ -5,9 +5,16 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="78afd5e3440e44e3be3164795170138a" Name="Diagram1">
-        <EntityTypeShape EntityType="syasyadbModel.Order" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="syasyadbModel.User" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
-        <AssociationConnector Association="syasyadbModel.FK_Order_User" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="syasyadbModel.Cart" Width="1.5" PointX="7.625" PointY="1.75" />
+        <EntityTypeShape EntityType="syasyadbModel.OrderDetail" Width="1.5" PointX="7.625" PointY="4.875" />
+        <EntityTypeShape EntityType="syasyadbModel.Product" Width="1.5" PointX="5.375" PointY="2.375" />
+        <AssociationConnector Association="syasyadbModel.FK__Cart__ProductID__01142BA1" />
+        <AssociationConnector Association="syasyadbModel.FK__Cart__UserID__797309D9" />
+        <AssociationConnector Association="syasyadbModel.FK__OrderDeta__Produ__00200768" />
+        <EntityTypeShape EntityType="syasyadbModel.Order" Width="1.5" PointX="3" PointY="4.875" />
+        <AssociationConnector Association="syasyadbModel.FK__Order__UserID__70DDC3D8" />
+        <AssociationConnector Association="syasyadbModel.FK__OrderDeta__Order__74AE54BC" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

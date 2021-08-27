@@ -14,9 +14,24 @@ namespace SyaSyaDesign
     
     public partial class Order
     {
-        public string order_id { get; set; }
-        public int user_id { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Order()
+        {
+            this.OrderDetails = new HashSet<OrderDetail>();
+        }
+    
+        public int OrderID { get; set; }
+        public int UserID { get; set; }
+        public string RecipientName { get; set; }
+        public string EmailAddress { get; set; }
+        public string ContactNumber { get; set; }
+        public string DeliveryAddress { get; set; }
+        public System.DateTime Date { get; set; }
+        public double Total { get; set; }
+        public string DeliveryStatus { get; set; }
     
         public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

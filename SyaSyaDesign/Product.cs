@@ -12,23 +12,25 @@ namespace SyaSyaDesign
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public Product()
         {
             this.Carts = new HashSet<Cart>();
-            this.Orders = new HashSet<Order>();
+            this.OrderDetails = new HashSet<OrderDetail>();
         }
     
-        public int user_id { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
-        public bool isAdmin { get; set; }
+        public int product_id { get; set; }
+        public string product_name { get; set; }
+        public decimal price { get; set; }
+        public int quantity { get; set; }
+        public int attribute_id { get; set; }
+        public string category_id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cart> Carts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }
