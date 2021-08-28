@@ -1,11 +1,12 @@
-﻿<%@ Page Title="Cart" Language="C#"  MasterPageFile="~/SyasyaDesign.Master" AutoEventWireup="true" CodeBehind="Cart.aspx.cs" Inherits="SyaSyaDesign.App_Pages.Cart" %>
+﻿<%@ Page Title="Cart" Language="C#" MasterPageFile="~/SyasyaDesign.Master" AutoEventWireup="true" CodeBehind="Cart.aspx.cs" Inherits="SyaSyaDesign.App_Pages.Cart" %>
 
 <asp:Content ID="styleContent" ContentPlaceHolderID="head" runat="server">
     <title>Cart</title>
     <style>
-        html{
+        html {
             scroll-behavior: auto;
         }
+
         .checkoutbar {
             min-width: 415px;
             padding: 20px 40px;
@@ -38,7 +39,7 @@
             border: solid 1px;
             font-weight: 500;
             font-size: 10px;
-            float:right
+            float: right
         }
 
         .quantity {
@@ -70,7 +71,8 @@
             width: 180px;
             object-fit: cover;
         }
-        #form1{
+
+        #form1 {
             min-height: 600px;
         }
     </style>
@@ -85,10 +87,10 @@
                     <!--card group-->
                     <asp:Repeater ID="cartItemRepeater" runat="server" OnItemCommand="cartItemRepeater_ItemCommand">
                         <ItemTemplate>
-                            <div class="card flex-row shadow" style="margin: 10px 0px; min-width:415px">
+                            <div class="card flex-row shadow" style="margin: 10px 0px; min-width: 415px">
                                 <div class="card-body">
                                     <h5 class="card-title"><%# Eval("ProductName")%></h5>
-                                    <div class="d-flex justify-content-start" style="margin: 10px 0; float:right">
+                                    <div class="d-flex justify-content-start" style="margin: 10px 0; float: right">
                                         <!--decrease button-->
                                         <asp:Button CommandName="minus" CommandArgument='<%# Eval("ProductID")%>'
                                             Text="-" runat="server" ID="btnMinus" CssClass="btn-plusminus" />
@@ -98,10 +100,12 @@
                                         <asp:Button CommandName="plus" CommandArgument='<%# Eval("ProductID")%>'
                                             Text="+" runat="server" ID="btnPlus" CssClass="btn-plusminus" />
                                     </div>
-                                    
-                                    <br />Unit Price&nbsp;: RM &nbsp;
+
+                                    <br />
+                                    Unit Price&nbsp;: RM &nbsp;
                                     <asp:Label ID="lblUnit" Text='<%# Eval("Price")%>' runat="server" />
-                                    <br />Sub-total&nbsp;&nbsp;:  RM &nbsp;
+                                    <br />
+                                    Sub-total&nbsp;&nbsp;:  RM &nbsp;
                                     <asp:Label ID="lblSubtotal" Text='<%# Eval("TotalPrice")%>' runat="server" />
                                     <br />
                                     <asp:Button CommandName="delete" CommandArgument='<%# Eval("ProductID")%>'

@@ -79,6 +79,8 @@
     <Content Include="App_Pages\Cart.aspx" />
     <Content Include="App_Pages\CheckOut.aspx" />
     <Content Include="App_Pages\HelloWorld.aspx" />
+    <Content Include="App_Pages\OrderHistory.aspx" />
+    <Content Include="App_Pages\PurchaseSummary.aspx" />
     <Content Include="SyaSyaModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SyaSyaModel.edmx</DependentUpon>
@@ -112,6 +114,20 @@
     </Compile>
     <Compile Include="App_Pages\HelloWorld.aspx.designer.cs">
       <DependentUpon>HelloWorld.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\OrderHistory.aspx.cs">
+      <DependentUpon>OrderHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\OrderHistory.aspx.designer.cs">
+      <DependentUpon>OrderHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\PurchaseSummary.aspx.cs">
+      <DependentUpon>PurchaseSummary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\PurchaseSummary.aspx.designer.cs">
+      <DependentUpon>PurchaseSummary.aspx</DependentUpon>
     </Compile>
     <Compile Include="Cart.cs">
       <DependentUpon>SyaSyaModel.tt</DependentUpon>

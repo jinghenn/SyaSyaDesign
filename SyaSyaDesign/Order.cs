@@ -28,7 +28,7 @@ namespace SyaSyaDesign
         public string DeliveryAddress { get; set; }
         public System.DateTime Date { get; set; }
         public double Total { get; set; }
-        public string DeliveryStatus { get; set; }
+        public string Status { get; set; }
     
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
