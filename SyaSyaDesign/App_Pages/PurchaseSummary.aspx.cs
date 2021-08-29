@@ -27,7 +27,7 @@ namespace SyaSyaDesign.App_Pages
                     lblEstimatedArriveTime.Text = order.Date.AddDays(7).ToString("dd-MM-yyyy");
                     lblDeliveryAddress.Text = order.DeliveryAddress;
                     lblStatus.Text = order.Status;
-                    if(order.Status.Equals("In Progress"))
+                    if (order.Status.Equals("In Progress"))
                     {
                         btnTrackNo.Text = "ERC63097867" + order.OrderID + "MY";
                         lblTrack.Visible = true;
@@ -72,6 +72,23 @@ namespace SyaSyaDesign.App_Pages
             {
                 Response.Redirect("~/App_Pages/OrderHistory.aspx");
             }
+        }
+
+        protected void CancelOrder_Click(object sender, EventArgs e)
+        {
+            using (var db = new syasyadbEntities())
+            {
+                Order order = db.Orders.Find(Int16.Parse(lblOrderId.Text));
+                order.Status = "Cancelled";
+                db.SaveChanges();
+
+                //Update status view
+                lblStatus.Text = order.Status;
+            }
+
+            //Hide track no
+            lblTrack.Visible = false;
+            btnTrackNo.Visible = false;
         }
     }
 }

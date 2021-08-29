@@ -45,15 +45,15 @@
             color: #1a1a1a;
         }
     </style>
-<script src="//www.tracking.my/track-button.js"></script>
-<script>
-  function linkTrack(num) {
-    TrackButton.track({
-      tracking_no: num
-      });
-      return false;
-  }
-</script>
+    <script src="//www.tracking.my/track-button.js"></script>
+    <script>
+        function linkTrack(num) {
+            TrackButton.track({
+                tracking_no: num
+            });
+            return false;
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
     <h1 class="heading" style="color: black"><b><span>Purchase Summary</span></b></h1>
@@ -80,9 +80,11 @@
                                     </strong>
                                     <asp:Label ID="lblEstimatedArriveTime" runat="server"></asp:Label>
                                 </div>
-                                <div class="col"><strong>Courier Services:</strong>
+                                <div class="col">
+                                    <strong>Courier Services:</strong>
                                     <br>
-                                    POS LAJU</div>
+                                    POS LAJU
+                                </div>
                                 <div class="col">
                                     <strong>Delivery address:<br />
                                     </strong>
@@ -94,7 +96,8 @@
                                     </strong>
                                     <asp:Label ID="lblStatus" runat="server"></asp:Label>
                                     <br>
-                                    <strong><asp:label ID="lblTrack" runat="server">Tracking No:</asp:label><br />
+                                    <strong>
+                                        <asp:Label ID="lblTrack" runat="server">Tracking No:</asp:Label><br />
                                     </strong>
                                     <asp:Button ID="btnTrackNo" class="btn btn-outline-primary mt-1" runat="server" OnClientClick="return linkTrack(this.value)" UseSubmitBehavior="False"></asp:Button>
                                 </div>
@@ -169,11 +172,28 @@
 
                     </table>
 
-
-
-                    <asp:Button ID="btnMainPage" Style="margin: auto" class="btn btn-danger btn-brand btn-full-width" PostBackUrl="~/App_Pages/OrderHistory.aspx" runat="server" Text="Back to History" />
+                    <asp:Button ID="btnMainPage" Style="margin: auto" class="btn btn-outline-secondary btn-brand btn-full-width" PostBackUrl="~/App_Pages/OrderHistory.aspx" runat="server" Text="Back to History" />
+                    <asp:Button ID="btnCancelOrder" Style="margin: auto; float:right" class="btn btn-danger btn-brand btn-full-width" runat="server" Text="Cancel Order" onClientClick="return false" data-bs-toggle="modal" data-bs-target="#staticBackdrop" UseSubmitBehavior="False"/>
                 </div>
             </article>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Cancel Order</h5>
+                        <button type="button" runat="server" onClientClick="return false" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h6>Are you sure you want to cancel current order?</h6>
+                    </div>
+                    <div class="modal-footer">
+                        <asp:Button runat="server" class="btn btn-secondary" data-bs-dismiss="modal" Text="No"></asp:Button>
+                        <asp:Button runat="server" class="btn btn-primary" Text="Yes" OnClick="CancelOrder_Click"></asp:Button>
+                    </div>
+                </div>
+            </div>
         </div>
     </form>
 
