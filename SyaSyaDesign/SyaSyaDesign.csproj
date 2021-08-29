@@ -138,7 +138,16 @@
     <Compile Include="OrderDetail.cs">
       <DependentUpon>SyaSyaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Payment.cs">
+      <DependentUpon>SyaSyaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentMethod.cs">
+      <DependentUpon>SyaSyaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Product.cs">
+      <DependentUpon>SyaSyaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductCategory.cs">
       <DependentUpon>SyaSyaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

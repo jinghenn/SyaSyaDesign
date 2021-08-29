@@ -39,6 +39,24 @@
           <Property Name="Quantity" Type="int" Nullable="false" />
           <Property Name="Attributes" Type="nchar" MaxLength="200" />
         </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="PaymentDate" Type="datetime" Nullable="false" />
+          <Property Name="PaymentMethodID" Type="int" Nullable="false" />
+          <Property Name="isPaid" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentMethod">
+          <Key>
+            <PropertyRef Name="PaymentMethodID" />
+          </Key>
+          <Property Name="PaymentMethodID" Type="int" Nullable="false" />
+          <Property Name="PMDescription" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="product_id" />
@@ -49,6 +67,13 @@
           <Property Name="quantity" Type="int" Nullable="false" />
           <Property Name="attribute_id" Type="int" Nullable="false" />
           <Property Name="category_id" Type="varchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductCategory">
+          <Key>
+            <PropertyRef Name="category_id" />
+          </Key>
+          <Property Name="category_id" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="category_name" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -119,11 +144,50 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Payment__OrderID__6FE99F9F">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Payment__Payment__6D0D32F4">
+          <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethod">
+              <PropertyRef Name="PaymentMethodID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="PaymentMethodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Category">
+          <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductCategory">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="syasyadbModelStoreContainer">
           <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Cart__ProductID__01142BA1" Association="Self.FK__Cart__ProductID__01142BA1">
             <End Role="Product" EntitySet="Product" />
@@ -144,6 +208,18 @@
           <AssociationSet Name="FK__OrderDeta__Produ__00200768" Association="Self.FK__OrderDeta__Produ__00200768">
             <End Role="Product" EntitySet="Product" />
             <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Payment__OrderID__6FE99F9F" Association="Self.FK__Payment__OrderID__6FE99F9F">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Payment__Payment__6D0D32F4" Association="Self.FK__Payment__Payment__6D0D32F4">
+            <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
+            <End Role="ProductCategory" EntitySet="ProductCategory" />
+            <End Role="Product" EntitySet="Product" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -187,6 +263,21 @@
             <End Role="Order" EntitySet="Orders" />
             <End Role="OrderDetail" EntitySet="OrderDetails" />
           </AssociationSet>
+          <EntitySet Name="Payments" EntityType="syasyadbModel.Payment" />
+          <EntitySet Name="PaymentMethods" EntityType="syasyadbModel.PaymentMethod" />
+          <EntitySet Name="ProductCategories" EntityType="syasyadbModel.ProductCategory" />
+          <AssociationSet Name="FK__Payment__OrderID__6FE99F9F" Association="syasyadbModel.FK__Payment__OrderID__6FE99F9F">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Payment__Payment__6D0D32F4" Association="syasyadbModel.FK__Payment__Payment__6D0D32F4">
+            <End Role="PaymentMethod" EntitySet="PaymentMethods" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Category" Association="syasyadbModel.FK_Product_Category">
+            <End Role="ProductCategory" EntitySet="ProductCategories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Cart">
           <Key>
@@ -224,6 +315,7 @@
           <Property Name="category_id" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Carts" Relationship="syasyadbModel.FK__Cart__ProductID__01142BA1" FromRole="Product" ToRole="Cart" />
           <NavigationProperty Name="OrderDetails" Relationship="syasyadbModel.FK__OrderDeta__Produ__00200768" FromRole="Product" ToRole="OrderDetail" />
+          <NavigationProperty Name="ProductCategory" Relationship="syasyadbModel.FK_Product_Category" FromRole="Product" ToRole="ProductCategory" />
         </EntityType>
         <Association Name="FK__Cart__ProductID__01142BA1">
           <End Type="syasyadbModel.Product" Role="Product" Multiplicity="1" />
@@ -276,6 +368,7 @@
           <NavigationProperty Name="User" Relationship="syasyadbModel.FK__Order__UserID__70DDC3D8" FromRole="Order" ToRole="User" />
           <NavigationProperty Name="OrderDetails" Relationship="syasyadbModel.FK__OrderDeta__Order__74AE54BC" FromRole="Order" ToRole="OrderDetail" />
           <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Payments" Relationship="syasyadbModel.FK__Payment__OrderID__6FE99F9F" FromRole="Order" ToRole="Payment" />
         </EntityType>
         <Association Name="FK__Order__UserID__70DDC3D8">
           <End Type="syasyadbModel.User" Role="User" Multiplicity="1" />
@@ -298,6 +391,71 @@
             </Principal>
             <Dependent Role="OrderDetail">
               <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PaymentMethodID" Type="Int32" Nullable="false" />
+          <Property Name="isPaid" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="syasyadbModel.FK__Payment__OrderID__6FE99F9F" FromRole="Payment" ToRole="Order" />
+          <NavigationProperty Name="PaymentMethod" Relationship="syasyadbModel.FK__Payment__Payment__6D0D32F4" FromRole="Payment" ToRole="PaymentMethod" />
+        </EntityType>
+        <EntityType Name="PaymentMethod">
+          <Key>
+            <PropertyRef Name="PaymentMethodID" />
+          </Key>
+          <Property Name="PaymentMethodID" Type="Int32" Nullable="false" />
+          <Property Name="PMDescription" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Payments" Relationship="syasyadbModel.FK__Payment__Payment__6D0D32F4" FromRole="PaymentMethod" ToRole="Payment" />
+        </EntityType>
+        <EntityType Name="ProductCategory">
+          <Key>
+            <PropertyRef Name="category_id" />
+          </Key>
+          <Property Name="category_id" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="category_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Products" Relationship="syasyadbModel.FK_Product_Category" FromRole="ProductCategory" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK__Payment__OrderID__6FE99F9F">
+          <End Type="syasyadbModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="syasyadbModel.Payment" Role="Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Payment__Payment__6D0D32F4">
+          <End Type="syasyadbModel.PaymentMethod" Role="PaymentMethod" Multiplicity="1" />
+          <End Type="syasyadbModel.Payment" Role="Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethod">
+              <PropertyRef Name="PaymentMethodID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="PaymentMethodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Category">
+          <End Type="syasyadbModel.ProductCategory" Role="ProductCategory" Multiplicity="1" />
+          <End Type="syasyadbModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductCategory">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="category_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -361,6 +519,34 @@
                 <ScalarProperty Name="RecipientName" ColumnName="RecipientName" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="syasyadbModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="isPaid" ColumnName="isPaid" />
+                <ScalarProperty Name="PaymentMethodID" ColumnName="PaymentMethodID" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentMethods">
+            <EntityTypeMapping TypeName="syasyadbModel.PaymentMethod">
+              <MappingFragment StoreEntitySet="PaymentMethod">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="PMDescription" ColumnName="PMDescription" />
+                <ScalarProperty Name="PaymentMethodID" ColumnName="PaymentMethodID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductCategories">
+            <EntityTypeMapping TypeName="syasyadbModel.ProductCategory">
+              <MappingFragment StoreEntitySet="ProductCategory">
+                <ScalarProperty Name="category_name" ColumnName="category_name" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

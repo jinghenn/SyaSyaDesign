@@ -12,26 +12,19 @@ namespace SyaSyaDesign
     using System;
     using System.Collections.Generic;
     
-    public partial class Product
+    public partial class PaymentMethod
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Product()
+        public PaymentMethod()
         {
-            this.Carts = new HashSet<Cart>();
-            this.OrderDetails = new HashSet<OrderDetail>();
+            this.Payments = new HashSet<Payment>();
         }
     
-        public int product_id { get; set; }
-        public string product_name { get; set; }
-        public decimal price { get; set; }
-        public int quantity { get; set; }
-        public int attribute_id { get; set; }
-        public string category_id { get; set; }
+        public int PaymentMethodID { get; set; }
+        public string PMDescription { get; set; }
+        public bool IsActive { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cart> Carts { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
-        public virtual ProductCategory ProductCategory { get; set; }
+        public virtual ICollection<Payment> Payments { get; set; }
     }
 }
