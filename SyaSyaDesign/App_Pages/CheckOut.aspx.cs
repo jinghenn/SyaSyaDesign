@@ -55,7 +55,7 @@ namespace SyaSyaDesign.App_Pages
 
         protected void btnContinue_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/App_Pages/HelloWorld.aspx");
+            Response.Redirect("~/Product.aspx");
         }
 
         protected void btnCheckout_Click(object sender, EventArgs e)
