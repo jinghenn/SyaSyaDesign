@@ -45,6 +45,15 @@
             color: #1a1a1a;
         }
     </style>
+<script src="//www.tracking.my/track-button.js"></script>
+<script>
+  function linkTrack(num) {
+    TrackButton.track({
+      tracking_no: num
+      });
+      return false;
+  }
+</script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
     <h1 class="heading" style="color: black"><b><span>Purchase Summary</span></b></h1>
@@ -85,9 +94,9 @@
                                     </strong>
                                     <asp:Label ID="lblStatus" runat="server"></asp:Label>
                                     <br>
-                                    <strong>Tracking No:<br />
+                                    <strong><asp:label ID="lblTrack" runat="server">Tracking No:</asp:label><br />
                                     </strong>
-                                    <asp:Label ID="lblTrackNo" runat="server"></asp:Label>
+                                    <asp:Button ID="btnTrackNo" class="btn btn-outline-primary mt-1" runat="server" OnClientClick="return linkTrack(this.value)" UseSubmitBehavior="False"></asp:Button>
                                 </div>
                             </div>
                         </article>

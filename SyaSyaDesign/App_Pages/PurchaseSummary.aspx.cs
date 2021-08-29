@@ -29,7 +29,14 @@ namespace SyaSyaDesign.App_Pages
                     lblStatus.Text = order.Status;
                     if(order.Status.Equals("In Progress"))
                     {
-                        lblTrackNo.Text = "123456789";
+                        btnTrackNo.Text = "ERC63097867" + order.OrderID + "MY";
+                        lblTrack.Visible = true;
+                        btnTrackNo.Visible = true;
+                    }
+                    else
+                    {
+                        lblTrack.Visible = false;
+                        btnTrackNo.Visible = false;
                     }
                 }
 
