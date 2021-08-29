@@ -79,6 +79,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Pages\Cart.aspx" />
+    <Content Include="App_Pages\CheckOut.aspx" />
+    <Content Include="App_Pages\OrderHistory.aspx" />
+    <Content Include="App_Pages\PurchaseSummary.aspx" />
     <Content Include="Detail.aspx" />
     <Content Include="HelloWorld.aspx" />
     <Content Include="ManageProduct.aspx" />
@@ -96,6 +100,34 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Pages\Cart.aspx.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Cart.aspx.designer.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\CheckOut.aspx.cs">
+      <DependentUpon>CheckOut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\CheckOut.aspx.designer.cs">
+      <DependentUpon>CheckOut.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\OrderHistory.aspx.cs">
+      <DependentUpon>OrderHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\OrderHistory.aspx.designer.cs">
+      <DependentUpon>OrderHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\PurchaseSummary.aspx.cs">
+      <DependentUpon>PurchaseSummary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\PurchaseSummary.aspx.designer.cs">
+      <DependentUpon>PurchaseSummary.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Cart.cs">
       <DependentUpon>SyaSyaModel.tt</DependentUpon>
     </Compile>

@@ -13,6 +13,7 @@
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="ProductID" Type="int" Nullable="false" />
           <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Attributes" Type="nchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -26,7 +27,7 @@
           <Property Name="DeliveryAddress" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
           <Property Name="Total" Type="float" Nullable="false" />
-          <Property Name="DeliveryStatus" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
@@ -36,6 +37,7 @@
           <Property Name="OrderID" Type="int" Nullable="false" />
           <Property Name="ProductID" Type="int" Nullable="false" />
           <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Attributes" Type="nchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Payment">
           <Key>
@@ -276,6 +278,7 @@
           <Property Name="Quantity" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Product" Relationship="syasyadbModel.FK__Cart__ProductID__01142BA1" FromRole="Cart" ToRole="Product" />
           <NavigationProperty Name="User" Relationship="syasyadbModel.FK__Cart__UserID__797309D9" FromRole="Cart" ToRole="User" />
+          <Property Name="Attributes" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -289,10 +292,10 @@
           <Property Name="DeliveryAddress" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Total" Type="Double" Nullable="false" />
-          <Property Name="DeliveryStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="User" Relationship="syasyadbModel.FK__Order__UserID__70DDC3D8" FromRole="Order" ToRole="User" />
           <NavigationProperty Name="OrderDetails" Relationship="syasyadbModel.FK__OrderDeta__Order__74AE54BC" FromRole="Order" ToRole="OrderDetail" />
           <NavigationProperty Name="Payments" Relationship="syasyadbModel.FK__Payment__OrderID__6FE99F9F" FromRole="Order" ToRole="Payment" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
@@ -304,6 +307,7 @@
           <Property Name="Quantity" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Order" Relationship="syasyadbModel.FK__OrderDeta__Order__74AE54BC" FromRole="OrderDetail" ToRole="Order" />
           <NavigationProperty Name="Product" Relationship="syasyadbModel.FK__OrderDeta__Produ__00200768" FromRole="OrderDetail" ToRole="Product" />
+          <Property Name="Attributes" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="Payment">
           <Key>
@@ -464,6 +468,7 @@
           <EntitySetMapping Name="Carts">
             <EntityTypeMapping TypeName="syasyadbModel.Cart">
               <MappingFragment StoreEntitySet="Cart">
+                <ScalarProperty Name="Attributes" ColumnName="Attributes" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
@@ -473,7 +478,7 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="syasyadbModel.Order">
               <MappingFragment StoreEntitySet="Order">
-                <ScalarProperty Name="DeliveryStatus" ColumnName="DeliveryStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Total" ColumnName="Total" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="DeliveryAddress" ColumnName="DeliveryAddress" />
@@ -488,6 +493,7 @@
           <EntitySetMapping Name="OrderDetails">
             <EntityTypeMapping TypeName="syasyadbModel.OrderDetail">
               <MappingFragment StoreEntitySet="OrderDetail">
+                <ScalarProperty Name="Attributes" ColumnName="Attributes" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
