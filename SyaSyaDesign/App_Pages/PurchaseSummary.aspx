@@ -58,7 +58,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
     <h1 class="heading" style="color: black"><b><span>Purchase Summary</span></b></h1>
     <form id="form1" runat="server">
-        <div class="container">
+        <div class="container" style="width: 80%; margin: auto;">
             <article class="card">
                 <header class="card-header">
                     <h6>Order ID:
@@ -173,7 +173,7 @@
                     </table>
 
                     <asp:Button ID="btnMainPage" Style="margin: auto" class="btn btn-outline-secondary btn-brand btn-full-width" PostBackUrl="~/App_Pages/OrderHistory.aspx" runat="server" Text="Back to History" />
-                    <asp:Button ID="btnCancelOrder" Style="margin: auto; float:right" class="btn btn-danger btn-brand btn-full-width" runat="server" Text="Cancel Order" onClientClick="return false" data-bs-toggle="modal" data-bs-target="#staticBackdrop" UseSubmitBehavior="False"/>
+                    <asp:Button ID="btnCancelOrder" Style="margin: auto; float: right" class="btn btn-danger btn-brand btn-full-width" runat="server" Text="Cancel Order" OnClientClick="return false" data-bs-toggle="modal" data-bs-target="#staticBackdrop" UseSubmitBehavior="False" />
                 </div>
             </article>
         </div>
@@ -183,14 +183,14 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="staticBackdropLabel">Cancel Order</h5>
-                        <button type="button" runat="server" onClientClick="return false" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" runat="server" onclientclick="return false" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <h6>Are you sure you want to cancel current order?</h6>
                     </div>
                     <div class="modal-footer">
-                        <asp:Button runat="server" class="btn btn-secondary" data-bs-dismiss="modal" Text="No"></asp:Button>
-                        <asp:Button runat="server" class="btn btn-primary" Text="Yes" OnClick="CancelOrder_Click"></asp:Button>
+                        <asp:Button runat="server" class="btn btn-outline-danger" data-bs-dismiss="modal" Text="No"></asp:Button>
+                        <asp:Button runat="server" class="btn btn-danger" Text="Yes" OnClick="CancelOrder_Click"></asp:Button>
                     </div>
                 </div>
             </div>

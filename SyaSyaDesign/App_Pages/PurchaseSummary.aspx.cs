@@ -35,6 +35,7 @@ namespace SyaSyaDesign.App_Pages
                     }
                     else
                     {
+                        btnCancelOrder.Visible = false;
                         lblTrack.Visible = false;
                         btnTrackNo.Visible = false;
                     }

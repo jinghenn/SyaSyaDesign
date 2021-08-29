@@ -301,15 +301,6 @@ namespace SyaSyaDesign.App_Pages {
         protected global::System.Web.UI.WebControls.Label lblTotal;
         
         /// <summary>
-        /// btnCheckout control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCheckout;
-        
-        /// <summary>
         /// btnContinue control.
         /// </summary>
         /// <remarks>
@@ -317,5 +308,14 @@ namespace SyaSyaDesign.App_Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnContinue;
+        
+        /// <summary>
+        /// btnCheckout control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCheckout;
     }
 }
