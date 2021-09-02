@@ -86,6 +86,7 @@
     <Content Include="App_Pages\OrderHistory.aspx" />
     <Content Include="App_Pages\PurchaseSummary.aspx" />
     <Content Include="App_Pages\Register.aspx" />
+    <Content Include="css\userModule.css" />
     <Content Include="Detail.aspx" />
     <Content Include="images\login_pic.jpg" />
     <Content Include="ManageProduct.aspx" />
@@ -242,9 +243,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="css\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

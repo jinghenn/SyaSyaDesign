@@ -46,10 +46,10 @@
                         </li>
                         <!--when user login-->
                         <li class="nav-item dropdown">
-                            <a id="userProfileLink" class="nav-link dropdown-toggle" style="display: none" href="~/App_Pages/Profile.aspx" runat="server">Profile</a>
+                            <a id="userProfile" class="nav-link dropdown-toggle" style="display: none"  runat="server">Profile</a>
                             <div class="dropdown-menu" style="right: 5px" id="dropDownMenu" runat="server">
-                                <a class="dropdown-item" href="Profile.aspx">Profile</a>
-                                <a class="dropdown-item" href="ManageProduct.aspx">Manage Product</a>                      
+                                <a id="manageAdminLink" class="dropdown-item" href="ManageProduct.aspx" runat="server" visible="false">Manage Admin</a>  
+                                <a class="dropdown-item" style="color:red" onclick="if (confirm('Are you sure you want to delete this account?')){return true;}else{event.stopPropagation(); event.preventDefault();};"  onserverclick="btndelete_Click" runat="server" >Delete Account</a>
                                 <a id="logoutlink" runat="server" class="dropdown-item" onserverclick="btnlogout_Click">Logout</a>
                             </div>
                         </li>

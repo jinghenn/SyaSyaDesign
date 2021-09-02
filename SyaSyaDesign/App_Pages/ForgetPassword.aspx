@@ -1,11 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SyasyaDesign.Master" AutoEventWireup="true" CodeBehind="ForgetPassword.aspx.cs" Inherits="SyaSyaDesign.App_Pages.ForgetPassword" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-	  <link rel="stylesheet" type="text/css" href="../css/Login_Register.css" />
+		<link rel="stylesheet" type="text/css" href="../css/userModule.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
 	<form id="forgetPasswordform" runat="server" >
     <div class="whiteboxPosition">
-			<div class="forgetPasswordWhiteboxSize" style="height: 600px;">
+			<div class="registerWhiteboxSize" style="height: 600px;">
 					<span class="text1" style="margin-bottom:-20px;">
 						Forget Password
 					</span>

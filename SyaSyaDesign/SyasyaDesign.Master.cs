@@ -15,15 +15,20 @@ namespace SyaSyaDesign
             
             if (Session["user_id"] != null)
             {
-                userProfileLink.InnerHtml = Session["username"].ToString();
+                userProfile.InnerHtml = Session["username"].ToString();
                 loginNavLink.Attributes.Add("style", "display:none");
-                userProfileLink.Attributes.Add("style", "display:block");
+                userProfile.Attributes.Add("style", "display:block");
 
             }
             else
             {
                 loginNavLink.Attributes.Add("style", "display:block");
-                userProfileLink.Attributes.Add("style", "display:none");
+                userProfile.Attributes.Add("style", "display:none");
+            }
+
+            if(Session["userType"] != null && Session["userType"].ToString() == "Manager")
+            {
+                manageAdminLink.Visible = true;
             }
 
         }
@@ -34,6 +39,29 @@ namespace SyaSyaDesign
             Session.Remove("user_id");
             Session.Remove("userType");
             Response.Redirect("~/Product.aspx");
+        }
+
+        protected void btndelete_Click(object sender, EventArgs e)
+        {
+            string username = Session["username"].ToString();
+            var db = new syasyadbEntities();
+            var user = db.Users.FirstOrDefault(m => m.username == username);
+
+            db.Users.Remove(user);
+            db.SaveChanges();
+
+            Session.Remove("username");
+            Session.Remove("user_id");
+            Session.Remove("userType");
+
+            System.Text.StringBuilder javaScript = new System.Text.StringBuilder();
+            string scriptKey = "SuccessMessage";
+            string url = "Product.aspx";
+
+            javaScript.Append("var userConfirmation = window.confirm('" + "Successfully deleted');\n");
+            javaScript.Append("window.location='" + url + "';");
+
+            Page.ClientScript.RegisterStartupScript(this.GetType(), scriptKey, javaScript.ToString(), true);
         }
     }
 }

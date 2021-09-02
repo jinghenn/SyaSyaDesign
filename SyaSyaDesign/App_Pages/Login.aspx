@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="Login" Language="C#" MasterPageFile="~/SyasyaDesign.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="SyaSyaDesign.App_Pages.Login" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-	<link rel="stylesheet" type="text/css" href="../css/Login_Register.css" />
+			<link rel="stylesheet" type="text/css" href="../css/userModule.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">		
         <div class="whiteboxPosition">
