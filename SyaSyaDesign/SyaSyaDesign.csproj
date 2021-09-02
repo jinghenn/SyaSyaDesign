@@ -81,10 +81,13 @@
   <ItemGroup>
     <Content Include="App_Pages\Cart.aspx" />
     <Content Include="App_Pages\CheckOut.aspx" />
+    <Content Include="App_Pages\Login.aspx" />
     <Content Include="App_Pages\OrderHistory.aspx" />
     <Content Include="App_Pages\PurchaseSummary.aspx" />
+    <Content Include="css\login_register.css" />
     <Content Include="Detail.aspx" />
     <Content Include="HelloWorld.aspx" />
+    <Content Include="images\login_pic.jpg" />
     <Content Include="ManageProduct.aspx" />
     <Content Include="Product.aspx" />
     <Content Include="SyaSyaModel.Context.tt">
@@ -113,6 +116,13 @@
     </Compile>
     <Compile Include="App_Pages\CheckOut.aspx.designer.cs">
       <DependentUpon>CheckOut.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Pages\OrderHistory.aspx.cs">
       <DependentUpon>OrderHistory.aspx</DependentUpon>

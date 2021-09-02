@@ -1,0 +1,170 @@
+﻿/*---------------------------------------------*/
+
+
+body {
+    
+    background-image: url('../../images/login_pic.jpg');
+    z-index: 0;     
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/*---------------------------------------------*/
+button {
+    outline: none !important;
+    border: none;
+    background: transparent;
+}
+
+    button:hover {
+        cursor: pointer;
+    }
+
+/*//////////////////////////////////////////////////////////////////
+        [ login ]*/
+
+
+.whiteboxPosition {
+    width: 100%;
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.loginWhiteboxSize {
+    width: 380px;
+    height: 420px;
+    background: #fff;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.registerWhiteboxSize {
+    width: 380px;
+    height: 700px;
+    background: #fff;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+/*==================================================================
+        [ Text ]*/
+
+
+.text1 {
+    font-size: 30px;
+    color: #555555;
+    line-height: 1.2;
+    text-transform: uppercase;
+    text-align: left;
+    width: 100%;
+    display: block;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.text2 {
+    font-size: 13px;
+    color: #555555;
+    line-height: 1.4;
+    text-transform: uppercase;
+    padding-bottom: 5px;
+}
+
+.text3 {
+    font-size: 13px;
+    color: #555555;
+    line-height: 1.4;
+    padding-left: 60px;
+}
+
+.signUpText {
+    font-size: 13px;
+    color: #555555;
+    line-height: 1.4;
+    padding-left: 55px;
+}
+
+.forgetPasswordText {
+    font-size: 13px;
+    color: #555555;
+    line-height: 1.4;
+}
+/*------------------------------------------------------------------
+        [ Input ]*/
+.wrapInput1 {
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 2px;
+    margin-bottom: 20px;
+}
+
+.wrapInput2 {
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 2px;
+    margin-bottom: 12px;
+}
+
+/*---------------------------------------------*/
+.input {
+    outline: none;
+    border: none;
+    color: #555555;
+    line-height: 1.2;
+    font-size: 18px;
+    display: block;
+    width: 100%;
+    background: transparent;
+    height: 35px;
+    padding: 0 25px 0 25px;
+}
+
+
+.formBtn {
+    font-size: 16px;
+    color: #ffffff;
+    line-height: 1.2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    min-width: 280px;
+    height: 30px;
+    background-color: #333333;
+    border-radius: 27px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    transition: all 0.4s;
+}
+
+    .formBtn:hover {
+        background-color: #283747;
+    }
+
+
+.radiobtn input[type="radio"] {
+    margin: 3px 20px 20px 40px;
+    font-size: 13px;
+    color: #555555;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
