@@ -32,6 +32,7 @@ namespace SyaSyaDesign
         {
             Session.Remove("username");
             Session.Remove("user_id");
+            Session.Remove("userType");
             Response.Redirect("~/Product.aspx");
         }
     }

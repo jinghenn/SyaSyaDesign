@@ -85,7 +85,7 @@
     <Content Include="App_Pages\Login.aspx" />
     <Content Include="App_Pages\OrderHistory.aspx" />
     <Content Include="App_Pages\PurchaseSummary.aspx" />
-    <Content Include="css\login_register.css" />
+    <Content Include="App_Pages\Register.aspx" />
     <Content Include="Detail.aspx" />
     <Content Include="images\login_pic.jpg" />
     <Content Include="ManageProduct.aspx" />
@@ -144,6 +144,13 @@
     </Compile>
     <Compile Include="App_Pages\PurchaseSummary.aspx.designer.cs">
       <DependentUpon>PurchaseSummary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="Cart.cs">
       <DependentUpon>SyaSyaModel.tt</DependentUpon>
@@ -235,7 +242,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="css\" />
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

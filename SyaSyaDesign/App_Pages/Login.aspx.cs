@@ -27,12 +27,14 @@ namespace SyaSyaDesign.App_Pages
                 String username = Convert.ToString(user.username);
                 String password = Convert.ToString(user.password);
                 String user_id = Convert.ToString(user.user_id);
+                String userType = Convert.ToString(user.userType);
 
                 if (username.CompareTo(TxtLUsername.Text) == 0 && password.CompareTo(TxtLPass.Text) == 0)
                 {
 
                     Session["username"] = TxtLUsername.Text;
                     Session["user_id"] = user_id;
+                    Session["userType"] = userType;
                     Response.Redirect("~/Product.aspx");
                 }
                 else

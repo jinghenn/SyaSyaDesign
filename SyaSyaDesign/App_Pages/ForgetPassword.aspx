@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
 	<form id="forgetPasswordform" runat="server" >
     <div class="whiteboxPosition">
-			<div class="registerWhiteboxSize" style="height: 600px;">
+			<div class="forgetPasswordWhiteboxSize" style="height: 600px;">
 					<span class="text1" style="margin-bottom:-20px;">
 						Forget Password
 					</span>
