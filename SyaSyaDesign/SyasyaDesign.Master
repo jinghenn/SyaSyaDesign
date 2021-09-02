@@ -49,11 +49,10 @@
                             <a id="userProfileLink" class="nav-link dropdown-toggle" style="display: none" href="~/App_Pages/Profile.aspx" runat="server">Profile</a>
                             <div class="dropdown-menu" style="right: 5px" id="dropDownMenu" runat="server">
                                 <a class="dropdown-item" href="Profile.aspx">Profile</a>
-                                <a class="dropdown-item" href="ManageProduct.aspx">Manage Product</a>
-                                <a id="logoutLink" runat="server" class="dropdown-item" href="~/App_Pages/Logout.aspx">Logout</a>
+                                <a class="dropdown-item" href="ManageProduct.aspx">Manage Product</a>                      
+                                <a id="logoutlink" runat="server" class="dropdown-item" onserverclick="btnlogout_Click">Logout</a>
                             </div>
                         </li>
-
                     </ul>
                 </div>
             </div>

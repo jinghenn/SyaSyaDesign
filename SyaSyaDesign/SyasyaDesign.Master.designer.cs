@@ -51,13 +51,13 @@ namespace SyaSyaDesign
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl dropDownMenu;
 
         /// <summary>
-        /// logoutLink control.
+        /// logoutlink control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor logoutLink;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor logoutlink;
 
         /// <summary>
         /// ContentPlaceHolder control.

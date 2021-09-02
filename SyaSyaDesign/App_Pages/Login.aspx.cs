@@ -14,48 +14,26 @@ namespace SyaSyaDesign.App_Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["username"] != null)
-            {
-                Response.Redirect("~/Product.aspx");
-            }
-            Page.SetFocus(TxtLUsername);
         }
 
         protected void loginFormBtn_Click(object sender, EventArgs e)
         {
-            String strLoginCon = ConfigurationManager.ConnectionStrings["syasyadbConnectionString"].ConnectionString;
-            SqlConnection loginCon = new SqlConnection(strLoginCon);
+            var db = new syasyadbEntities();
+            var dtrUser = db.Users.Where(m => m.username == TxtLUsername.Text).Where(m => m.password == TxtLPass.Text);
 
-            loginCon.Open();        // Open connection to database
-
-            String strSelectUser = "Select * from User where username=@username and password=@password";
-
-            SqlCommand cmdSelectUser = new SqlCommand(strSelectUser, loginCon);
-            cmdSelectUser.Parameters.AddWithValue("@username", TxtLUsername.Text);
-            cmdSelectUser.Parameters.AddWithValue("@password", TxtLPass.Text);
-            SqlDataReader dtrUser = cmdSelectUser.ExecuteReader();
-
-            if (dtrUser.HasRows)
+            if (dtrUser.Any())
             {
-
-                SqlCommand cmdGetUsername = new SqlCommand("Select username from User where username=@username and password=@password", loginCon);
-                cmdGetUsername.Parameters.AddWithValue("@username", TxtLUsername.Text);
-                cmdGetUsername.Parameters.AddWithValue("@password", TxtLPass.Text);
-                String username = Convert.ToString(cmdGetUsername.ExecuteScalar());
-
-                SqlCommand cmdGetPass = new SqlCommand("Select password from User where username=@username and password=@password", loginCon);
-                cmdGetPass.Parameters.AddWithValue("@username", TxtLUsername.Text);
-                cmdGetPass.Parameters.AddWithValue("@password", TxtLPass.Text);
-                String password = Convert.ToString(cmdGetPass.ExecuteScalar());
+                var user = db.Users.FirstOrDefault(m => m.username == TxtLUsername.Text && m.password == TxtLPass.Text);
+                String username = Convert.ToString(user.username);
+                String password = Convert.ToString(user.password);
+                String user_id = Convert.ToString(user.user_id);
 
                 if (username.CompareTo(TxtLUsername.Text) == 0 && password.CompareTo(TxtLPass.Text) == 0)
                 {
-                    String strSelectUserID = "Select user_id from [dbo].[User] where username=@username";
-                    SqlCommand cmdSelectUserID = new SqlCommand(strSelectUserID, loginCon);
-                    cmdSelectUserID.Parameters.AddWithValue("@username", TxtLUsername.Text);
+
                     Session["username"] = TxtLUsername.Text;
-                    Session["user_id"] = cmdSelectUserID.ExecuteScalar().ToString();
-//                    Response.Redirect("Product.aspx");
+                    Session["user_id"] = user_id;
+                    Response.Redirect("~/Product.aspx");
                 }
                 else
                 {
@@ -66,7 +44,7 @@ namespace SyaSyaDesign.App_Pages
             {
                 lblLoginFail.Text = "Invalid Username or Password";
             }
-            loginCon.Close();
+
 
         }
     }

@@ -12,8 +12,7 @@ namespace SyaSyaDesign
         protected void Page_Load(object sender, EventArgs e)
         {
             
-            Session["user_id"] = "1000";        //Remove this line after login functionality is completed
-            Session["username"] = "Admin";
+            
             if (Session["user_id"] != null)
             {
                 userProfileLink.InnerHtml = Session["username"].ToString();
@@ -27,6 +26,13 @@ namespace SyaSyaDesign
                 userProfileLink.Attributes.Add("style", "display:none");
             }
 
+        }
+
+        protected void btnlogout_Click(object sender, EventArgs e)
+        {
+            Session.Remove("username");
+            Session.Remove("user_id");
+            Response.Redirect("~/Product.aspx");
         }
     }
 }
