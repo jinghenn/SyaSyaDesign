@@ -81,12 +81,12 @@
   <ItemGroup>
     <Content Include="App_Pages\Cart.aspx" />
     <Content Include="App_Pages\CheckOut.aspx" />
+    <Content Include="App_Pages\ForgetPassword.aspx" />
     <Content Include="App_Pages\Login.aspx" />
     <Content Include="App_Pages\OrderHistory.aspx" />
     <Content Include="App_Pages\PurchaseSummary.aspx" />
     <Content Include="css\login_register.css" />
     <Content Include="Detail.aspx" />
-    <Content Include="HelloWorld.aspx" />
     <Content Include="images\login_pic.jpg" />
     <Content Include="ManageProduct.aspx" />
     <Content Include="Product.aspx" />
@@ -116,6 +116,13 @@
     </Compile>
     <Compile Include="App_Pages\CheckOut.aspx.designer.cs">
       <DependentUpon>CheckOut.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\ForgetPassword.aspx.cs">
+      <DependentUpon>ForgetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\ForgetPassword.aspx.designer.cs">
+      <DependentUpon>ForgetPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Pages\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -147,13 +154,6 @@
     </Compile>
     <Compile Include="Detail.aspx.designer.cs">
       <DependentUpon>Detail.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="HelloWorld.aspx.cs">
-      <DependentUpon>HelloWorld.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="HelloWorld.aspx.designer.cs">
-      <DependentUpon>HelloWorld.aspx</DependentUpon>
     </Compile>
     <Compile Include="ManageProduct.aspx.cs">
       <DependentUpon>ManageProduct.aspx</DependentUpon>

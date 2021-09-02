@@ -82,7 +82,8 @@
           <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="username" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="150" Nullable="false" />
-          <Property Name="isAdmin" Type="bit" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="userType" Type="varchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK__Cart__ProductID__01142BA1">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
@@ -96,7 +97,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cart__UserID__797309D9">
+        <Association Name="FK__Cart__UserID__3587F3E0">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
           <ReferentialConstraint>
@@ -108,7 +109,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Order__UserID__70DDC3D8">
+        <Association Name="FK__Order__UserID__3493CFA7">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -193,11 +194,11 @@
             <End Role="Product" EntitySet="Product" />
             <End Role="Cart" EntitySet="Cart" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cart__UserID__797309D9" Association="Self.FK__Cart__UserID__797309D9">
+          <AssociationSet Name="FK__Cart__UserID__3587F3E0" Association="Self.FK__Cart__UserID__3587F3E0">
             <End Role="User" EntitySet="User" />
             <End Role="Cart" EntitySet="Cart" />
           </AssociationSet>
-          <AssociationSet Name="FK__Order__UserID__70DDC3D8" Association="Self.FK__Order__UserID__70DDC3D8">
+          <AssociationSet Name="FK__Order__UserID__3493CFA7" Association="Self.FK__Order__UserID__3493CFA7">
             <End Role="User" EntitySet="User" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
@@ -359,9 +360,10 @@
           <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="username" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="password" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="isAdmin" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Carts" Relationship="syasyadbModel.FK__Cart__UserID__797309D9" FromRole="User" ToRole="Cart" />
           <NavigationProperty Name="Orders" Relationship="syasyadbModel.FK__Order__UserID__70DDC3D8" FromRole="User" ToRole="Order" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="userType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__Cart__ProductID__01142BA1">
           <End Type="syasyadbModel.Product" Role="Product" Multiplicity="1" />
@@ -543,7 +545,8 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="syasyadbModel.User">
               <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
+                <ScalarProperty Name="userType" ColumnName="userType" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />

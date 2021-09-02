@@ -12,7 +12,7 @@
         <EntityTypeShape EntityType="syasyadbModel.PaymentMethod" Width="1.5" PointX="3" PointY="15.875" />
         <EntityTypeShape EntityType="syasyadbModel.Product" Width="1.5" PointX="3" PointY="3.375" />
         <EntityTypeShape EntityType="syasyadbModel.ProductCategory" Width="1.5" PointX="0.75" PointY="4" />
-        <EntityTypeShape EntityType="syasyadbModel.User" Width="1.5" PointX="3" PointY="7.625" />
+        <EntityTypeShape EntityType="syasyadbModel.User" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
         <AssociationConnector Association="syasyadbModel.FK__Cart__ProductID__01142BA1" />
         <AssociationConnector Association="syasyadbModel.FK__Cart__UserID__797309D9" />
         <AssociationConnector Association="syasyadbModel.FK__Order__UserID__70DDC3D8" />
