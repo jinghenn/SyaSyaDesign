@@ -14,6 +14,7 @@ namespace SyaSyaDesign.App_Pages
         protected void Page_Load(object sender, EventArgs e)
         {
             Session["userID"] = 1004;
+
             if (!IsPostBack)
             {
                 if (Session["userID"] != null)
@@ -22,7 +23,7 @@ namespace SyaSyaDesign.App_Pages
                     SqlConnection cartCon = new SqlConnection(strCartCon);
                     cartCon.Open();
                     //select data to be bound
-                    String strSelectCartItem = "Select Cart.ProductID AS ProductID, Product.product_name AS ProductName, Product.Price AS PRICE, Cart.Quantity AS Quantity, Cart.Quantity * Product.Price AS TotalPrice from Product Product, Cart, [User] u Where Cart.UserID = u.user_id and Cart.UserID=@userID and Product.product_id = Cart.ProductID;";
+                    String strSelectCartItem = "Select Cart.ProductID AS ProductID, Product.product_name AS ProductName, Product.Price AS PRICE, Cart.Quantity AS Quantity, Cart.Quantity * Product.Price AS TotalPrice, Product.URL from Product Product, Cart, [User] u Where Cart.UserID = u.user_id and Cart.UserID=@userID and Product.product_id = Cart.ProductID;";
                     SqlCommand cmdSelectCartItem = new SqlCommand(strSelectCartItem, cartCon);
                     cmdSelectCartItem.Parameters.AddWithValue("@userID", Session["userID"].ToString());
 

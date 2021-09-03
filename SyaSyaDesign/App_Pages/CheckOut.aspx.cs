@@ -20,7 +20,7 @@ namespace SyaSyaDesign.App_Pages
                 SqlConnection orderCon = new SqlConnection(strOrderCon);
 
                 orderCon.Open();
-                String strSelectItem = "SELECT Cart.ProductID,  Product.product_name AS ProductName, Product.Price, Cart.Quantity, Cart.Quantity * Product.Price AS TotalPrice FROM Product, Cart WHERE Product.product_id = Cart.ProductID AND Cart.UserID= @UserID;";
+                String strSelectItem = "SELECT Cart.ProductID,  Product.product_name AS ProductName, Product.Price, Cart.Quantity, Cart.Quantity * Product.Price AS TotalPrice, Product.URL FROM Product, Cart WHERE Product.product_id = Cart.ProductID AND Cart.UserID= @UserID;";
                 SqlCommand cmdSelectItem = new SqlCommand(strSelectItem, orderCon);
                 cmdSelectItem.Parameters.AddWithValue("@UserID", Session["userID"].ToString());
                 SqlDataAdapter da = new SqlDataAdapter();
