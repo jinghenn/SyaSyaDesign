@@ -162,9 +162,10 @@
                                 <table class="table w-100 p3 ms-auto me-auto">
                                     <thead>
                                         <tr>
-                                            <th style="width: 40%; text-align: center" scope="col">Product</th>
+                                            <th style="width: 30%; text-align: center" scope="col">Product Image</th>
+                                            <th style="width: 20%; text-align: center" scope="col">Product</th>
                                             <th style="width: 5%; text-align: center" scope="col">Quantity</th>
-                                            <th style="width: 30%; text-align: center" scope="col">Unit Price</th>
+                                            <th style="width: 20%; text-align: center" scope="col">Unit Price</th>
                                             <th style="width: 25%; text-align: right" scope="col">Price</th>
                                         </tr>
                                     </thead>
@@ -173,9 +174,12 @@
                             <ItemTemplate>
                                 <table class="table w-100 p3 ms-auto me-auto">
                                     <tr>
-                                        <td style="width: 40%; text-align: center" class="align-middle"><%# Eval("ProductName")%></td>
+                                        <td style="width: 30%; text-align: center" class="align-middle">
+                                            <asp:Image runat="server" class="img-fluid rounded" alt="Product Image" ImageUrl='<%# Eval("URL") %>' Height="150px" Width="150px"></asp:Image>
+                                        </td>
+                                        <td style="width: 20%; text-align: center" class="align-middle"><%# Eval("ProductName")%></td>
                                         <td style="width: 5%; text-align: center" class="align-middle"><%# Eval("Quantity")%></td>
-                                        <td style="width: 30%; text-align: center" class="align-middle"><%# Eval("Price")%></td>
+                                        <td style="width: 20%; text-align: center" class="align-middle"><%# Eval("Price")%></td>
                                         <td style="width: 25%; text-align: right" class="align-middle"><%# Eval("TotalPrice", "{0:0.00}") %></td>
                                     </tr>
                                 </table>
@@ -218,9 +222,9 @@
                     </div>
 
                     <div class="d-grid gap-1 d-md-flex justify-content-md-end mb-4">
-                    <asp:Button class="btn btn-outline-secondary btn-brand" Style="margin: auto" ID="btnContinue" runat="server" Text="Continue Shopping" OnClick="btnContinue_Click" CausesValidation="False" ValidationGroup="First" />
-                    <asp:Button class="btn btn-primary btn-brand" Style="margin: auto; float: right" ID="btnCheckout" runat="server" Text="Complete Payment" OnClick="btnCheckout_Click" />
-                        </div>
+                        <asp:Button class="btn btn-outline-secondary btn-brand" Style="margin: auto" ID="btnContinue" runat="server" Text="Continue Shopping" OnClick="btnContinue_Click" CausesValidation="False" ValidationGroup="First" />
+                        <asp:Button class="btn btn-primary btn-brand" Style="margin: auto; float: right" ID="btnCheckout" runat="server" Text="Complete Payment" OnClick="btnCheckout_Click" />
+                    </div>
                 </div>
             </div>
         </div>
