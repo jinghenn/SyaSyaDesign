@@ -29,6 +29,7 @@ namespace SyaSyaDesign
             if(Session["userType"] != null && Session["userType"].ToString() == "Manager")
             {
                 manageAdminLink.Visible = true;
+                manageProductLink.Visible = true;
             }
 
         }

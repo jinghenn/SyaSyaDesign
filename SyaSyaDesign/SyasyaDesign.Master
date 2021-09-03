@@ -14,6 +14,10 @@
     </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ==" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+
 </head>
 <body>
 
@@ -48,7 +52,8 @@
                         <li class="nav-item dropdown">
                             <a id="userProfile" class="nav-link dropdown-toggle" style="display: none"  runat="server">Profile</a>
                             <div class="dropdown-menu" style="right: 5px" id="dropDownMenu" runat="server">
-                                <a id="manageAdminLink" class="dropdown-item" href="ManageProduct.aspx" runat="server" visible="false">Manage Admin</a>  
+                                <a id="manageAdminLink" class="dropdown-item" href="~/App_Pages/ManageUser.aspx" runat="server" visible="false">Manage Admin</a>  
+                                <a id="manageProductLink" class="dropdown-item" href="ManageProduct.aspx" runat="server" visible="false">Manage Product</a> 
                                 <a class="dropdown-item" style="color:red" onclick="if (confirm('Are you sure you want to delete this account?')){return true;}else{event.stopPropagation(); event.preventDefault();};"  onserverclick="btndelete_Click" runat="server" >Delete Account</a>
                                 <a id="logoutlink" runat="server" class="dropdown-item" onserverclick="btnlogout_Click">Logout</a>
                             </div>

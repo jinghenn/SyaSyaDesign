@@ -83,6 +83,7 @@
     <Content Include="App_Pages\CheckOut.aspx" />
     <Content Include="App_Pages\ForgetPassword.aspx" />
     <Content Include="App_Pages\Login.aspx" />
+    <Content Include="App_Pages\ManageUser.aspx" />
     <Content Include="App_Pages\OrderHistory.aspx" />
     <Content Include="App_Pages\PurchaseSummary.aspx" />
     <Content Include="App_Pages\Register.aspx" />
@@ -131,6 +132,13 @@
     </Compile>
     <Compile Include="App_Pages\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\ManageUser.aspx.cs">
+      <DependentUpon>ManageUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\ManageUser.aspx.designer.cs">
+      <DependentUpon>ManageUser.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Pages\OrderHistory.aspx.cs">
       <DependentUpon>OrderHistory.aspx</DependentUpon>
