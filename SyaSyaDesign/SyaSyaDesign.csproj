@@ -161,6 +161,12 @@
     <Compile Include="App_Pages\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Attribute.cs">
+      <DependentUpon>SyaSyaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AttributeCategory.cs">
+      <DependentUpon>SyaSyaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Cart.cs">
       <DependentUpon>SyaSyaModel.tt</DependentUpon>
     </Compile>
@@ -225,6 +231,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SyaSyaModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Table.cs">
+      <DependentUpon>SyaSyaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
       <DependentUpon>SyaSyaModel.tt</DependentUpon>

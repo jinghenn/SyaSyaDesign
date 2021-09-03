@@ -21,6 +21,10 @@
         <AssociationConnector Association="syasyadbModel.FK__OrderDeta__Produ__00200768" />
         <AssociationConnector Association="syasyadbModel.FK__Payment__Payment__6D0D32F4" />
         <AssociationConnector Association="syasyadbModel.FK_Product_Category" />
+        <EntityTypeShape EntityType="syasyadbModel.Attribute" Width="1.5" PointX="8" PointY="6.875" />
+        <EntityTypeShape EntityType="syasyadbModel.AttributeCategory" Width="1.5" PointX="5.75" PointY="7.25" />
+        <EntityTypeShape EntityType="syasyadbModel.Table" Width="1.5" PointX="0.75" PointY="0.75" />
+        <AssociationConnector Association="syasyadbModel.FK_Attribute_Category" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
