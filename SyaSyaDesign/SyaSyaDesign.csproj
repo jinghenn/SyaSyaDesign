@@ -51,6 +51,9 @@
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Linq.Dynamic.Core, Version=1.2.12.0, Culture=neutral, PublicKeyToken=0f07ec44de6ac832, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Linq.Dynamic.Core.1.2.12\lib\net46\System.Linq.Dynamic.Core.dll</HintPath>
     </Reference>
@@ -79,31 +82,149 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Detail.aspx" />
+    <Content Include="Admins\Attributes.aspx" />
+    <Content Include="Admins\AttributesList.aspx" />
+    <Content Include="Content\all.css" />
+    <Content Include="Content\all.min.css" />
+    <Content Include="Content\brands.css" />
+    <Content Include="Content\brands.min.css" />
+    <Content Include="Content\fontawesome.css" />
+    <Content Include="Content\fontawesome.min.css" />
+    <Content Include="Content\regular.css" />
+    <Content Include="Content\regular.min.css" />
+    <Content Include="Content\solid.css" />
+    <Content Include="Content\solid.min.css" />
+    <Content Include="Content\svg-with-js.css" />
+    <Content Include="Content\svg-with-js.min.css" />
+    <Content Include="Content\v4-shims.css" />
+    <Content Include="Content\v4-shims.min.css" />
+    <Content Include="lib\css\Bank.css" />
+    <Content Include="lib\css\BankPayment.css" />
+    <Content Include="lib\css\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="lib\css\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="lib\css\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="lib\css\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="lib\css\Payment.css" />
+    <Content Include="lib\js\jquery.js" />
+    <Content Include="lib\js\tools.js" />
+    <Content Include="lib\sweetAlert\sweetalert.css" />
+    <Content Include="lib\sweetAlert\sweetalert.js" />
+    <Content Include="lib\sweetAlert\sweetalert.min.js" />
+    <Content Include="Scripts\fontawesome\all.js" />
+    <Content Include="Scripts\fontawesome\all.min.js" />
+    <Content Include="Scripts\fontawesome\brands.js" />
+    <Content Include="Scripts\fontawesome\brands.min.js" />
+    <Content Include="Scripts\fontawesome\conflict-detection.js" />
+    <Content Include="Scripts\fontawesome\conflict-detection.min.js" />
+    <Content Include="Scripts\fontawesome\fontawesome.js" />
+    <Content Include="Scripts\fontawesome\fontawesome.min.js" />
+    <Content Include="Scripts\fontawesome\regular.js" />
+    <Content Include="Scripts\fontawesome\regular.min.js" />
+    <Content Include="Scripts\fontawesome\solid.js" />
+    <Content Include="Scripts\fontawesome\solid.min.js" />
+    <Content Include="Scripts\fontawesome\v4-shims.js" />
+    <Content Include="Scripts\fontawesome\v4-shims.min.js" />
+    <Content Include="syasyadbEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>syasyadbEntities.edmx</DependentUpon>
+      <LastGenOutput>syasyadbEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="syasyadbEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>syasyadbEntities.edmx</DependentUpon>
+      <LastGenOutput>syasyadbEntities.cs</LastGenOutput>
+    </Content>
+    <Content Include="Users\Bank.aspx" />
+    <Content Include="Users\BankPayment.aspx" />
+    <Content Include="Users\Detail.aspx" />
     <Content Include="HelloWorld.aspx" />
-    <Content Include="ManageProduct.aspx" />
-    <Content Include="Product.aspx" />
-    <Content Include="SyaSyaModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SyaSyaModel.edmx</DependentUpon>
-      <LastGenOutput>SyaSyaModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="SyaSyaModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SyaSyaModel.edmx</DependentUpon>
-      <LastGenOutput>SyaSyaModel.cs</LastGenOutput>
-    </Content>
+    <Content Include="Admins\ManageProduct.aspx" />
+    <Content Include="Users\Payments.aspx" />
+    <Content Include="Users\Products.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cart.cs">
-      <DependentUpon>SyaSyaModel.tt</DependentUpon>
+    <Compile Include="Admins\Attributes.aspx.cs">
+      <DependentUpon>Attributes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Detail.aspx.cs">
+    <Compile Include="Admins\Attributes.aspx.designer.cs">
+      <DependentUpon>Attributes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admins\AttributesList.aspx.cs">
+      <DependentUpon>AttributesList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admins\AttributesList.aspx.designer.cs">
+      <DependentUpon>AttributesList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute.cs">
+      <DependentUpon>syasyadbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AttributeCategory.cs">
+      <DependentUpon>syasyadbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Cart.cs">
+      <DependentUpon>syasyadbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Order.cs">
+      <DependentUpon>syasyadbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderDetail.cs">
+      <DependentUpon>syasyadbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Payment.cs">
+      <DependentUpon>syasyadbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentMethod.cs">
+      <DependentUpon>syasyadbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>syasyadbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductCategory.cs">
+      <DependentUpon>syasyadbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductDetail.cs">
+      <DependentUpon>syasyadbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="syasyadbEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>syasyadbEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="syasyadbEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>syasyadbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="syasyadbEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>syasyadbEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>syasyadbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Bank.aspx.cs">
+      <DependentUpon>Bank.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\Bank.aspx.designer.cs">
+      <DependentUpon>Bank.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Users\BankPayment.aspx.cs">
+      <DependentUpon>BankPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\BankPayment.aspx.designer.cs">
+      <DependentUpon>BankPayment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Detail.aspx.cs">
       <DependentUpon>Detail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Detail.aspx.designer.cs">
+    <Compile Include="Users\Detail.aspx.designer.cs">
       <DependentUpon>Detail.aspx</DependentUpon>
     </Compile>
     <Compile Include="HelloWorld.aspx.cs">
@@ -113,37 +234,26 @@
     <Compile Include="HelloWorld.aspx.designer.cs">
       <DependentUpon>HelloWorld.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ManageProduct.aspx.cs">
+    <Compile Include="Admins\ManageProduct.aspx.cs">
       <DependentUpon>ManageProduct.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ManageProduct.aspx.designer.cs">
+    <Compile Include="Admins\ManageProduct.aspx.designer.cs">
       <DependentUpon>ManageProduct.aspx</DependentUpon>
     </Compile>
-    <Compile Include="OrderDetail.cs">
-      <DependentUpon>SyaSyaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Payment.cs">
-      <DependentUpon>SyaSyaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PaymentMethod.cs">
-      <DependentUpon>SyaSyaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Product.aspx.cs">
-      <DependentUpon>Product.aspx</DependentUpon>
+    <Compile Include="Users\Payments.aspx.cs">
+      <DependentUpon>Payments.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Product.aspx.designer.cs">
-      <DependentUpon>Product.aspx</DependentUpon>
+    <Compile Include="Users\Payments.aspx.designer.cs">
+      <DependentUpon>Payments.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Order.cs">
-      <DependentUpon>SyaSyaModel.tt</DependentUpon>
+    <Compile Include="Users\Products.aspx.cs">
+      <DependentUpon>Products.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Product.cs">
-      <DependentUpon>SyaSyaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProductCategory.cs">
-      <DependentUpon>SyaSyaModel.tt</DependentUpon>
+    <Compile Include="Users\Products.aspx.designer.cs">
+      <DependentUpon>Products.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SyasyaDesign.Master.cs">
@@ -153,45 +263,75 @@
     <Compile Include="SyasyaDesign.Master.designer.cs">
       <DependentUpon>SyasyaDesign.Master</DependentUpon>
     </Compile>
-    <Compile Include="SyaSyaModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SyaSyaModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SyaSyaModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SyaSyaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SyaSyaModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SyaSyaModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="User.cs">
-      <DependentUpon>SyaSyaModel.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="lib\css\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="lib\css\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="lib\css\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="lib\css\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="lib\css\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="lib\css\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="lib\css\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="lib\css\font-awesome-4.7.0\less\core.less" />
+    <Content Include="lib\css\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="lib\css\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="lib\css\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="lib\css\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="lib\css\font-awesome-4.7.0\less\list.less" />
+    <Content Include="lib\css\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="lib\css\font-awesome-4.7.0\less\path.less" />
+    <Content Include="lib\css\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="lib\css\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="lib\css\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="lib\css\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="lib\css\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="lib\css\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="lib\css\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="lib\css\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="lib\css\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="lib\css\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="lib\css\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="lib\css\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="lib\css\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="lib\css\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="lib\css\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="lib\css\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="lib\css\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="lib\css\font-awesome-4.7.0\scss\_variables.scss" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\SyasyaDesigns - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\SyasyaDesigns - FTP1.pubxml" />
     <None Include="Properties\PublishProfiles\SyasyaDesigns - FTP2.pubxml" />
     <None Include="Properties\PublishProfiles\SyasyaDesigns - Web Deploy.pubxml" />
-    <EntityDeploy Include="SyaSyaModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SyaSyaModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="SyaSyaModel.edmx.diagram">
-      <DependentUpon>SyaSyaModel.edmx</DependentUpon>
-    </Content>
     <Content Include="SyasyaDesign.Master" />
+    <EntityDeploy Include="syasyadbEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>syasyadbEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="syasyadbEntities.edmx.diagram">
+      <DependentUpon>syasyadbEntities.edmx</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="webfonts\fa-brands-400.svg" />
+    <Content Include="webfonts\fa-regular-400.svg" />
+    <Content Include="webfonts\fa-solid-900.svg" />
+    <Content Include="webfonts\fa-solid-900.woff2" />
+    <Content Include="webfonts\fa-solid-900.woff" />
+    <Content Include="webfonts\fa-solid-900.ttf" />
+    <Content Include="webfonts\fa-solid-900.eot" />
+    <Content Include="webfonts\fa-regular-400.woff2" />
+    <Content Include="webfonts\fa-regular-400.woff" />
+    <Content Include="webfonts\fa-regular-400.ttf" />
+    <Content Include="webfonts\fa-regular-400.eot" />
+    <Content Include="webfonts\fa-brands-400.woff2" />
+    <Content Include="webfonts\fa-brands-400.woff" />
+    <Content Include="webfonts\fa-brands-400.ttf" />
+    <Content Include="webfonts\fa-brands-400.eot" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

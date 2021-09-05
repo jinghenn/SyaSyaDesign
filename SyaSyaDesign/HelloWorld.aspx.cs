@@ -20,7 +20,7 @@ namespace SyaSyaDesign.App_Pages
             var newUser = new User
             {
                 username = txtNewUsername.Text,
-                isAdmin = true,
+                //isAdmin = true,
                 password = "sapnu puas"
             };
             db.Users.Add(newUser);  //use db.{tableName}.Add() to insert new record
