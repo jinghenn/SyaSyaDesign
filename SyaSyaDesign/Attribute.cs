@@ -14,6 +14,16 @@ namespace SyaSyaDesign
     
     public partial class Attribute
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Attribute()
+        {
+            this.Carts = new HashSet<Cart>();
+            this.Carts1 = new HashSet<Cart>();
+            this.ProductDetails = new HashSet<ProductDetail>();
+            this.ProductDetails1 = new HashSet<ProductDetail>();
+            this.Products = new HashSet<Product>();
+        }
+    
         public int AttributeID { get; set; }
         public int CategoryID { get; set; }
         public string Description { get; set; }
@@ -21,5 +31,16 @@ namespace SyaSyaDesign
         public int ModifiedBy { get; set; }
     
         public virtual AttributeCategory AttributeCategory { get; set; }
+        public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cart> Carts { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cart> Carts1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProductDetail> ProductDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProductDetail> ProductDetails1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

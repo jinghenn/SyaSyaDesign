@@ -19,13 +19,14 @@ namespace SyaSyaDesign
         {
             this.Carts = new HashSet<Cart>();
             this.OrderDetails = new HashSet<OrderDetail>();
+            this.ProductDetails = new HashSet<ProductDetail>();
+            this.Attributes = new HashSet<Attribute>();
         }
     
         public int product_id { get; set; }
         public string product_name { get; set; }
         public decimal price { get; set; }
-        public int quantity { get; set; }
-        public int attribute_id { get; set; }
+        public string URL { get; set; }
         public string category_id { get; set; }
         public string URL { get; set; }
     
@@ -34,5 +35,9 @@ namespace SyaSyaDesign
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         public virtual ProductCategory ProductCategory { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProductDetail> ProductDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Attribute> Attributes { get; set; }
     }
 }

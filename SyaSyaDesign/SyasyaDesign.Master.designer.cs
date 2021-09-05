@@ -11,7 +11,7 @@ namespace SyaSyaDesign
 {
 
 
-    public partial class SyasyaDesign
+    public partial class Master
     {
 
         /// <summary>
