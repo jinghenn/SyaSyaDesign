@@ -20,7 +20,7 @@ namespace SyaSyaDesign.App_Pages
                 SqlConnection orderCon = new SqlConnection(strOrderCon);
 
                 orderCon.Open();
-                String strSelectItem = "SELECT Cart.ProductID,  Product.product_name AS ProductName, Product.Price, Cart.Quantity, Cart.Quantity * Product.Price AS TotalPrice FROM Product, Cart WHERE Product.product_id = Cart.ProductID AND Cart.UserID= @UserID;";
+                String strSelectItem = "SELECT Cart.ProductID,  Product.product_name AS ProductName, Product.Price, Cart.Quantity, Cart.Quantity * Product.Price AS TotalPrice, Product.URL FROM Product, Cart WHERE Product.product_id = Cart.ProductID AND Cart.UserID= @UserID;";
                 SqlCommand cmdSelectItem = new SqlCommand(strSelectItem, orderCon);
                 cmdSelectItem.Parameters.AddWithValue("@UserID", Session["userID"].ToString());
                 SqlDataAdapter da = new SqlDataAdapter();
@@ -53,57 +53,9 @@ namespace SyaSyaDesign.App_Pages
             }
         }
 
-        protected void CustomValidator1_ServerValidate(object source, ServerValidateEventArgs args)
-        {
-            string num = args.Value;
-
-            if (txtCardNumber.Text.Length != 16)
-            {
-                CustomValidator1.ErrorMessage = "Card Number should be 16 digits";
-                args.IsValid = false;
-            }
-
-            if (rblPayment.Text == "Visa")
-            {
-                if (num.First() != '4')
-                {
-                    CustomValidator1.ErrorMessage = "Visa Card start with '4'";
-                    args.IsValid = false;
-                }
-            }
-            else if (rblPayment.Text == "Master")
-            {
-                if (num.First() != '5')
-                {
-                    CustomValidator1.ErrorMessage = "Master Card start with '5'";
-                    args.IsValid = false;
-
-                }
-            }
-        }
-
-        protected void CustomValidator3_ServerValidate(object source, ServerValidateEventArgs args)
-        {
-            int month = Convert.ToInt32(args.Value);
-
-            if (Convert.ToInt32(ddlYear.Text) == DateTime.Now.Year)
-            {
-                if (month < DateTime.Now.Month)
-                {
-                    args.IsValid = false;
-                    CustomValidator3.ErrorMessage = "Expiration Date has passed";
-                }
-            }
-            else if (Convert.ToInt32(ddlYear.Text) < DateTime.Now.Year)
-            {
-                args.IsValid = false;
-                CustomValidator3.ErrorMessage = "Expiration Date has passed";
-            }
-        }
-
         protected void btnContinue_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/App_Pages/HelloWorld.aspx");
+            Response.Redirect("~/Product.aspx");
         }
 
         protected void btnCheckout_Click(object sender, EventArgs e)
@@ -123,20 +75,13 @@ namespace SyaSyaDesign.App_Pages
                     DeliveryAddress = txtDeliveryAddress.Text + " " + txtZipCode.Text + " " + txtCity.Text + " " + ddlState.Text,
                     Date = DateTime.Now.Date,
                     Total = total,
-                    DeliveryStatus = "In Progress"
+                    Status = "In Progress"
                 };
-                using (var db = new syasyadbEntities()) {
+                using (var db = new syasyadbEntities())
+                {
                     db.Orders.Add(newOrder);
                     db.SaveChanges();
                 }
-
-                /* TODO Add Payment
-                con.Open();
-                SqlCommand cmdAddOrder = new SqlCommand("INSERT INTO [dbo].[Order] VALUES (@UserID, @Date, @Total, @PaymentType, @CardNumber, @DeliveryAddress, @RecipientName, @EmailAddress, @ContactNumber);", con);
-                cmdAddOrder.Parameters.AddWithValue("@PaymentType", rblPayment.Text);
-                cmdAddOrder.Parameters.AddWithValue("@CardNumber", txtCardNumber.Text);
-                con.Close();
-                */
 
                 //get latest OrderID from Order table
                 con.Open();

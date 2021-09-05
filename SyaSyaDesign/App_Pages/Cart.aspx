@@ -1,11 +1,11 @@
-﻿<%@ Page Title="Cart" Language="C#"  MasterPageFile="~/SyasyaDesign.Master" AutoEventWireup="true" CodeBehind="Cart.aspx.cs" Inherits="SyaSyaDesign.App_Pages.Cart" %>
-
+﻿<%@ Page Title="Cart" Language="C#" MasterPageFile="~/SyasyaDesign.Master" AutoEventWireup="true" CodeBehind="Cart.aspx.cs" Inherits="SyaSyaDesign.App_Pages.Cart" %>
 <asp:Content ID="styleContent" ContentPlaceHolderID="head" runat="server">
     <title>Cart</title>
     <style>
-        html{
+        html {
             scroll-behavior: auto;
         }
+
         .checkoutbar {
             min-width: 415px;
             padding: 20px 40px;

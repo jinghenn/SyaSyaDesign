@@ -7,83 +7,92 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SyaSyaDesign
+namespace SyaSyaDesign.App_Pages
 {
 
 
-    public partial class Master
+    public partial class Login
     {
 
         /// <summary>
-        /// head control.
+        /// loginform control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.HtmlControls.HtmlForm loginform;
 
         /// <summary>
-        /// loginNavLink control.
+        /// lblLoginFail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor loginNavLink;
+        protected global::System.Web.UI.WebControls.Label lblLoginFail;
 
         /// <summary>
-        /// userProfile control.
+        /// rsfLUsername control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor userProfile;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rsfLUsername;
 
         /// <summary>
-        /// dropDownMenu control.
+        /// TxtLUsername control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dropDownMenu;
+        protected global::System.Web.UI.WebControls.TextBox TxtLUsername;
 
         /// <summary>
-        /// manageAdminLink control.
+        /// rsfLPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor manageAdminLink;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rsfLPassword;
 
         /// <summary>
-        /// manageProductLink control.
+        /// TxtLPass control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor manageProductLink;
+        protected global::System.Web.UI.WebControls.TextBox TxtLPass;
 
         /// <summary>
-        /// logoutlink control.
+        /// forgetPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor logoutlink;
+        protected global::System.Web.UI.WebControls.HyperLink forgetPassword;
 
         /// <summary>
-        /// ContentPlaceHolder control.
+        /// loginFormBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder;
+        protected global::System.Web.UI.WebControls.Button loginFormBtn;
+
+        /// <summary>
+        /// signUpText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink signUpText;
     }
 }

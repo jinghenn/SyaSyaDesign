@@ -12,18 +12,9 @@ namespace SyaSyaDesign
     using System;
     using System.Collections.Generic;
     
-    public partial class Cart
+    public partial class Table
     {
-        public int UserID { get; set; }
-        public int ProductID { get; set; }
-        public int size { get; set; }
-        public int color { get; set; }
-        public int Quantity { get; set; }
-        public string Attributes { get; set; }
-    
-        public virtual Attribute Attribute { get; set; }
-        public virtual Attribute Attribute1 { get; set; }
-        public virtual Product Product { get; set; }
-        public virtual User User { get; set; }
+        public int AttributeCategoryID { get; set; }
+        public string Description { get; set; }
     }
 }

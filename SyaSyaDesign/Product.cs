@@ -28,6 +28,7 @@ namespace SyaSyaDesign
         public decimal price { get; set; }
         public string URL { get; set; }
         public string category_id { get; set; }
+        public string URL { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cart> Carts { get; set; }
