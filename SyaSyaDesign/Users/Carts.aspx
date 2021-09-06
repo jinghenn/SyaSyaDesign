@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Cart" Language="C#" MasterPageFile="~/SyasyaDesign.Master" AutoEventWireup="true" CodeBehind="Cart.aspx.cs" Inherits="SyaSyaDesign.App_Pages.Cart" %>
+﻿<%@ Page Title="Cart" Language="C#" MasterPageFile="~/SyasyaDesign.Master" AutoEventWireup="true" CodeBehind="Carts.aspx.cs" Inherits="SyaSyaDesign.Users.Carts" %>
 <asp:Content ID="styleContent" ContentPlaceHolderID="head" runat="server">
     <title>Cart</title>
     <style>
@@ -83,28 +83,32 @@
             <div class="container">
                 <div class="row flex-column m-auto ">
                     <!--card group-->
-                    <asp:Repeater ID="cartItemRepeater" runat="server" OnItemCommand="cartItemRepeater_ItemCommand">
+                    <asp:Repeater ID="cartItemRepeater" ItemType="SyaSyaDesign.Users.CartList" runat="server" OnItemCommand="cartItemRepeater_ItemCommand">
                         <ItemTemplate>
                             <div class="card flex-row shadow" style="margin: 10px 0px; min-width:415px">
                                 <div class="card-body">
-                                    <h5 class="card-title"><%# Eval("ProductName")%></h5>
+                                    <h5 class="card-title"><%#((SyaSyaDesign.Users.CartList)Container.DataItem).ProductName%></h5>
+                                    <br />Color&nbsp;: &nbsp;
+                                    <asp:Label ID="LabelColor" Text='<%# Eval("Color")%>' runat="server" />
+                                    <br />Size&nbsp;&nbsp;: &nbsp;
+                                    <asp:Label ID="LabelSize" Text='<%# Eval("Size")%>' runat="server" />
                                     <div class="d-flex justify-content-start" style="margin: 10px 0; float:right">
                                         <!--decrease button-->
-                                        <asp:Button CommandName="minus" CommandArgument='<%# Eval("ProductID")%>'
+                                        <asp:Button CommandName="minus" CommandArgument='<%#((SyaSyaDesign.Users.CartList)Container.DataItem).ProductID%>'
                                             Text="-" runat="server" ID="btnMinus" CssClass="btn-plusminus" />
                                         <!--quantity-->
-                                        <asp:Label ID="lblQuantity" CssClass="card-text quantity" Text='<%# Eval("Quantity")%>' runat="server"></asp:Label>
+                                        <asp:Label ID="lblQuantity" CssClass="card-text quantity" Text='<%#((SyaSyaDesign.Users.CartList)Container.DataItem).Quantity%>' runat="server"></asp:Label>
                                         <!--increase button-->
-                                        <asp:Button CommandName="plus" CommandArgument='<%# Eval("ProductID")%>'
+                                        <asp:Button CommandName="plus" CommandArgument='<%#((SyaSyaDesign.Users.CartList)Container.DataItem).ProductID%>'
                                             Text="+" runat="server" ID="btnPlus" CssClass="btn-plusminus" />
                                     </div>
                                     
                                     <br />Unit Price&nbsp;: RM &nbsp;
-                                    <asp:Label ID="lblUnit" Text='<%# Eval("Price")%>' runat="server" />
+                                    <asp:Label ID="lblUnit" Text='<%#((SyaSyaDesign.Users.CartList)Container.DataItem).Price %>' runat="server" />
                                     <br />Sub-total&nbsp;&nbsp;:  RM &nbsp;
-                                    <asp:Label ID="lblSubtotal" Text='<%# Eval("TotalPrice")%>' runat="server" />
+                                    <asp:Label ID="lblSubtotal" Text='<%#((SyaSyaDesign.Users.CartList)Container.DataItem).TotalPrice %>' runat="server" />
                                     <br />
-                                    <asp:Button CommandName="delete" CommandArgument='<%# Eval("ProductID")%>'
+                                    <asp:Button CommandName="delete" CommandArgument='<%#((SyaSyaDesign.Users.CartList)Container.DataItem).ProductID%>'
                                         Text="Delete" runat="server" ID="btnDelete" CssClass="btn-delete text-light bg-danger" />
                                 </div>
                             </div>

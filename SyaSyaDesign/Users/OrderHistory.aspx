@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SyasyaDesign.Master" AutoEventWireup="true" CodeBehind="OrderHistory.aspx.cs" Inherits="SyaSyaDesign.App_Pages.ManageOrder" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SyasyaDesign.Master" AutoEventWireup="true" CodeBehind="OrderHistory.aspx.cs" Inherits="SyaSyaDesign.Users.ManageOrder" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
@@ -55,7 +55,7 @@
                                     <td style="width: 5%; text-align: left" class="align-middle"><%# Eval("Total")%></td>
                                     <td style="width: 10%; text-align: left" class="align-middle"><%# Eval("Status")%></td>
                                     <td style="width: 5%; text-align: right" class="align-middle">
-                                        <asp:LinkButton runat="server" class="btn btn-outline-primary" Style="cursor: pointer" PostBackUrl='<%#"~/App_Pages/PurchaseSummary.aspx?OrderID="+Eval("OrderID")%>'>View</asp:LinkButton>
+                                        <asp:LinkButton runat="server" class="btn btn-outline-primary" Style="cursor: pointer" PostBackUrl='<%#"~/Users/PurchaseSummary.aspx?OrderID="+Eval("OrderID")%>'>View</asp:LinkButton>
                                     </td>
                                 </tr>
                             </table>

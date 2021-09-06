@@ -130,6 +130,7 @@
                                 </Columns>
                                 <EmptyDataTemplate>No Record Available</EmptyDataTemplate>
                             </asp:GridView>
+                            <asp:Button runat="server" ID="BtnBackList" Text="Back To List" OnClick="BtnBackList_Click" CssClass="btn btn-outline-primary w-25"/>
                         </div>
                     </div>
                 </div>

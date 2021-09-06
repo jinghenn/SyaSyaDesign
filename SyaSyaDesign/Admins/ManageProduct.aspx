@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/SyasyaDesign.Master" AutoEventWireup="true" CodeBehind="ManageProduct.aspx.cs" MaintainScrollPositionOnPostback="true" Inherits="SyaSyaDesign.ManageProduct" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/SyasyaDesign.Master" AutoEventWireup="true" CodeBehind="ManageProduct.aspx.cs" MaintainScrollPositionOnPostback="true" Inherits="SyaSyaDesign.Admins.ManageProduct" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="head" runat="server">
     <title>Manage</title>

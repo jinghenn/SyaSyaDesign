@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SyaSyaDesign.App_Pages
+namespace SyaSyaDesign.Admins
 {
 
 

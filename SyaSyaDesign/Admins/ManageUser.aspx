@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SyasyaDesign.Master" AutoEventWireup="true" CodeBehind="ManageUser.aspx.cs" Inherits="SyaSyaDesign.App_Pages.ManageUser" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SyasyaDesign.Master" AutoEventWireup="true" CodeBehind="ManageUser.aspx.cs" Inherits="SyaSyaDesign.Admins.ManageUser" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
      <style>
       

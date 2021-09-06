@@ -73,7 +73,7 @@ namespace SyaSyaDesign
                         Description = txtDescription.Text,
                         CategoryID = categoryId,
                         IsActive = RadioButton1.Checked,
-                        ModifiedBy = 1000 //adding after merge with master
+                        ModifiedBy = Int32.Parse(Session["user_id"].ToString())
                     });
                     db.SaveChanges();
                 }
@@ -115,7 +115,7 @@ namespace SyaSyaDesign
                     TextBox desc = TableAttribute.Rows[e.RowIndex].FindControl("txtDescription") as TextBox;
                     HiddenField id = TableAttribute.Rows[e.RowIndex].FindControl("AttributeID") as HiddenField;
                     db.Attributes.Find(Int32.Parse(id.Value.ToString())).Description = desc.Text;
-                    db.Attributes.Find(Int32.Parse(id.Value.ToString())).ModifiedBy = 1001; //adding after merge with master
+                    db.Attributes.Find(Int32.Parse(id.Value.ToString())).ModifiedBy = Int32.Parse(Session["user_id"].ToString());
                     db.SaveChanges();
                     TableAttribute.EditIndex = -1;
                     StoreTable();
@@ -141,5 +141,9 @@ namespace SyaSyaDesign
             StoreTable();
         }
 
+        protected void BtnBackList_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Admins/AttributesList.aspx");
+        }
     }
 }

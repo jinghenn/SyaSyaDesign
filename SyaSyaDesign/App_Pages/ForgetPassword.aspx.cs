@@ -78,30 +78,16 @@ namespace SyaSyaDesign.App_Pages
 
                 var user = db.Users.FirstOrDefault(m => m.username == TxtRUsername.Text);
                 email = Convert.ToString(user.Email);
-
-                string to = email; //To address    
-                string from = "sya266696@gmail.com"; //From address    
-                MailMessage message = new MailMessage(from, to);
-
+                
                 Random rnd = new Random();
                 int v = rnd.Next(1000, 9999);
                 validationCode = v.ToString();
 
                 string mailbody = "Your validation code to reset password is " + validationCode;
-                message.Subject = "Validation Code";
-                message.Body = mailbody;
-                message.BodyEncoding = Encoding.UTF8;
-                message.IsBodyHtml = true;
-                SmtpClient client = new SmtpClient("smtp.gmail.com", 587); //Gmail smtp    
-                System.Net.NetworkCredential basicCredential1 = new
-                System.Net.NetworkCredential("sya266696@gmail.com", "syasya12345");
-                client.EnableSsl = true;
-                client.UseDefaultCredentials = false;
-                client.Credentials = basicCredential1;
 
                 try
                 {
-                    client.Send(message);
+                    new Email().SendEmail(email, mailbody, "Validation Code");
                     getCodeMsg.Text = "A validation code is successfully sent to your email, please check.";
                 }
 

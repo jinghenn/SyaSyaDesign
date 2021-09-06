@@ -45,7 +45,7 @@ namespace SyaSyaDesign
                     Quantity = Convert.ToInt32(txtQuantity.Text),
                     color = colorID.Select(dt => dt.AttributeID).FirstOrDefault(),
                     ProductID = Int32.Parse(hiddenProd.Value),
-                    UserID = 1006 //add session
+                    UserID = Int32.Parse(Session["user_id"].ToString())
                 });
                 db.SaveChanges();
                 btn_add_cart.Text = "Added To Cart";

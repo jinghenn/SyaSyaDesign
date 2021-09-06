@@ -28,7 +28,7 @@ namespace SyaSyaDesign
 
         protected void CancelBtn_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Product.aspx");
+            Response.Redirect("Products.aspx");
         }
 
         protected void PAC_Click(object sender, EventArgs e)
@@ -42,6 +42,7 @@ namespace SyaSyaDesign
             if (TxtPAC.Text == "123456")
             {
                 StorePayment();
+                SentEmail();
             }
             else
             {
@@ -56,15 +57,21 @@ namespace SyaSyaDesign
             {
                 OrderId = Request.Cookies["order"].Value == null ? 0 : Int32.Parse(Request.Cookies["order"].Value);
             }
-            //string content = "Dear Valued Customer, your Order " + orderID + " is comfirmed and placed!"
-            //    + "\n\n" + "Sub Total : " + Session["Subtotal"].ToString() + "\n" + "Discount  : " + Session["Discount"].ToString()
-            //    + "\n" + "Total       : " + Session["Total"].ToString() + "\n\n" + "We're excited for you to receive your order and will notify you once it is on its way!"
-            //    + "If you faced any problem, feel free to contact us." + "\n\n" + "Thanks\n\nBest Regards,\nTAYY Art Work";
-            //var result = new Email().SendPaymentEmail(Session["Email"].ToString(), content);
-            ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "successalert('Success','Payment Successfully.')", true);
+            HttpCookie httpCookie = Request.Cookies["order"];
+            var orderID = "1001";
+            if (httpCookie != null)
+            {
+                orderID = httpCookie["id"];
+            }
+            string content = "Dear Valued Customer, your Order " + orderID + " is comfirmed and placed!" +
+                       "\n\n" + "We're excited for you to receive your order and will notify you once it is on its way!"
+                       + "If you faced any problem, feel free to contact us." + "\n\n" + "Thanks\n\nBest Regards,\nSyaSyaDesign";
 
-            //Session.Remove("Email");
-            //Response.Redirect("~/Customer/HistoryDetails.aspx?id=" + OrderId);
+            string email = Session["userEmail"].ToString();
+            new Email().SendEmail(email, content, "Payment Successful");
+
+            ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "successalert('Success','Payment Successfully.');", true);
+            Response.Redirect(String.Format("~/Users/PurchaseSummary.aspx?OrderID={0}", orderID));
         }
 
         private void StorePayment()
@@ -73,8 +80,9 @@ namespace SyaSyaDesign
             {
                 using (var db = new syasyadbEntities())
                 {
-                    var newObj = new Payment();
-                    db.Payments.Add(new Payment() { OrderID = Int32.Parse(Request.Cookies["order"].Value), PaymentDate = DateTime.Now, PaymentMethodID = 1, isPaid = true });
+                    HttpCookie httpCookie = Request.Cookies["order"];
+                    var id = Int32.Parse(httpCookie["id"]);
+                    db.Payments.Add(new Payment() { OrderID = id, PaymentDate = DateTime.Now, PaymentMethodID = 1, isPaid = true });
                     db.SaveChanges();
                 }
             }

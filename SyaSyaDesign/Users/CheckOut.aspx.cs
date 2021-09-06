@@ -8,21 +8,23 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SyaSyaDesign.App_Pages
+namespace SyaSyaDesign.Users
 {
     public partial class CheckOut : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["userID"] != null)
+            if (Session["user_id"] != null)
             {
                 String strOrderCon = ConfigurationManager.ConnectionStrings["syasyadbConnectionString"].ConnectionString;
                 SqlConnection orderCon = new SqlConnection(strOrderCon);
 
                 orderCon.Open();
-                String strSelectItem = "SELECT Cart.ProductID,  Product.product_name AS ProductName, Product.Price, Cart.Quantity, Cart.Quantity * Product.Price AS TotalPrice, Product.URL FROM Product, Cart WHERE Product.product_id = Cart.ProductID AND Cart.UserID= @UserID;";
+                String strSelectItem = @"Select Cart.ProductID AS ProductID, Product.product_name AS ProductName, Product.Price AS PRICE, Cart.Quantity AS Quantity, Cart.Quantity * Product.Price AS TotalPrice, Product.URL, size.Description as [Size], color.Description as [Color]
+from Product Product, Cart, [User] u, Attribute color, Attribute size
+Where Cart.UserID = u.user_id and Cart.UserID=@userID and Product.product_id = Cart.ProductID and color.AttributeID = cart.color and size.AttributeID = cart.size;";
                 SqlCommand cmdSelectItem = new SqlCommand(strSelectItem, orderCon);
-                cmdSelectItem.Parameters.AddWithValue("@UserID", Session["userID"].ToString());
+                cmdSelectItem.Parameters.AddWithValue("@UserID", Session["user_id"].ToString());
                 SqlDataAdapter da = new SqlDataAdapter();
                 da.SelectCommand = cmdSelectItem;
                 DataTable dt = new DataTable();
@@ -34,7 +36,7 @@ namespace SyaSyaDesign.App_Pages
                 orderCon.Open();
                 String strCartTotal = "Select Cart.Quantity * Product.Price AS TotalPrice from Product, Cart, [User] u Where Cart.UserID = u.user_id and Cart.UserID = @userID and Product.product_id = Cart.ProductID; ";
                 SqlCommand cmdCartTotal = new SqlCommand(strCartTotal, orderCon);
-                cmdCartTotal.Parameters.AddWithValue("@userID", Session["userID"].ToString());
+                cmdCartTotal.Parameters.AddWithValue("@userID", Session["user_id"].ToString());
                 SqlDataReader dr = cmdCartTotal.ExecuteReader();
                 decimal Total = Convert.ToDecimal(0.0);
                 while (dr.Read())
@@ -55,7 +57,7 @@ namespace SyaSyaDesign.App_Pages
 
         protected void btnContinue_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Product.aspx");
+            Response.Redirect("~/Users/Products.aspx");
         }
 
         protected void btnCheckout_Click(object sender, EventArgs e)
@@ -68,7 +70,7 @@ namespace SyaSyaDesign.App_Pages
                 //Insert into Order table
                 var newOrder = new Order
                 {
-                    UserID = Int16.Parse(Session["userID"].ToString()),
+                    UserID = Int16.Parse(Session["user_id"].ToString()),
                     RecipientName = txtName.Text,
                     EmailAddress = txtEmail.Text,
                     ContactNumber = txtContactNumber.Text,
@@ -91,15 +93,17 @@ namespace SyaSyaDesign.App_Pages
 
                 //Insert into OrderDetail table
                 con.Open();
-                SqlCommand cmdCart = new SqlCommand("SELECT Cart.ProductID, Cart.Quantity FROM Cart WHERE Cart.UserID= @UserID;", con);
-                cmdCart.Parameters.AddWithValue("@UserID", Session["userID"].ToString());
+                SqlCommand cmdCart = new SqlCommand("SELECT Cart.ProductID, Cart.Quantity, Cart.Size, Cart.Color FROM Cart WHERE Cart.UserID= @UserID;", con);
+                cmdCart.Parameters.AddWithValue("@UserID", Session["user_id"].ToString());
                 SqlDataReader cart = cmdCart.ExecuteReader();
                 while (cart.Read())
                 {
-                    SqlCommand cmdAddOrderDetail = new SqlCommand("INSERT INTO OrderDetail VALUES (@OrderID, @ProductID, @Quantity,null);", con);
+                    SqlCommand cmdAddOrderDetail = new SqlCommand("INSERT INTO OrderDetail VALUES (@OrderID, @ProductID, @Quantity, @color, @size);", con);
                     cmdAddOrderDetail.Parameters.AddWithValue("@OrderID", orderID);
                     cmdAddOrderDetail.Parameters.AddWithValue("@ProductID", cart["ProductID"].ToString());
                     cmdAddOrderDetail.Parameters.AddWithValue("@Quantity", cart["Quantity"].ToString());
+                    cmdAddOrderDetail.Parameters.AddWithValue("@Color", cart["Color"].ToString());
+                    cmdAddOrderDetail.Parameters.AddWithValue("@Size", cart["Size"].ToString());
                     cmdAddOrderDetail.ExecuteNonQuery();
                 }
                 cart.Close();
@@ -112,9 +116,12 @@ namespace SyaSyaDesign.App_Pages
                 SqlDataReader rows = cmdCart.ExecuteReader();
                 while (rows.Read())
                 {
-                    SqlCommand cmdReduceStock = new SqlCommand("UPDATE Product SET quantity = quantity - (SELECT Quantity FROM OrderDetail WHERE OrderID = @OrderID AND ProductID = @ProductID) WHERE product_id = @ProductID", con);
-                    cmdReduceStock.Parameters.AddWithValue("@OrderID", orderID);
+                    //SqlCommand cmdReduceStock = new SqlCommand("UPDATE ProductDetails SET quantity = quantity - (SELECT Quantity FROM ProductDetails WHERE ProductID = @ProductID AND color = @color AND size = @size) WHERE product_id = @ProductID AND color = @color AND size = @size", con);
+                    SqlCommand cmdReduceStock = new SqlCommand("UPDATE ProductDetails SET Quantity = Quantity - @Qty WHERE Product_ID = @ProductID AND color = @color AND size = @size", con);
                     cmdReduceStock.Parameters.AddWithValue("@ProductID", rows["ProductID"].ToString());
+                    cmdReduceStock.Parameters.AddWithValue("@Color", Int32.Parse(rows["Color"].ToString()));
+                    cmdReduceStock.Parameters.AddWithValue("@Qty", Int32.Parse(rows["Quantity"].ToString()));
+                    cmdReduceStock.Parameters.AddWithValue("@Size", Int32.Parse(rows["Size"].ToString()));
                     cmdReduceStock.ExecuteNonQuery();
                 }
                 rows.Close();
@@ -123,43 +130,11 @@ namespace SyaSyaDesign.App_Pages
                 //clear cart
                 con.Open();
                 SqlCommand cmdClearCart = new SqlCommand("DELETE FROM Cart WHERE UserID = @UserID", con);
-                cmdClearCart.Parameters.AddWithValue("@UserID", Session["userID"].ToString());
+                cmdClearCart.Parameters.AddWithValue("@UserID", Session["user_id"].ToString());
                 cmdClearCart.ExecuteNonQuery();
                 con.Close();
 
-                //update all product quantity in the cart if exceed maximum amount
-                con.Open();
-                SqlCommand cmdgetProductInOrder = new SqlCommand("SELECT ProductID FROM OrderDetail WHERE OrderID = @OrderID", con);
-                cmdgetProductInOrder.Parameters.AddWithValue("@OrderID", orderID);
-                SqlDataReader productInOrder = cmdgetProductInOrder.ExecuteReader();
-                int stockQuantity;
-                while (productInOrder.Read())
-                {
-                    //get the stock quantity for a specific product
-                    SqlCommand cmdgetquantity = new SqlCommand("SELECT quantity FROM Product WHERE product_id = @ProductID", con);
-                    cmdgetquantity.Parameters.AddWithValue("@ProductID", productInOrder["ProductID"].ToString());
-                    stockQuantity = Convert.ToInt32(cmdgetquantity.ExecuteScalar());
-
-                    if (stockQuantity == 0)
-                    {
-                        //remove the specific product from all carts where stock quantity = 0
-                        SqlCommand cmdRemoveFromAllCart = new SqlCommand("DELETE FROM Cart WHERE ProductID=@ProductID", con);
-                        cmdRemoveFromAllCart.Parameters.AddWithValue("@ProductID", productInOrder["ProductID"].ToString());
-                        cmdRemoveFromAllCart.ExecuteNonQuery();
-                    }
-                    else
-                    {
-                        //update the cart quantity of the specific product if > stock quantity
-                        SqlCommand cmdUpdateAllCart = new SqlCommand("UPDATE Cart SET Quantity = @quantity WHERE ProductID=@ProductID AND Quantity > @quantity", con);
-                        cmdUpdateAllCart.Parameters.AddWithValue("@quantity", stockQuantity);
-                        cmdUpdateAllCart.Parameters.AddWithValue("@ProductID", productInOrder["ProductID"].ToString());
-                        cmdUpdateAllCart.ExecuteNonQuery();
-                    }
-                }
-                productInOrder.Close();
-                con.Close();
-
-                string queryString = "~/App_Pages/DigitalReceipt.aspx?OrderID=" + orderID;
+                string queryString = "~/Users/Payments.aspx?id=" + orderID;
                 Response.Redirect(queryString);
             }
         }

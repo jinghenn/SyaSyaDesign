@@ -35,7 +35,8 @@ namespace SyaSyaDesign.App_Pages
                     Session["username"] = TxtLUsername.Text;
                     Session["user_id"] = user_id;
                     Session["userType"] = userType;
-                    Response.Redirect("~/Product.aspx");
+                    Session["userEmail"] = user.Email;
+                    Response.Redirect("~/Users/Products.aspx");
                 }
                 else
                 {

@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SyaSyaDesign
+namespace SyaSyaDesign.Admins
 {
     public partial class ManageProduct : System.Web.UI.Page
     {
@@ -22,7 +22,7 @@ namespace SyaSyaDesign
                 BindDropDownList();
                 BindAttributes();
             }
-            
+
         }
 
         private class ProductDetail
@@ -49,10 +49,11 @@ namespace SyaSyaDesign
             var ddlAttribute = (ListBox)row.FindControl("AttributeList");
             List<int> attrSelected = new List<int>();
 
-            using (var db = new syasyadbEntities()) { 
+            using (var db = new syasyadbEntities())
+            {
                 var product = db.Products.FirstOrDefault(p => p.product_id == id);
 
-                
+
                 foreach (ListItem listItem in ddlAttribute.Items)
                 {
                     if (listItem.Selected) attrSelected.Add(Convert.ToInt32(listItem.Value.ToString()));
@@ -67,23 +68,25 @@ namespace SyaSyaDesign
                 db.SaveChanges();
             }
 
-            try { 
-            using(var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["syasyadbConnection"].ConnectionString))
+            try
             {
-                String query = "DELETE FROM PRODUCTATTRIBUTE WHERE PRODUCT_ID = " + lblID.Text + ";";
-                if (attrSelected.Count > 0) query += "INSERT INTO PRODUCTATTRIBUTE VALUES";
-                foreach(var item in attrSelected)
+                using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["syasyadbConnection"].ConnectionString))
                 {
-                    query += "(" + lblID.Text + "," + item.ToString() + "),";
-                }
+                    String query = "DELETE FROM PRODUCTATTRIBUTE WHERE PRODUCT_ID = " + lblID.Text + ";";
+                    if (attrSelected.Count > 0) query += "INSERT INTO PRODUCTATTRIBUTE VALUES";
+                    foreach (var item in attrSelected)
+                    {
+                        query += "(" + lblID.Text + "," + item.ToString() + "),";
+                    }
 
-                query = query.Remove(query.Length - 1);
-                
-                var command = new SqlCommand(query, connection);
-                connection.Open();
-                command.ExecuteNonQuery();
+                    query = query.Remove(query.Length - 1);
+
+                    var command = new SqlCommand(query, connection);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
             }
-            }catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -139,39 +142,39 @@ namespace SyaSyaDesign
                 ddlCategory.Items.FindByValue(categoryControl.Value).Selected = true;
 
                 ListBox dl = (ListBox)e.Row.FindControl("AttributeList");
-                using(var dt = new syasyadbEntities())
+                using (var dt = new syasyadbEntities())
                 {
                     var result = dt.Attributes.Select(row => row)
-                        .Where(element=>element.AttributeCategory.AttributeCategoryID != 1 && element.AttributeCategory.AttributeCategoryID != 2).ToList();
+                        .Where(element => element.AttributeCategory.AttributeCategoryID != 1 && element.AttributeCategory.AttributeCategoryID != 2).ToList();
                     result.ForEach(row => dl.Items.Add(new ListItem() { Text = row.Description, Value = row.AttributeID.ToString() }));
-                
 
-                var attGroup = (from attributes in dt.Attributes
-                                join catGroup in dt.AttributeCategories on attributes.CategoryID equals catGroup.AttributeCategoryID
-                                where catGroup.AttributeCategoryID != 1 &
-                                catGroup.AttributeCategoryID != 2
-                                select attributes).ToList();
 
-                var data = dt.Products.ToList();
-                var rst = (Hidden.Value.Split(',')).ToList();
+                    var attGroup = (from attributes in dt.Attributes
+                                    join catGroup in dt.AttributeCategories on attributes.CategoryID equals catGroup.AttributeCategoryID
+                                    where catGroup.AttributeCategoryID != 1 &
+                                    catGroup.AttributeCategoryID != 2
+                                    select attributes).ToList();
 
-                if(rst.FirstOrDefault()!="") rst.ForEach(row => dl.Items.FindByText(row).Selected = true);
+                    var data = dt.Products.ToList();
+                    var rst = (Hidden.Value.Split(',')).ToList();
 
-                Label lb = (Label)e.Row.FindControl("lblProductID");
-                if (dl != null)
-                {
-                    dl.Items.Clear();
-                    attGroup.ForEach(attr => dl.Items.Add(new ListItem(attr.Description, attr.AttributeID.ToString())));
-                    var resultList = data.Select(rows => rows).Where(element => element.product_id.ToString() == lb.Text).FirstOrDefault().Attributes.Select(attr => attr.AttributeID.ToString()).ToList();
-                        dl.ClearSelection();
-                    foreach (var rec in resultList)
+                    if (rst.FirstOrDefault() != "") rst.ForEach(row => dl.Items.FindByText(row).Selected = true);
+
+                    Label lb = (Label)e.Row.FindControl("lblProductID");
+                    if (dl != null)
                     {
-                        if (dl.Items.FindByValue(rec) != null) dl.Items.FindByValue(rec).Selected = true;
+                        dl.Items.Clear();
+                        attGroup.ForEach(attr => dl.Items.Add(new ListItem(attr.Description, attr.AttributeID.ToString())));
+                        var resultList = data.Select(rows => rows).Where(element => element.product_id.ToString() == lb.Text).FirstOrDefault().Attributes.Select(attr => attr.AttributeID.ToString()).ToList();
+                        dl.ClearSelection();
+                        foreach (var rec in resultList)
+                        {
+                            if (dl.Items.FindByValue(rec) != null) dl.Items.FindByValue(rec).Selected = true;
+                        }
                     }
                 }
-                }
             }
-            
+
         }
 
         protected void gvProduct_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -209,8 +212,6 @@ namespace SyaSyaDesign
         {
             using (var db = new syasyadbEntities())
             {
-                //var result = db.ProductDetails.Select(dt => dt).Where(element => element.product_id == int.Parse(ProdID.Text) && element.size == int.Parse(ddlSizeAdd.SelectedValue)
-                //  && element.color == int.Parse(DropDownListColor.SelectedValue)).ToList();
                 var size = int.Parse(ddlSizeAdd.SelectedValue);
                 var color = int.Parse(DropDownListColor.SelectedValue);
                 var prodID = int.Parse(ProdID.Text);
@@ -225,14 +226,14 @@ namespace SyaSyaDesign
 
         private void BindDropDownList()
         {
-            using(var db = new syasyadbEntities())
+            using (var db = new syasyadbEntities())
             {
                 var size = (from attributes in db.Attributes
                             where attributes.CategoryID == 1
                             select attributes).ToList();
                 var color = (from attributes in db.Attributes
-                            where attributes.CategoryID == 2
-                            select attributes).ToList();
+                             where attributes.CategoryID == 2
+                             select attributes).ToList();
                 size.ForEach(element => ddlColorList.Items.Add(new ListItem(element.Description, element.AttributeID.ToString())));
                 color.ForEach(element => ddlSizeList.Items.Add(new ListItem(element.Description, element.AttributeID.ToString())));
             }
@@ -255,14 +256,13 @@ namespace SyaSyaDesign
                     Label desc = (Label)grdrw.FindControl("lblProductName");
                     Button btn = (Button)grdrw.FindControl("ModalLink");
 
-                    //if (btn != null) btn.Attributes.Add("onclick", "changeID('" + lb.Text + "');"+ "changeName('" + desc.Text + "');");
                     var result = data.Select(dt => dt).Where(element => element.product_id.ToString() == lb.Text).FirstOrDefault().Attributes.Select(attr => attr.Description.ToString()).ToList();
                     if (result != null) lst.Text = string.Join(",", result.ToArray());
 
                 }
 
 
-                
+
             }
         }
 
@@ -305,20 +305,19 @@ namespace SyaSyaDesign
 
                 ddlSizeAdd.Items.Clear();
                 DropDownListColor.Items.Clear();
-                dataList.ForEach(element => ddlSizeAdd.Items.Add(new ListItem { Text=element.Attribute1.Description, Value=element.size.ToString() }));
-                dataList.ForEach(element => DropDownListColor.Items.Add(new ListItem { Text=element.Attribute.Description, Value=element.color.ToString() }));
+                dataList.ForEach(element => ddlSizeAdd.Items.Add(new ListItem { Text = element.Attribute1.Description, Value = element.size.ToString() }));
+                dataList.ForEach(element => DropDownListColor.Items.Add(new ListItem { Text = element.Attribute.Description, Value = element.color.ToString() }));
 
-                //ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openModal()", true);
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "pop", "ShowStatus()", true);
             }
-            }
+        }
 
         protected void ButtonNewProdDetails_Click(object sender, EventArgs e)
         {
-            using(var db = new syasyadbEntities())
+            using (var db = new syasyadbEntities())
             {
                 db.ProductDetails.Add(new SyaSyaDesign.ProductDetail
-                { 
+                {
                     product_id = Int32.Parse(ProdID.Text),
                     color = Int32.Parse(ddlColorList.SelectedValue),
                     size = Int32.Parse(ddlSizeList.SelectedValue),
