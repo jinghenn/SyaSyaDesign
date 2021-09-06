@@ -52,7 +52,7 @@ namespace SyaSyaDesign
         {
             var value = ddlSort.SelectedValue;
             var q = keyword == "" ? "" : $"&search={keyword}";
-            Response.Redirect($"~/Products.aspx?category={cat_id}&sort={value}{q}");
+            Response.Redirect($"~/Users/Products.aspx?category={cat_id}&sort={value}{q}");
         }
         protected List<Product> GetProduct()
         {
@@ -90,7 +90,7 @@ namespace SyaSyaDesign
         {
             var rawValue = searchBox.Value;
             var kw = rawValue == "" ? "" : $"&search={rawValue}";
-            Response.Redirect($"~/Products.aspx?category={cat_id}&sort={sort}{kw}");
+            Response.Redirect($"~/Users/Products.aspx?category={cat_id}&sort={sort}{kw}");
 
         }
     }

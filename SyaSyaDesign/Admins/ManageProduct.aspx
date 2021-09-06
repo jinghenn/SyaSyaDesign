@@ -44,7 +44,7 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h2>Quantity Mangement</h2>
+                        <h2>Quantity Management</h2>
                         <button type="button" class="btn btn-danger close" data-bs-dismiss="modal">&times;</button>
                     </div>
                     <div class="modal-body">

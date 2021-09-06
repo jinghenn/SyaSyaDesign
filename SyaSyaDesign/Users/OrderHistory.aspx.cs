@@ -30,6 +30,10 @@ namespace SyaSyaDesign.Users
                 Repeater1.DataBind();
                 con.Close();
             }
+            else
+            {
+                Response.Redirect("~/App_Pages/Login.aspx?returnPage=order");
+            }
         }
     }
 }

@@ -14,6 +14,11 @@ namespace SyaSyaDesign.App_Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["user_id"] != null)
+                Response.Redirect(Request.UrlReferrer.ToString());
+
+
+
         }
 
         protected void loginFormBtn_Click(object sender, EventArgs e)
@@ -36,7 +41,8 @@ namespace SyaSyaDesign.App_Pages
                     Session["user_id"] = user_id;
                     Session["userType"] = userType;
                     Session["userEmail"] = user.Email;
-                    Response.Redirect("~/Users/Products.aspx");
+                    
+                    Response.Redirect(GetRedirectUrl());
                 }
                 else
                 {
@@ -49,6 +55,31 @@ namespace SyaSyaDesign.App_Pages
             }
 
 
+        }
+
+        private string GetRedirectUrl()
+        {
+            var url = "~/Users/Products.aspx";
+            var returnPage = Request.QueryString["returnPage"];
+            if (returnPage!= null)
+            {
+                switch (returnPage)
+                {
+                    case "product":
+                        var returnId = Request.QueryString["id"];
+                        var productQueryStr = returnId == null ? "" : $"?product_id={returnId}";
+                        url = $"~/Users/Detail.aspx{productQueryStr}";
+                        break;
+                    case "order":
+                        url = $"~/Users/OrderHistory.aspx";
+                        break;
+                    default:
+                        url = "~/Users/Products.aspx";
+                        break;
+                }
+                
+            }
+            return url;        
         }
     }
 }
