@@ -48,7 +48,7 @@ namespace SyaSyaDesign.Admins
                     db.AttributeCategories.Add(new AttributeCategory() {
                         Description = txtDescription.Text,
                         IsActive = RadioButton1.Checked,
-                        ModifiedBy = 1001 //adding after merge with master
+                        ModifiedBy = Int32.Parse(Session["user_id"].ToString())
                     });
                     db.SaveChanges();
                 }
@@ -93,7 +93,7 @@ namespace SyaSyaDesign.Admins
                     TextBox desc = TableAttributeList.Rows[e.RowIndex].FindControl("txtDescription") as TextBox;
                     HiddenField id = TableAttributeList.Rows[e.RowIndex].FindControl("CategoryID") as HiddenField;
                     db.AttributeCategories.Find(Int32.Parse(id.Value.ToString())).Description = desc.Text;
-                    db.AttributeCategories.Find(Int32.Parse(id.Value.ToString())).ModifiedBy = 1001; //adding after merge with master
+                    db.AttributeCategories.Find(Int32.Parse(id.Value.ToString())).ModifiedBy = Int32.Parse(Session["user_id"].ToString());
                     db.SaveChanges();
                     TableAttributeList.EditIndex = -1;
                     StoreTable();

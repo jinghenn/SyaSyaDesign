@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SyaSyaDesign.App_Pages
+namespace SyaSyaDesign.Users
 {
     public partial class PurchaseSummary : System.Web.UI.Page
     {
@@ -71,7 +71,7 @@ namespace SyaSyaDesign.App_Pages
             }
             else
             {
-                Response.Redirect("~/App_Pages/OrderHistory.aspx");
+                Response.Redirect("~/Users/OrderHistory.aspx");
             }
         }
 

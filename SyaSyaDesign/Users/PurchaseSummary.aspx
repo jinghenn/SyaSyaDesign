@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SyasyaDesign.Master" AutoEventWireup="true" CodeBehind="PurchaseSummary.aspx.cs" Inherits="SyaSyaDesign.App_Pages.PurchaseSummary" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SyasyaDesign.Master" AutoEventWireup="true" CodeBehind="PurchaseSummary.aspx.cs" Inherits="SyaSyaDesign.Users.PurchaseSummary" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
@@ -172,7 +172,7 @@
 
                     </table>
 
-                    <asp:Button ID="btnMainPage" Style="margin: auto" class="btn btn-outline-secondary btn-brand btn-full-width" PostBackUrl="~/App_Pages/OrderHistory.aspx" runat="server" Text="Back to History" />
+                    <asp:Button ID="btnMainPage" Style="margin: auto" class="btn btn-outline-secondary btn-brand btn-full-width" PostBackUrl="~/Users/OrderHistory.aspx" runat="server" Text="Back to History" />
                     <asp:Button ID="btnCancelOrder" Style="margin: auto; float: right" class="btn btn-danger btn-brand btn-full-width" runat="server" Text="Cancel Order" OnClientClick="return false" data-bs-toggle="modal" data-bs-target="#staticBackdrop" UseSubmitBehavior="False" />
                 </div>
             </article>

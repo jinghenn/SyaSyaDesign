@@ -77,7 +77,7 @@
                                 <ItemTemplate>
                                     <div class="card me-2 mb-2" style="width: 200px">
                                         <a href="Detail.aspx?product_id=<%# Eval("product_id")%>">
-                                            <img src="https://via.placeholder.com/150" class="card-img-top" alt="..."></a>
+                                            <img src='<%# Eval("URL") %>' class="card-img-top" alt="..."></a>
                                         <div class="card-body">
                                             <a href="Detail.aspx?product_id=<%# Eval("product_id") %>" class="link-dark plain-link">
                                                 <p class="card-text text-truncate"><%# Eval("product_name") %></p>

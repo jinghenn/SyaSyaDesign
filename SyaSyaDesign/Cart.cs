@@ -19,7 +19,6 @@ namespace SyaSyaDesign
         public int size { get; set; }
         public int color { get; set; }
         public int Quantity { get; set; }
-        public string Attributes { get; set; }
     
         public virtual Attribute Attribute { get; set; }
         public virtual Attribute Attribute1 { get; set; }

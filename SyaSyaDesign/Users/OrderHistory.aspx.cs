@@ -8,21 +8,20 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SyaSyaDesign.App_Pages
+namespace SyaSyaDesign.Users
 {
     public partial class ManageOrder : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["userID"] = 1004;
-            if (Session["userID"] != null)
+            if (Session["user_id"] != null)
             {
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["syasyadbConnectionString"].ConnectionString);
 
                 con.Open();
                 String strSelectItem = "SELECT OrderID, RecipientName, DeliveryAddress, Date, Total, [Status] FROM [Order] WHERE UserID = @UserID;";
                 SqlCommand cmdSelectItem = new SqlCommand(strSelectItem, con);
-                cmdSelectItem.Parameters.AddWithValue("@UserID", Session["userID"]);
+                cmdSelectItem.Parameters.AddWithValue("@UserID", Session["user_id"]);
                 SqlDataAdapter da = new SqlDataAdapter();
                 da.SelectCommand = cmdSelectItem;
                 DataTable dt = new DataTable();

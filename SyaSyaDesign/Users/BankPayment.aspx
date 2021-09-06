@@ -72,7 +72,7 @@
                         <asp:TableRow>
                             <asp:TableCell>Seller Description</asp:TableCell>
                             <asp:TableCell> : </asp:TableCell>
-                            <asp:TableCell>TAYY ART (M) SDN BHD</asp:TableCell>
+                            <asp:TableCell>Sya Sya Design</asp:TableCell>
                         </asp:TableRow>
                         <asp:TableRow>
                             <asp:TableCell>Order Number </asp:TableCell>

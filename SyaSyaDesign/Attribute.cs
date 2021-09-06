@@ -22,6 +22,8 @@ namespace SyaSyaDesign
             this.ProductDetails = new HashSet<ProductDetail>();
             this.ProductDetails1 = new HashSet<ProductDetail>();
             this.Products = new HashSet<Product>();
+            this.OrderDetails = new HashSet<OrderDetail>();
+            this.OrderDetails1 = new HashSet<OrderDetail>();
         }
     
         public int AttributeID { get; set; }
@@ -42,5 +44,9 @@ namespace SyaSyaDesign
         public virtual ICollection<ProductDetail> ProductDetails1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrderDetail> OrderDetails1 { get; set; }
     }
 }

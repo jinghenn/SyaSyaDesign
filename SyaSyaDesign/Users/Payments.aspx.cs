@@ -27,10 +27,10 @@ namespace SyaSyaDesign
                     using(var db = new syasyadbEntities())
                     {
                         var data = db.Orders.Find(OrderId);
-                        lblFinalTotal.Text = data.Total.ToString();
+                        lblFinalTotal.Text = String.Format("{0:0.00}", Double.Parse(data.Total.ToString()));
                         Total = data.Total;
-                        Response.Cookies["Total"].Value = data.Total.ToString();
-                        lblSubtotal.Text = data.Total.ToString();
+                        Response.Cookies["Total"].Value = String.Format("{0:0.00}", Double.Parse(data.Total.ToString()));
+                        lblSubtotal.Text = String.Format("{0:0.00}", Double.Parse(data.Total.ToString()));
                     }
                
                 }
@@ -62,16 +62,15 @@ namespace SyaSyaDesign
                     {
                         orderID = httpCookie["id"];
                     }
-                    string content = "Dear Valued Customer, your Order " + orderID + " is comfirmed and placed!"
-                        + "\n\n" + "Sub Total : " + Total.ToString()  + "\n" + "Discount  :   0.00"
-                        + "\n" + "Total       : " + Total.ToString() + "\n\n" + "We're excited for you to receive your order and will notify you once it is on its way!"
-                        + "If you faced any problem, feel free to contact us." + "\n\n" + "Thanks\n\nBest Regards,\nTAYY Art Work";
-                    //var result = new Email().SendPaymentEmail(Session["Email"].ToString(), content);
+                    string content = "Dear Valued Customer, your Order " + orderID + " is comfirmed and placed!" +
+                        "\n\n" + "We're excited for you to receive your order and will notify you once it is on its way!"
+                        + "If you faced any problem, feel free to contact us." + "\n\n" + "Thanks\n\nBest Regards,\nSyaSyaDesign";
+                    string email = Session["userEmail"].ToString();
+                    new Email().SendEmail(email, content, "Payment Successful");
+
                     ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "successalert('Success','Payment Successfully.');", true);
                     StorePayment(orderID);
-                    Session.Remove("CartList");
-                    Session.Remove("Email");
-                    //Response.Redirect("~/Customer/HistoryDetails.aspx?id=" + orderID);
+                    Response.Redirect(String.Format("~/Users/PurchaseSummary.aspx?OrderID={0}", orderID));
                 }
                 else
                 {
@@ -82,7 +81,7 @@ namespace SyaSyaDesign
 
         protected void BtnBack_Click(object sender, EventArgs e)
         {
-            //Response.Redirect("CustomerHomepage.aspx");
+            Response.Redirect("~/Users/Products.aspx");
         }
 
         private void StorePayment(string orderID)

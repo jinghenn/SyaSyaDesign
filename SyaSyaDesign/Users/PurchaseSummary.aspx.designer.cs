@@ -7,120 +7,102 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SyaSyaDesign.App_Pages
+namespace SyaSyaDesign.Users
 {
 
 
-    public partial class Attribute
+    public partial class PurchaseSummary
     {
 
         /// <summary>
-        /// formPayment control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm formPayment;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// defaultOpen control.
+        /// lblOrderId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button defaultOpen;
+        protected global::System.Web.UI.WebControls.Label lblOrderId;
 
         /// <summary>
-        /// TableCard control.
+        /// lblOrderTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table TableCard;
+        protected global::System.Web.UI.WebControls.Label lblOrderTime;
 
         /// <summary>
-        /// txtcardHolder control.
+        /// lblEstimatedArriveTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtcardHolder;
+        protected global::System.Web.UI.WebControls.Label lblEstimatedArriveTime;
 
         /// <summary>
-        /// txtCardNo1 control.
+        /// lblDeliveryAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCardNo1;
+        protected global::System.Web.UI.WebControls.Label lblDeliveryAddress;
 
         /// <summary>
-        /// txtCardNo2 control.
+        /// lblStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCardNo2;
+        protected global::System.Web.UI.WebControls.Label lblStatus;
 
         /// <summary>
-        /// txtCardNo3 control.
+        /// lblTrack control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCardNo3;
+        protected global::System.Web.UI.WebControls.Label lblTrack;
 
         /// <summary>
-        /// txtCardNo4 control.
+        /// btnTrackNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCardNo4;
+        protected global::System.Web.UI.WebControls.Button btnTrackNo;
 
         /// <summary>
-        /// txtMonth control.
+        /// Repeater1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMonth;
+        protected global::System.Web.UI.WebControls.Repeater Repeater1;
 
         /// <summary>
-        /// txtCvv control.
+        /// lblSubtotalDis control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCvv;
-
-        /// <summary>
-        /// radioBank control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList radioBank;
-
-        /// <summary>
-        /// payButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button payButton;
+        protected global::System.Web.UI.WebControls.Label lblSubtotalDis;
 
         /// <summary>
         /// lblSubtotal control.
@@ -132,57 +114,57 @@ namespace SyaSyaDesign.App_Pages
         protected global::System.Web.UI.WebControls.Label lblSubtotal;
 
         /// <summary>
-        /// lblDiscount control.
+        /// lblTaxDis control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDiscount;
+        protected global::System.Web.UI.WebControls.Label lblTaxDis;
 
         /// <summary>
-        /// lblShipping control.
+        /// lblTax control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblShipping;
+        protected global::System.Web.UI.WebControls.Label lblTax;
 
         /// <summary>
-        /// lblFinalTotal control.
+        /// lblTotalDis control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFinalTotal;
+        protected global::System.Web.UI.WebControls.Label lblTotalDis;
 
         /// <summary>
-        /// BtnBack control.
+        /// lblTotal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnBack;
+        protected global::System.Web.UI.WebControls.Label lblTotal;
 
         /// <summary>
-        /// linkFAQ control.
+        /// btnMainPage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink linkFAQ;
+        protected global::System.Web.UI.WebControls.Button btnMainPage;
 
         /// <summary>
-        /// payMethod control.
+        /// btnCancelOrder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField payMethod;
+        protected global::System.Web.UI.WebControls.Button btnCancelOrder;
     }
 }

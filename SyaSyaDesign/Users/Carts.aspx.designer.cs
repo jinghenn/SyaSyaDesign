@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SyaSyaDesign.App_Pages {
-    
-    
-    public partial class Cart {
-        
+namespace SyaSyaDesign.Users
+{
+
+
+    public partial class Carts
+    {
+
         /// <summary>
         /// form1 control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace SyaSyaDesign.App_Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
+
         /// <summary>
         /// cartItemRepeater control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace SyaSyaDesign.App_Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater cartItemRepeater;
-        
+
         /// <summary>
         /// lblTotalPrice control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace SyaSyaDesign.App_Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTotalPrice;
-        
+
         /// <summary>
         /// lblError control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace SyaSyaDesign.App_Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblError;
-        
+
         /// <summary>
         /// btnCheckout control.
         /// </summary>

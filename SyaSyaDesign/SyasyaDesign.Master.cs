@@ -39,7 +39,7 @@ namespace SyaSyaDesign
             Session.Remove("username");
             Session.Remove("user_id");
             Session.Remove("userType");
-            Response.Redirect("~/Product.aspx");
+            Response.Redirect("~/Users/Products.aspx");
         }
 
         protected void btndelete_Click(object sender, EventArgs e)
@@ -57,7 +57,7 @@ namespace SyaSyaDesign
 
             System.Text.StringBuilder javaScript = new System.Text.StringBuilder();
             string scriptKey = "SuccessMessage";
-            string url = "Product.aspx";
+            string url = "Products.aspx";
 
             javaScript.Append("var userConfirmation = window.confirm('" + "Successfully deleted');\n");
             javaScript.Append("window.location='" + url + "';");

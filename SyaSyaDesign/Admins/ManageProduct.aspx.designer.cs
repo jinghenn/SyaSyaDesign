@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SyaSyaDesign
+namespace SyaSyaDesign.Admins
 {
 
 

@@ -17,8 +17,11 @@ namespace SyaSyaDesign
         public int OrderID { get; set; }
         public int ProductID { get; set; }
         public int Quantity { get; set; }
-        public string Attributes { get; set; }
+        public int Color { get; set; }
+        public int Size { get; set; }
     
+        public virtual Attribute Attribute { get; set; }
+        public virtual Attribute Attribute1 { get; set; }
         public virtual Order Order { get; set; }
         public virtual Product Product { get; set; }
     }

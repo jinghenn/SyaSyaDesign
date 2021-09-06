@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Check Out" Language="C#" MasterPageFile="~/SyasyaDesign.Master" AutoEventWireup="true" CodeBehind="CheckOut.aspx.cs" Inherits="SyaSyaDesign.App_Pages.CheckOut" %>
+﻿<%@ Page Title="Check Out" Language="C#" MasterPageFile="~/SyasyaDesign.Master" AutoEventWireup="true" CodeBehind="CheckOut.aspx.cs" Inherits="SyaSyaDesign.Users.CheckOut" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
@@ -162,10 +162,12 @@
                                 <table class="table w-100 p3 ms-auto me-auto">
                                     <thead>
                                         <tr>
-                                            <th style="width: 30%; text-align: center" scope="col">Product Image</th>
+                                            <th style="width: 25%; text-align: center" scope="col">Product Image</th>
                                             <th style="width: 20%; text-align: center" scope="col">Product</th>
-                                            <th style="width: 5%; text-align: center" scope="col">Quantity</th>
-                                            <th style="width: 20%; text-align: center" scope="col">Unit Price</th>
+                                            <th style="width: 5%; text-align: center" scope="col">Size</th>
+                                            <th style="width: 5%; text-align: center" scope="col">Color</th>
+                                            <th style="width: 10%; text-align: center" scope="col">Quantity</th>
+                                            <th style="width: 15%; text-align: center" scope="col">Unit Price</th>
                                             <th style="width: 25%; text-align: right" scope="col">Price</th>
                                         </tr>
                                     </thead>
@@ -174,12 +176,14 @@
                             <ItemTemplate>
                                 <table class="table w-100 p3 ms-auto me-auto">
                                     <tr>
-                                        <td style="width: 30%; text-align: center" class="align-middle">
+                                        <td style="width: 25%; text-align: center" class="align-middle">
                                             <asp:Image runat="server" class="img-fluid rounded" alt="Product Image" ImageUrl='<%# Eval("URL") %>' Height="150px" Width="150px"></asp:Image>
                                         </td>
                                         <td style="width: 20%; text-align: center" class="align-middle"><%# Eval("ProductName")%></td>
-                                        <td style="width: 5%; text-align: center" class="align-middle"><%# Eval("Quantity")%></td>
-                                        <td style="width: 20%; text-align: center" class="align-middle"><%# Eval("Price")%></td>
+                                        <td style="width: 5%; text-align: center" class="align-middle"><%# Eval("Size")%></td>
+                                        <td style="width: 5%; text-align: center" class="align-middle"><%# Eval("Color")%></td>
+                                        <td style="width: 10%; text-align: center" class="align-middle"><%# Eval("Quantity")%></td>
+                                        <td style="width: 15%; text-align: center" class="align-middle"><%# Eval("Price")%></td>
                                         <td style="width: 25%; text-align: right" class="align-middle"><%# Eval("TotalPrice", "{0:0.00}") %></td>
                                     </tr>
                                 </table>

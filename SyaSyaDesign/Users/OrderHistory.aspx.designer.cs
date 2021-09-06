@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SyaSyaDesign.App_Pages {
-    
-    
-    public partial class ManageOrder {
-        
+namespace SyaSyaDesign.Users
+{
+
+
+    public partial class ManageOrder
+    {
+
         /// <summary>
         /// form1 control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace SyaSyaDesign.App_Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
+
         /// <summary>
         /// Repeater1 control.
         /// </summary>

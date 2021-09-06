@@ -125,20 +125,6 @@
     <Content Include="Scripts\fontawesome\v4-shims.js" />
     <Content Include="Scripts\fontawesome\v4-shims.min.js" />
     <Content Include="syasyadbEntities.Context.tt">
-    <Content Include="App_Pages\Cart.aspx" />
-    <Content Include="App_Pages\CheckOut.aspx" />
-    <Content Include="App_Pages\ForgetPassword.aspx" />
-    <Content Include="App_Pages\Login.aspx" />
-    <Content Include="App_Pages\ManageUser.aspx" />
-    <Content Include="App_Pages\OrderHistory.aspx" />
-    <Content Include="App_Pages\PurchaseSummary.aspx" />
-    <Content Include="App_Pages\Register.aspx" />
-    <Content Include="css\userModule.css" />
-    <Content Include="Detail.aspx" />
-    <Content Include="images\login_pic.jpg" />
-    <Content Include="ManageProduct.aspx" />
-    <Content Include="Product.aspx" />
-    <Content Include="SyaSyaModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>syasyadbEntities.edmx</DependentUpon>
       <LastGenOutput>syasyadbEntities.Context.cs</LastGenOutput>
@@ -148,10 +134,19 @@
       <DependentUpon>syasyadbEntities.edmx</DependentUpon>
       <LastGenOutput>syasyadbEntities.cs</LastGenOutput>
     </Content>
+    <Content Include="Users\Carts.aspx" />
+    <Content Include="Users\CheckOut.aspx" />
+    <Content Include="App_Pages\ForgetPassword.aspx" />
+    <Content Include="App_Pages\Login.aspx" />
+    <Content Include="Admins\ManageUser.aspx" />
+    <Content Include="Users\OrderHistory.aspx" />
+    <Content Include="Users\PurchaseSummary.aspx" />
+    <Content Include="App_Pages\Register.aspx" />
+    <Content Include="css\userModule.css" />
+    <Content Include="images\login_pic.jpg" />
     <Content Include="Users\Bank.aspx" />
     <Content Include="Users\BankPayment.aspx" />
     <Content Include="Users\Detail.aspx" />
-    <Content Include="HelloWorld.aspx" />
     <Content Include="Admins\ManageProduct.aspx" />
     <Content Include="Users\Payments.aspx" />
     <Content Include="Users\Products.aspx" />
@@ -177,71 +172,11 @@
     </Compile>
     <Compile Include="AttributeCategory.cs">
       <DependentUpon>syasyadbEntities.tt</DependentUpon>
-    <Compile Include="App_Pages\Cart.aspx.cs">
-      <DependentUpon>Cart.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="App_Pages\Cart.aspx.designer.cs">
-      <DependentUpon>Cart.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="App_Pages\CheckOut.aspx.cs">
-      <DependentUpon>CheckOut.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="App_Pages\CheckOut.aspx.designer.cs">
-      <DependentUpon>CheckOut.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="App_Pages\ForgetPassword.aspx.cs">
-      <DependentUpon>ForgetPassword.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="App_Pages\ForgetPassword.aspx.designer.cs">
-      <DependentUpon>ForgetPassword.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="App_Pages\Login.aspx.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="App_Pages\Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="App_Pages\ManageUser.aspx.cs">
-      <DependentUpon>ManageUser.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="App_Pages\ManageUser.aspx.designer.cs">
-      <DependentUpon>ManageUser.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="App_Pages\OrderHistory.aspx.cs">
-      <DependentUpon>OrderHistory.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="App_Pages\OrderHistory.aspx.designer.cs">
-      <DependentUpon>OrderHistory.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="App_Pages\PurchaseSummary.aspx.cs">
-      <DependentUpon>PurchaseSummary.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="App_Pages\PurchaseSummary.aspx.designer.cs">
-      <DependentUpon>PurchaseSummary.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="App_Pages\Register.aspx.cs">
-      <DependentUpon>Register.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="App_Pages\Register.aspx.designer.cs">
-      <DependentUpon>Register.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Attribute.cs">
-      <DependentUpon>SyaSyaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AttributeCategory.cs">
-      <DependentUpon>SyaSyaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Cart.cs">
       <DependentUpon>syasyadbEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Email.cs" />
     <Compile Include="Order.cs">
       <DependentUpon>syasyadbEntities.tt</DependentUpon>
     </Compile>
@@ -281,6 +216,61 @@
     <Compile Include="User.cs">
       <DependentUpon>syasyadbEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Users\Carts.aspx.cs">
+      <DependentUpon>Carts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Carts.aspx.designer.cs">
+      <DependentUpon>Carts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Users\CheckOut.aspx.cs">
+      <DependentUpon>CheckOut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\CheckOut.aspx.designer.cs">
+      <DependentUpon>CheckOut.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\ForgetPassword.aspx.cs">
+      <DependentUpon>ForgetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\ForgetPassword.aspx.designer.cs">
+      <DependentUpon>ForgetPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admins\ManageUser.aspx.cs">
+      <DependentUpon>ManageUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admins\ManageUser.aspx.designer.cs">
+      <DependentUpon>ManageUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Users\OrderHistory.aspx.cs">
+      <DependentUpon>OrderHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\OrderHistory.aspx.designer.cs">
+      <DependentUpon>OrderHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Users\PurchaseSummary.aspx.cs">
+      <DependentUpon>PurchaseSummary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\PurchaseSummary.aspx.designer.cs">
+      <DependentUpon>PurchaseSummary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Users\Bank.aspx.cs">
       <DependentUpon>Bank.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -302,15 +292,7 @@
     <Compile Include="Users\Detail.aspx.designer.cs">
       <DependentUpon>Detail.aspx</DependentUpon>
     </Compile>
-    <Compile Include="HelloWorld.aspx.cs">
-      <DependentUpon>HelloWorld.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="HelloWorld.aspx.designer.cs">
-      <DependentUpon>HelloWorld.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Admins\ManageProduct.aspx.cs">
-    <Compile Include="ManageProduct.aspx.cs">
       <DependentUpon>ManageProduct.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -338,27 +320,6 @@
     </Compile>
     <Compile Include="SyasyaDesign.Master.designer.cs">
       <DependentUpon>SyasyaDesign.Master</DependentUpon>
-    </Compile>
-    <Compile Include="SyaSyaModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SyaSyaModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SyaSyaModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SyaSyaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SyaSyaModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SyaSyaModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Table.cs">
-      <DependentUpon>SyaSyaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="User.cs">
-      <DependentUpon>SyaSyaModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -430,7 +391,6 @@
     <Content Include="webfonts\fa-brands-400.ttf" />
     <Content Include="webfonts\fa-brands-400.eot" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
