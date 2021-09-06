@@ -124,7 +124,15 @@
                                 <tr>
                                     <td style="width: 10%; text-align: center" class="align-middle"><%# Container.ItemIndex + 1 %></td>
                                     <td style="width: 10%; text-align: center" class="align-middle"><%# Eval("ProductID") %></td>
-                                    <td style="width: 20%; text-align: center" class="align-middle"><%# Eval("ProductName")%></td>
+                                    <td style="width: 20%; text-align: center" class="align-middle">
+                                        <%# Eval("ProductName")%>
+                                        <br />
+                                        Color&nbsp;: &nbsp;
+                                    <asp:Label ID="LabelColor" Text='<%# Eval("Color")%>' runat="server" />
+                                        ,&nbsp; Size&nbsp;: &nbsp;
+                                    <asp:Label ID="LabelSize" Text='<%# Eval("Size")%>' runat="server" />
+
+                                    </td>
                                     <td style="width: 15%; text-align: center" class="align-middle"><%# Eval("Price")%></td>
                                     <td style="width: 10%; text-align: center" class="align-middle"><%# Eval("Quantity")%></td>
                                     <td style="width: 15%; text-align: right" class="align-middle"><%# Eval("TotalPrice")%></td>
