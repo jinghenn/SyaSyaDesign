@@ -36,7 +36,6 @@ namespace SyaSyaDesign.Users
         protected void Page_Load(object sender, EventArgs e)
         {
             
-            //Session["userID"] = 1004;
             if (!IsPostBack)
             {
                 if (Session["user_id"] != null)

@@ -27,22 +27,29 @@ namespace SyaSyaDesign.Users
                     lblEstimatedArriveTime.Text = order.Date.AddDays(7).ToString("dd-MM-yyyy");
                     lblDeliveryAddress.Text = order.DeliveryAddress;
                     lblStatus.Text = order.Status;
-                    if (order.Status.Equals("In Progress"))
-                    {
-                        btnTrackNo.Text = "ERC63097867" + order.OrderID + "MY";
-                        lblTrack.Visible = true;
-                        btnTrackNo.Visible = true;
-                    }
-                    else
+
+                    lblTrack.Visible = true;
+                    btnTrackNo.Visible = true;
+
+                    if (order.Status.Equals("Cancelled"))
                     {
                         btnCancelOrder.Visible = false;
                         lblTrack.Visible = false;
                         btnTrackNo.Visible = false;
                     }
+                    else
+                    {
+                        btnTrackNo.Text = "ERC63097867" + order.OrderID + "MY";
+                    }
+
+                    if (order.Status.Equals("Delivered"))
+                    {
+                        btnCancelOrder.Visible = false;
+                    }
                 }
 
                 con.Open();
-                String strSelectItem = "SELECT OrderDetail.ProductID, Product.product_name AS ProductName, Product.Price, OrderDetail.Quantity, OrderDetail.Quantity * Product.Price AS TotalPrice FROM OrderDetail INNER JOIN Product ON(OrderDetail.ProductID = Product.product_id) WHERE OrderID = @OrderID;";
+                String strSelectItem = "SELECT OrderDetail.ProductID, Product.product_name AS ProductName, Product.Price, OrderDetail.Quantity, OrderDetail.Quantity * Product.Price AS TotalPrice, size.Description as [Size], color.Description as [Color] FROM(OrderDetail INNER JOIN Product ON(OrderDetail.ProductID = Product.product_id)), Attribute color, Attribute size WHERE OrderDetail.OrderID = @OrderID and color.AttributeID = OrderDetail.color and size.AttributeID = OrderDetail.size;";
                 SqlCommand cmdSelectItem = new SqlCommand(strSelectItem, con);
                 cmdSelectItem.Parameters.AddWithValue("@OrderID", Request.QueryString["OrderID"]);
                 SqlDataAdapter da = new SqlDataAdapter();
