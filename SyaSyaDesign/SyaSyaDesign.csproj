@@ -139,6 +139,8 @@
     <Content Include="App_Pages\ForgetPassword.aspx" />
     <Content Include="App_Pages\Login.aspx" />
     <Content Include="Admins\ManageUser.aspx" />
+    <Content Include="Users\Home.aspx" />
+    <Content Include="Users\HomeRepeater.ascx" />
     <Content Include="Users\OrderHistory.aspx" />
     <Content Include="Users\PurchaseSummary.aspx" />
     <Content Include="App_Pages\Register.aspx" />
@@ -249,6 +251,20 @@
     </Compile>
     <Compile Include="Admins\ManageUser.aspx.designer.cs">
       <DependentUpon>ManageUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Users\HomeRepeater.ascx.cs">
+      <DependentUpon>HomeRepeater.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\HomeRepeater.ascx.designer.cs">
+      <DependentUpon>HomeRepeater.ascx</DependentUpon>
     </Compile>
     <Compile Include="Users\OrderHistory.aspx.cs">
       <DependentUpon>OrderHistory.aspx</DependentUpon>
