@@ -14,23 +14,27 @@ namespace SyaSyaDesign
         {
             var db = new syasyadbEntities();
             var prod_id_str = Request.QueryString["product_id"] ?? "0";
-            var prod_id = Convert.ToInt32(prod_id_str);
-            product = db.Products.FirstOrDefault(p => p.product_id == prod_id);
-            if (!Page.IsPostBack)
+            if (prod_id_str == null)
             {
-                
-                
-                if(product == null)
+                Response.Redirect("~/Users/Products.aspx", true);
+            }
+            else
+            {
+                var prod_id = Convert.ToInt32(prod_id_str);
+                product = db.Products.FirstOrDefault(p => p.product_id == prod_id);
+                if (!Page.IsPostBack)
                 {
-                    Response.Redirect("~/ProductNotFound.aspx");
+                    if (product == null)
+                        Response.Redirect("~/ProductNotFound.aspx");
+
+                    SqlDataSource1.SelectParameters["prod"].DefaultValue = prod_id.ToString();
+                    SqlDataSource2.SelectParameters["prod"].DefaultValue = prod_id.ToString();
+                    SqlDataSource3.SelectParameters["prod"].DefaultValue = prod_id.ToString();
+                    hiddenProd.Value = prod_id.ToString();
+                    lblProductName.Text = product.product_name;
+                    lblPrice.Text = $"RM {product.price}";
+                    txtQuantity.Attributes.Add("readonly", "readonly");
                 }
-                SqlDataSource1.SelectParameters["prod"].DefaultValue = prod_id.ToString();
-                SqlDataSource2.SelectParameters["prod"].DefaultValue = prod_id.ToString();
-                SqlDataSource3.SelectParameters["prod"].DefaultValue = prod_id.ToString();
-                hiddenProd.Value = prod_id.ToString();
-                lblProductName.Text = product.product_name;
-                lblPrice.Text = $"RM {product.price}";
-                txtQuantity.Attributes.Add("readonly", "readonly");
             }
         }
 
