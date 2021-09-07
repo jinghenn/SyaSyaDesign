@@ -106,7 +106,8 @@ namespace SyaSyaDesign
             rblColor.DataValueField = "AttributeID";
             rblColor.DataTextField = "Description";
             rblColor.DataBind();
-            rblColor.Items[0].Selected = true;
+            if(rblColor.Items.Count > 0)
+                rblColor.Items[0].Selected = true;
             BindSizeAttr();
         }
         private void BindSizeAttr()
@@ -127,7 +128,8 @@ namespace SyaSyaDesign
             rblSize.DataValueField = "AttributeID";
             rblSize.DataTextField = "Description";
             rblSize.DataBind();
-            rblSize.Items[0].Selected = true;
+            if (rblSize.Items.Count > 0)
+                rblSize.Items[0].Selected = true;
             CheckAvailability();
 
         }

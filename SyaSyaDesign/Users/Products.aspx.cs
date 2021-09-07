@@ -58,14 +58,15 @@ namespace SyaSyaDesign
         {
             var db = new syasyadbEntities();
             var products = new List<Product>();
+            var availableProduct = db.Products.Where(p => !p.isDeleted);
             if (keyword != "")
             {
                 var temp = "%" + keyword + "%";
-                products = db.Products.Where(p => DbFunctions.Like(p.product_name, temp)).ToList();
+                products = availableProduct.Where(p => DbFunctions.Like(p.product_name, temp)).ToList();
             }
             else
             {
-                products = db.Products.Where(p => p.category_id == cat_id).ToList();
+                products = availableProduct.Where(p => p.category_id == cat_id).ToList();
             }
             switch (sort)
             {

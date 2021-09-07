@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -201,10 +202,14 @@ namespace SyaSyaDesign.Admins
             {
                 product_name = txtNewProductName.Text,
                 price = Convert.ToDecimal(txtNewPrice.Text),
-                category_id = ddlNewCategory.SelectedValue
+                category_id = ddlNewCategory.SelectedValue,
+                URL = fileUpProdImg.FileName
             };
             db.Products.Add(newProduct);
             db.SaveChanges();
+
+            var filePath = HttpContext.Current.Server.MapPath("~/Product_Images/");
+            fileUpProdImg.PostedFile.SaveAs(Path.Combine(filePath, fileUpProdImg.FileName));
             BindData();
         }
 

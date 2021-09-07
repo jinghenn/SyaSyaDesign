@@ -158,8 +158,8 @@
                             <div class="mb-3">
                                 <label class="form-label">New Product Name</label>
                                 <asp:TextBox ID="txtNewProductName" CssClass="form-control form-control-sm" runat="server" />
-                                <%--<asp:RequiredFieldValidator CssClass="text-danger" Display="dynamic" runat="server"
-                        ErrorMessage="*Required" ControlToValidate="txtNewProductName" ValidationGroup="newProduct" />--%>
+                                <asp:RequiredFieldValidator CssClass="text-danger" Display="dynamic" runat="server"
+                        ErrorMessage="*Required" ControlToValidate="txtNewProductName" ValidationGroup="newProduct" />
                             </div>
                             <div class="d-flex justify-content-between">
                                 <div class="mb-3 w-50 me-2">
@@ -184,8 +184,9 @@
                             <div class="d-flex justify-content-between">
                                 <div class="mb-3 w-50">
                                     <label class="form-label">Upload Image</label>
-                                    <asp:FileUpload ID="fileUpProdImg" runat="server" />
-                                    
+                                    <asp:FileUpload ID="fileUpProdImg" runat="server" accept="image/*" />
+                                    <asp:RequiredFieldValidator CssClass="text-danger" ValidationGroup="newProduct" runat="server" Display="Dynamic" ErrorMessage="*Required" ControlToValidate="fileUpProdImg">
+                                    </asp:RequiredFieldValidator>
                                 </div>
                             </div>
                             <div class="mb-3 mx-auto">
@@ -196,7 +197,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <p>Add new peoduct</p>
+                        <p>Add new product</p>
                     </div>
                 </div>
             </div>
@@ -379,7 +380,22 @@
             $("#ProdDesc").empty();
             $("#ProdDesc").append(desc);
         }--%>
+        var file = $('input:file');
 
+        file.onchange = function (e) {
+            var ext = this.value.match(/\.([^\.]+)$/)[1];
+            switch (ext) {
+                case 'jpg':
+                case 'bmp':
+                case 'png':
+                case 'tif':
+                    alert('Allowed');
+                    break;
+                default:
+                    alert('Not allowed');
+                    this.value = '';
+            }
+        };
 
 
     </script>
