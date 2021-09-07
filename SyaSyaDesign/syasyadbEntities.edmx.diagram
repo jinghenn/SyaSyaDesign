@@ -5,17 +5,17 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="45ed27b2346c45c296efbe4fbcc06359" Name="Diagram1">
-        <EntityTypeShape EntityType="syasyadbModel.Attribute" Width="1.5" PointX="5.25" PointY="13.125" />
-        <EntityTypeShape EntityType="syasyadbModel.AttributeCategory" Width="1.5" PointX="3" PointY="17.25" />
-        <EntityTypeShape EntityType="syasyadbModel.Cart" Width="1.5" PointX="12.75" PointY="12.25" />
-        <EntityTypeShape EntityType="syasyadbModel.Order" Width="1.5" PointX="3" PointY="8.75" />
-        <EntityTypeShape EntityType="syasyadbModel.OrderDetail" Width="1.5" PointX="7.5" PointY="11.375" />
-        <EntityTypeShape EntityType="syasyadbModel.Payment" Width="1.5" PointX="5.25" PointY="9.25" />
-        <EntityTypeShape EntityType="syasyadbModel.PaymentMethod" Width="1.5" PointX="3" PointY="5.5" />
-        <EntityTypeShape EntityType="syasyadbModel.Product" Width="1.5" PointX="10.5" PointY="13.5" />
-        <EntityTypeShape EntityType="syasyadbModel.ProductCategory" Width="1.5" PointX="8.25" PointY="19.125" />
-        <EntityTypeShape EntityType="syasyadbModel.ProductDetail" Width="1.5" PointX="7.5" PointY="15.75" />
-        <EntityTypeShape EntityType="syasyadbModel.User" Width="1.5" PointX="0.75" PointY="10.5" />
+        <EntityTypeShape EntityType="syasyadbModel.Attribute" Width="1.5" PointX="5.25" PointY="13" />
+        <EntityTypeShape EntityType="syasyadbModel.AttributeCategory" Width="1.5" PointX="3" PointY="12.875" />
+        <EntityTypeShape EntityType="syasyadbModel.Cart" Width="1.5" PointX="7.5" PointY="12.25" />
+        <EntityTypeShape EntityType="syasyadbModel.Order" Width="1.5" PointX="3" PointY="8.875" />
+        <EntityTypeShape EntityType="syasyadbModel.OrderDetail" Width="1.5" PointX="7.5" PointY="8.375" />
+        <EntityTypeShape EntityType="syasyadbModel.Payment" Width="1.5" PointX="5.25" PointY="9.375" />
+        <EntityTypeShape EntityType="syasyadbModel.PaymentMethod" Width="1.5" PointX="3" PointY="5.625" />
+        <EntityTypeShape EntityType="syasyadbModel.Product" Width="1.5" PointX="10.5" PointY="13.25" />
+        <EntityTypeShape EntityType="syasyadbModel.ProductCategory" Width="1.5" PointX="8.25" PointY="20" />
+        <EntityTypeShape EntityType="syasyadbModel.ProductDetail" Width="1.5" PointX="7.5" PointY="16.625" />
+        <EntityTypeShape EntityType="syasyadbModel.User" Width="1.5" PointX="0.75" PointY="10.625" />
         <AssociationConnector Association="syasyadbModel.FK__OrderDeta__Color__0E391C95" />
         <AssociationConnector Association="syasyadbModel.FK__OrderDetai__Size__0F2D40CE" />
         <AssociationConnector Association="syasyadbModel.FK_Attribute_Category" />

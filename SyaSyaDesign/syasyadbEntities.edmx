@@ -89,6 +89,7 @@
           <Property Name="price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="URL" Type="nvarchar(max)" />
           <Property Name="category_id" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductAttribute">
           <Key>
@@ -355,7 +356,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ProductDetails_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="ProductDetails" Type="Self.ProductDetails" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
@@ -662,6 +665,7 @@
           <Property Name="price" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="category_id" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Carts" Relationship="syasyadbModel.FK_Cart_Product" FromRole="Product" ToRole="Cart" />
           <NavigationProperty Name="OrderDetails" Relationship="syasyadbModel.FK__OrderDeta__Produ__7C1A6C5A" FromRole="Product" ToRole="OrderDetail" />
           <NavigationProperty Name="ProductCategory" Relationship="syasyadbModel.FK_Product_Category" FromRole="Product" ToRole="ProductCategory" />
@@ -909,7 +913,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ProductDetails_Product">
-          <End Type="syasyadbModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="syasyadbModel.Product" Role="Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="syasyadbModel.ProductDetail" Role="ProductDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
@@ -1011,6 +1017,7 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="syasyadbModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
                 <ScalarProperty Name="category_id" ColumnName="category_id" />
                 <ScalarProperty Name="URL" ColumnName="URL" />
                 <ScalarProperty Name="price" ColumnName="price" />

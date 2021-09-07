@@ -185,7 +185,7 @@
                                 <div class="mb-3 w-50">
                                     <label class="form-label">Upload Image</label>
                                     <asp:FileUpload ID="fileUpProdImg" runat="server" />
-                                    <asp:RequiredFieldValidator ID="rfvImg" runat="server" ControlToValidate="fileUpProdImg" />
+                                    
                                 </div>
                             </div>
                             <div class="mb-3 mx-auto">

@@ -110,7 +110,7 @@ namespace SyaSyaDesign.Admins
         private void BindData()
         {
             var db = new syasyadbEntities();
-            var products = db.Products.Select(p => new ProductDetail
+            var products = db.Products.Where(p => !p.isDeleted).Select(p => new ProductDetail
             {
                 product_id = p.product_id,
                 product_name = p.product_name,
@@ -188,7 +188,7 @@ namespace SyaSyaDesign.Admins
 
             if (product != null)
             {
-                db.Products.Remove(product);
+                product.isDeleted = true;
                 db.SaveChanges();
             }
             BindData();
