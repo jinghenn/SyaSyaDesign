@@ -11,6 +11,14 @@
             height: 550px;
         }
 
+        .disabled {
+            opacity: 70%;
+        }
+
+        .enabled {
+            opacity: 100%;
+        }
+
         .product-name {
             font-weight: 300;
             font-size: 34px;
@@ -33,10 +41,10 @@
             }
         }
 
-        .btn-group > .badge{
-            margin-right: 5px; margin-top: 8px;
+        .btn-group > .badge {
+            margin-right: 5px;
+            margin-top: 8px;
         }
-
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </asp:Content>
@@ -52,58 +60,26 @@
                         <br />
                         <asp:Label ID="lblPrice" Text="" CssClass="label mt-5" runat="server" />
                         <hr />
-                    </div>
-                    <asp:HiddenField ID="hiddenIndex" runat="server"/>
-                        <asp:HiddenField ID="hiddenID" runat="server"/>
-                        <asp:HiddenField ID="hiddenProd" runat="server"/>
-                        <asp:HiddenField ID="hiddenColor" runat="server"/>
-                    <div>
-                        
-                        <asp:Label Text="SIZE" CssClass="label" runat="server" />
-                        <div style="display: flex; flex-wrap: wrap;">
-                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                            <asp:Repeater runat="server" ID="RepeaterSize" DataSourceID="SqlDataSource2">
-                                <ItemTemplate>
-                                        <asp:RadioButton runat="server" ClientIDMode="Predictable" ID='ActiveBtn' GroupName="SizeGrp" CssClass="badge rounded-pill btn" Text='<%# Eval("Description") %>' />
-                                </ItemTemplate>
-                            </asp:Repeater>
-                                </div>
-                        </div>
-                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:syasyadbConnection %>"
-                            SelectCommand="select distinct ar.Description
-from ProductDetails pd
-inner join attribute ar on(ar.AttributeID = pd.size)
-where pd.product_id = @prod">
-                            <SelectParameters>
-                                <asp:Parameter DefaultValue="5" Name="prod" Type="Int32" />
-                            </SelectParameters>
 
-                        </asp:SqlDataSource>
-                        <hr />
-                    </div>
-                    <div>
                         <asp:Label Text="COLOR" CssClass="label" runat="server" />
                         <div style="display: flex; flex-wrap: wrap;">
                             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                            <asp:Repeater runat="server" ID="Repeater1" DataSourceID="SqlDataSource3">
-                                <ItemTemplate>
-                                        <asp:RadioButton runat="server" ClientIDMode="Predictable" ID='ActivecColorBtn' GroupName="ColorGrp" CssClass="badge rounded-pill btn" Text='<%# Eval("Description") %>'/>
-                                </ItemTemplate>
-                            </asp:Repeater>
-                                </div>
+                                <asp:RadioButtonList ID="rblColor" runat="server" RepeatDirection="Horizontal"
+                                    OnSelectedIndexChanged="rblColor_SelectedIndexChanged" AutoPostBack="True">
+                                </asp:RadioButtonList>
+                            </div>
                         </div>
-                        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:syasyadbConnection %>"
-                            SelectCommand="select distinct ar.Description
-from ProductDetails pd
-inner join attribute ar on(ar.AttributeID = pd.color)
-where pd.product_id = @prod;">
-                            <SelectParameters>
-                                <asp:controlparameter name="Title" controlid="hiddenIndex" propertyname="Value" Type="String" DefaultValue="XL"/>
-                                <asp:Parameter DefaultValue="5" Name="size" Type="String" />
-                                <asp:Parameter DefaultValue="5" Name="prod" Type="Int32" />
-                            </SelectParameters>
-
-                        </asp:SqlDataSource>
+                        <hr />
+                    </div>
+                    <div>
+                        <asp:Label Text="SIZE" CssClass="label" runat="server" />
+                        <div style="display: flex; flex-wrap: wrap;">
+                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                <asp:RadioButtonList ID="rblSize" runat="server" RepeatDirection="Horizontal"
+                                    OnSelectedIndexChanged="rblSize_SelectedIndexChanged" AutoPostBack="True">
+                                </asp:RadioButtonList>
+                            </div>
+                        </div>
                         <hr />
                     </div>
                     <div>
@@ -131,13 +107,14 @@ where pa.product_id = @prod">
                     <div class="container">
                         <div class="d-flex flex-row align-items-center flex-wrap">
                             <div class="me-3 d-flex flex-nowrap mb-3" style="width: 130px">
-                                <asp:Button ID="btnMinus" ClientIDMode="Static" CssClass="btn btn-outline-secondary" runat="server" Text="-" OnClientClick="return minusQty();"/>
+                                <asp:Button ID="btnMinus" ClientIDMode="Static" CssClass="btn btn-outline-secondary" runat="server" Text="-" OnClientClick="return minusQty();" />
                                 <asp:TextBox ID="txtQuantity" ClientIDMode="Static" CssClass="form-control" runat="server" Text="1" />
-                                <asp:Button runat="server" ID="btnPlus" ClientIDMode="Static" CssClass="btn btn-outline-secondary" Text="+" OnClientClick="return addQty();"/>
+                                <asp:Button runat="server" ID="btnPlus" ClientIDMode="Static" CssClass="btn btn-outline-secondary" Text="+" OnClientClick="return addQty();" />
                             </div>
                             <asp:Button ID="btn_add_cart" CssClass="btn-dark mx-auto flex-grow-1 mb-3 py-3 rounded-1 fw-bold"
                                 Text="ADD TO CART" OnClick="btn_add_cart_Click" OnClientClick="return checkQuantity()" runat="server" />
                         </div>
+                        <asp:Label ID="lblAlreadyInCart" Visible="false" runat="server" Text="Already in cart." />
                     </div>
                     <div class="w-100">
                         <asp:Label Text="Product Measurement" CssClass="label mt-5" runat="server" />
@@ -205,7 +182,7 @@ where pa.product_id = @prod">
             //    });
             //});
 
-            
+
 
             //$('.btn-group input').on('click', function (event) {
             //        $('input[type=radio]').prop('checked', false);
@@ -238,7 +215,7 @@ where pa.product_id = @prod">
             return parseInt(quantity) > 0;
         }
 
-        function addQty(){
+        function addQty() {
             var quantity = parseInt($("#txtQuantity").val());
             quantity++;
 
@@ -260,7 +237,7 @@ where pa.product_id = @prod">
             if (quantity < 1) {
                 $("#btnMinus").prop("disabled", false);
             }
-            if(quantity > 0) $("#txtQuantity").val(quantity.toString());
+            if (quantity > 0) $("#txtQuantity").val(quantity.toString());
 
             return false;
         }
@@ -270,7 +247,7 @@ where pa.product_id = @prod">
             $("[id^=ContentPlaceHolder_Repeater1_ActivecColorBtn]").prop("name", "ColorGrp");
             $(".btn-group input").addClass("btn-check");
             $(".btn-group label").addClass("btn btn-outline-primary");
-        }); 
+        });
 
     </script>
 </asp:Content>

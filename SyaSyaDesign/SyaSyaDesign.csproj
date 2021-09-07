@@ -134,6 +134,7 @@
       <DependentUpon>syasyadbEntities.edmx</DependentUpon>
       <LastGenOutput>syasyadbEntities.cs</LastGenOutput>
     </Content>
+    <Content Include="Users\Cart.aspx" />
     <Content Include="Users\Carts.aspx" />
     <Content Include="Users\CheckOut.aspx" />
     <Content Include="App_Pages\ForgetPassword.aspx" />
@@ -217,6 +218,13 @@
     </Compile>
     <Compile Include="User.cs">
       <DependentUpon>syasyadbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Cart.aspx.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\Cart.aspx.designer.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
     </Compile>
     <Compile Include="Users\Carts.aspx.cs">
       <DependentUpon>Carts.aspx</DependentUpon>

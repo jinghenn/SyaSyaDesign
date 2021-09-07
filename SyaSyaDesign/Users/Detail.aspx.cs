@@ -25,14 +25,15 @@ namespace SyaSyaDesign
                     Response.Redirect("~/ProductNotFound.aspx");
 
                 SqlDataSource1.SelectParameters["prod"].DefaultValue = prod_id.ToString();
-                SqlDataSource2.SelectParameters["prod"].DefaultValue = prod_id.ToString();
-                SqlDataSource3.SelectParameters["prod"].DefaultValue = prod_id.ToString();
-                hiddenProd.Value = prod_id.ToString();
+                //SqlDataSource2.SelectParameters["prod"].DefaultValue = prod_id.ToString();
+                //SqlDataSource3.SelectParameters["prod"].DefaultValue = prod_id.ToString();
+                //hiddenProd.Value = prod_id.ToString();
                 lblProductName.Text = product.product_name;
                 lblPrice.Text = $"RM {product.price}";
                 txtQuantity.Attributes.Add("readonly", "readonly");
+                BindColorAttr();
             }
-
+            lblAlreadyInCart.Visible = false;
         }
 
         protected void btn_add_cart_Click(object sender, EventArgs e)
@@ -42,19 +43,26 @@ namespace SyaSyaDesign
             {
                 using (var db = new syasyadbEntities())
                 {
-                    var sizeID = db.Attributes.ToList().Select(dt => dt).Where(element => element.Description == hiddenID.Value);
-                    var colorID = db.Attributes.ToList().Select(dt => dt).Where(element => element.Description == hiddenColor.Value);
-                    db.Carts.Add(new Cart
+                    var sizeId = Convert.ToInt32(rblSize.SelectedValue);
+                    var colorId = Convert.ToInt32(rblColor.SelectedValue);
+                    var newCartItem = new Cart
                     {
-                        size = sizeID.Select(dt => dt.AttributeID).FirstOrDefault(),
+                        size = sizeId,
+                        color = colorId,
                         Quantity = Convert.ToInt32(txtQuantity.Text),
-                        color = colorID.Select(dt => dt.AttributeID).FirstOrDefault(),
-                        ProductID = Int32.Parse(hiddenProd.Value),
+                        ProductID = product.product_id,
                         UserID = Int32.Parse(Session["user_id"].ToString())
-                    });
-                    db.SaveChanges();
-                    btn_add_cart.Text = "Added To Cart";
-                    btn_add_cart.Enabled = false;
+                    };
+                    try
+                    {
+                        db.Carts.Add(newCartItem);
+                        db.SaveChanges();
+                    }
+                    catch
+                    {
+                        lblAlreadyInCart.Visible = true;
+                    }
+
                 }
             }
             else
@@ -62,12 +70,6 @@ namespace SyaSyaDesign
                 var loginUrl = "~/App_Pages/Login.aspx";
                 Response.Redirect($"{loginUrl}?returnPage=product&id={product.product_id}");
             }
-        }
-
-        protected void BtnSizeActive_CheckedChanged(object sender, EventArgs e)
-        {
-            hiddenIndex.Value = (sender as RadioButton).Text;
-
         }
 
         protected void btnPlus_Click(object sender, EventArgs e)
@@ -85,5 +87,92 @@ namespace SyaSyaDesign
 
             if (value - 1 == 1) btnMinus.Enabled = false;
         }
+
+        private void BindColorAttr()
+        {
+            var db = new syasyadbEntities();
+            var attrColorIDs = db.ProductDetails.Where(pd => pd.product_id == product.product_id)
+                .Select(pd => pd.color).Distinct();
+            var attrColor = db.Attributes.Where(attr => attrColorIDs.Contains(attr.AttributeID))
+                .Select(attr => new
+                {
+                    AttributeID = attr.AttributeID,
+                    Description = attr.Description
+                }).ToList();
+
+            rblColor.DataSource = attrColor;
+            rblColor.DataValueField = "AttributeID";
+            rblColor.DataTextField = "Description";
+            rblColor.DataBind();
+            rblColor.Items[0].Selected = true;
+            BindSizeAttr();
+        }
+        private void BindSizeAttr()
+        {
+            var db = new syasyadbEntities();
+            var colorID = Convert.ToInt32(rblColor.SelectedValue);
+            var availableSizeIDs = db.ProductDetails.Where(pd => pd.product_id == product.product_id)
+                .Where(pd => pd.color == colorID)
+                .Select(pd => pd.size);
+            var attrSize = db.Attributes.Where(pd => availableSizeIDs.Contains(pd.AttributeID))
+                .Select(attr => new
+                {
+                    AttributeID = attr.AttributeID,
+                    Description = attr.Description
+                }).ToList();
+
+            rblSize.DataSource = attrSize;
+            rblSize.DataValueField = "AttributeID";
+            rblSize.DataTextField = "Description";
+            rblSize.DataBind();
+            rblSize.Items[0].Selected = true;
+            CheckAvailability();
+
+        }
+
+        protected void rblColor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BindSizeAttr();
+        }
+
+        protected void rblSize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CheckAvailability();
+        }
+
+
+        private void CheckAvailability()
+        {
+            var color = Convert.ToInt32(rblColor.SelectedValue);
+            var size = Convert.ToInt32(rblSize.SelectedValue);
+            var db = new syasyadbEntities();
+            var prod = db.ProductDetails.Where(pd => pd.product_id == product.product_id)
+                .Where(pd => pd.color == color)
+                .Where(pd => pd.size == size)
+                .FirstOrDefault();
+
+            EnableAddCart();
+            if (prod == null)
+                DisableAddCart();
+            if (prod.quantity == 0)
+                DisableAddCart();
+
+        }
+        private void DisableAddCart()
+        {
+            var css = "btn-dark mx-auto flex-grow-1 mb-3 py-3 rounded-1 fw-bold";
+            btn_add_cart.Enabled = false;
+            btn_add_cart.Text = "Out of Stock";
+            btn_add_cart.CssClass = $"{css} disabled";
+        }
+        private void EnableAddCart()
+        {
+            var css = "btn-dark mx-auto flex-grow-1 mb-3 py-3 rounded-1 fw-bold";
+            btn_add_cart.Enabled = true;
+            btn_add_cart.Text = "Add To Cart";
+            btn_add_cart.CssClass = $"{css} enabled";
+        }
+
+
     }
 }

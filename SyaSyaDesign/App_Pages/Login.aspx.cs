@@ -73,6 +73,9 @@ namespace SyaSyaDesign.App_Pages
                     case "order":
                         url = $"~/Users/OrderHistory.aspx";
                         break;
+                    case "cart":
+                        url = $"~/Users/Cart.aspx";
+                        break;
                     default:
                         url = "~/Users/Products.aspx";
                         break;
