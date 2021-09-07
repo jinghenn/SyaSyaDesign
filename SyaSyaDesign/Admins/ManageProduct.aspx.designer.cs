@@ -168,6 +168,24 @@ namespace SyaSyaDesign.Admins
         protected global::System.Web.UI.WebControls.DropDownList ddlNewCategory;
 
         /// <summary>
+        /// fileUpProdImg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload fileUpProdImg;
+
+        /// <summary>
+        /// rfvImg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvImg;
+
+        /// <summary>
         /// btnInsert control.
         /// </summary>
         /// <remarks>
