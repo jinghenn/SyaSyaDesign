@@ -7,7 +7,7 @@ using System.Web.Script.Services;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using System.IO;
 namespace SyaSyaDesign
 {
     public partial class Products : System.Web.UI.Page
@@ -92,6 +92,16 @@ namespace SyaSyaDesign
             var kw = rawValue == "" ? "" : $"&search={rawValue}";
             Response.Redirect($"~/Users/Products.aspx?category={cat_id}&sort={sort}{kw}");
 
+        }
+        public string GetImage(string name)
+        {
+            //* var imgPath = HttpContext.Current.Server.MapPath("~/Product_Images/");
+            var imgPath = "/Product_Images/";
+            var imgFile = HttpContext.Current.Server.MapPath($"~/Product_Images/{name}");
+            if (String.IsNullOrEmpty(name) || !File.Exists(imgFile))
+                return $"{imgPath}empty.png";
+            
+            return $"{imgPath}{name}";
         }
     }
 }

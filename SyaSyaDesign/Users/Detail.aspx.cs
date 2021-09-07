@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -28,6 +29,7 @@ namespace SyaSyaDesign
                 //SqlDataSource2.SelectParameters["prod"].DefaultValue = prod_id.ToString();
                 //SqlDataSource3.SelectParameters["prod"].DefaultValue = prod_id.ToString();
                 //hiddenProd.Value = prod_id.ToString();
+                imgProduct.ImageUrl = GetImage(product.URL);
                 lblProductName.Text = product.product_name;
                 lblPrice.Text = $"RM {product.price}";
                 txtQuantity.Attributes.Add("readonly", "readonly");
@@ -173,6 +175,15 @@ namespace SyaSyaDesign
             btn_add_cart.CssClass = $"{css} enabled";
         }
 
+        public string GetImage(string name)
+        {
+            //* var imgPath = HttpContext.Current.Server.MapPath("~/Product_Images/");
+            var imgPath = "/Product_Images/";
+            var imgFile = HttpContext.Current.Server.MapPath($"~/Product_Images/{name}");
+            if (String.IsNullOrEmpty(name) || !File.Exists(imgFile))
+                return $"{imgPath}empty.png";
 
+            return $"{imgPath}{name}";
+        }
     }
 }

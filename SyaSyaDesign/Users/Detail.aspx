@@ -53,7 +53,7 @@
     <form id="ProductDetailform" runat="server">
         <div class="container px-4">
             <div class="d-flex justify-content-around">
-                <img class="img my-5" src="https://via.placeholder.com/300x600" />
+                <asp:Image ID="imgProduct" CssClass="img my-5" runat="server" />
                 <div class="d-flex ms-3 my-5 flex-column w-50 justify-content-between">
                     <div>
                         <asp:Label ID="lblProductName" CssClass="product-name my-3" Text="" runat="server" />

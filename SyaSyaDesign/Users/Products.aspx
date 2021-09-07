@@ -38,7 +38,7 @@
 </asp:Content>
 
 <asp:Content ID="bodyContent" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
-    <form id="product_form" runat="server" class="container-fluid">
+    <form id="product_form" runat="server" class="container-fluid pt-3">
         <div class="container-sm px-2">
             <div id="main-content" class="d-flex w-100 flex-column">
                 <!--title and search row-->
@@ -77,7 +77,7 @@
                                 <ItemTemplate>
                                     <div class="card me-2 mb-2" style="width: 200px">
                                         <a href="Detail.aspx?product_id=<%# Eval("product_id")%>">
-                                            <img src='<%# Eval("URL") %>' class="card-img-top" alt="..."></a>
+                                            <img src='<%# GetImage("" + Eval("URL")) %>' class="card-img-top" alt="..."></a>
                                         <div class="card-body">
                                             <a href="Detail.aspx?product_id=<%# Eval("product_id") %>" class="link-dark plain-link">
                                                 <p class="card-text text-truncate"><%# Eval("product_name") %></p>
@@ -96,26 +96,5 @@
         </div>
 
     </form>
-    <%--<script>
-        function getUrlVars() {
-            var vars = [], hash;
-            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-            for (var i = 0; i < hashes.length; i++) {
-                hash = hashes[i].split('=');
-                vars.push(hash[0]);
-                vars[hash[0]] = hash[1];
-            }
-            return vars;
-        }
-        $(document).ready(function () {
-            var keyword = getUrlVars()["search"];
-            $("#searchBox").val(keyword);
-        })
-        function validateSearch() {
-            var keyword = document.getElementById("searchBox").value;
-            document.getElementById("<%= hiddenSearchBox.ClientID %>").value = keyword;
-            //return keyword.length !== 0;
-            return true
-        }
-    </script>--%>
+
 </asp:Content>
