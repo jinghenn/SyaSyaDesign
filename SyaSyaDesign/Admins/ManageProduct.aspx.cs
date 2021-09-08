@@ -298,12 +298,15 @@ namespace SyaSyaDesign.Admins
                                 where data.product_id.ToString().Equals(ProdID.Text)
                                 select data).ToList();
                 DataTable dt = new DataTable();
-                dt.Columns.AddRange(new DataColumn[3] {
+                dt.Columns.AddRange(new DataColumn[5] {
                     new DataColumn("size", typeof(string)),
+                    new DataColumn("sizeID", typeof(int)),
                     new DataColumn("color", typeof(string)),
+                    new DataColumn("colorID", typeof(int)),
                     new DataColumn("quantity",typeof(string)) });
 
-                dataList.ForEach(element => dt.Rows.Add(element.Attribute1.Description, element.Attribute.Description, element.quantity));
+                dataList.ForEach(element => dt.Rows.Add(element.Attribute1.Description, element.Attribute1.AttributeID
+                    ,element.Attribute.Description, element.Attribute.AttributeID,element.quantity));
 
                 TableQuantity.DataSource = dt;
                 TableQuantity.DataBind();
@@ -331,6 +334,28 @@ namespace SyaSyaDesign.Admins
 
                 db.SaveChanges();
             }
+        }
+
+        protected void btnDeleteAttr_Command(object sender, CommandEventArgs e)
+        {
+            var argsRaw = e.CommandArgument.ToString();
+            var argsArr = argsRaw.Split(',');
+            var prodID = Int32.Parse(ProdID.Text);
+            var color = Int32.Parse(argsArr[0]);
+            var size = Int32.Parse(argsArr[1]);
+            
+            var db = new syasyadbEntities();
+            var product = db.ProductDetails.Where(pd => pd.product_id == prodID)
+                .Where(pd => pd.color == color)
+                .Where(pd => pd.size == size).FirstOrDefault();
+            if(product != null)
+            {
+                db.ProductDetails.Remove(product);
+                db.SaveChanges();
+                
+            }
+            
+
         }
     }
 

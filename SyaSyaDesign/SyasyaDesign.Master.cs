@@ -30,6 +30,7 @@ namespace SyaSyaDesign
             {
                 manageAdminLink.Visible = true;
                 manageProductLink.Visible = true;
+                manageAttrLink.Visible = true;
             }
 
         }

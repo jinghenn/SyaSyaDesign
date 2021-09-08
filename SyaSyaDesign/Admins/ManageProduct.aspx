@@ -74,6 +74,14 @@
                                             <asp:TextBox ID="txtQty" runat="server" Text='<%# Eval("quantity") %>' Enabled="false"></asp:TextBox>
                                         </ItemTemplate>
                                     </asp:TemplateField>
+                                    <asp:TemplateField ControlStyle-CssClass="col-md-8">
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="btnDeleteAttr" CssClass="btn btn-danger btn-sm" Text="Cancel" runat="server" OnCommand="btnDeleteAttr_Command"
+                                                CommandArgument='<%#  string.Format("{0},{1}",Eval("colorID"),Eval("sizeID")) %>'>
+                                        <i class="bi bi-x"></i>
+                                            </asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
                         </div>
@@ -99,72 +107,45 @@
                                     <asp:TableCell>
                                         <asp:TextBox ID="txtQtyAdd" runat="server"></asp:TextBox>
                                         <asp:RangeValidator CssClass="text-danger" ID="RangeValidator1" runat="server" Type="Integer" MinimumValue="-99" MaximumValue="999999999" ControlToValidate="txtQtyAdd" ErrorMessage="Invalid range" Display="Dynamic" ValidationGroup="product" />
-                                    </asp:TableCell>
-                                </asp:TableRow>
-
-                            </asp:Table>
-                            <div class="row mb-3 mx-auto">
+                                    </asp:TableCell></asp:TableRow></asp:Table><div class="row mb-3 mx-auto">
                                 <asp:Button runat="server" ID="BtnAddQty" CssClass="btn btn-success w-25 " Text="Update" Style="float: right;" OnClick="BtnAddQty_Click" />
                             </div>
                         </div>
                         <br />
                         <br />
                         <div class="row card">
-                            <h4>Add Product Details</h4>
-                            <asp:Table runat="server" Height="40">
+                            <h4>Add Product Details</h4><asp:Table runat="server" Height="40">
                                 <asp:TableRow>
-                                    <asp:TableCell>Size :</asp:TableCell>
-                                    <asp:TableCell>
+                                    <asp:TableCell>Size :</asp:TableCell><asp:TableCell>
                                         <asp:DropDownList ID="ddlSizeList" runat="server"></asp:DropDownList>
-                                    </asp:TableCell>
-                                </asp:TableRow>
-                                <asp:TableRow>
-                                    <asp:TableCell>Color :</asp:TableCell>
-                                    <asp:TableCell>
+                                    </asp:TableCell></asp:TableRow><asp:TableRow>
+                                    <asp:TableCell>Color :</asp:TableCell><asp:TableCell>
                                         <asp:DropDownList ID="ddlColorList" runat="server"></asp:DropDownList>
-                                    </asp:TableCell>
-                                </asp:TableRow>
-                                <asp:TableRow>
-                                    <asp:TableCell>Quantity :</asp:TableCell>
-                                    <asp:TableCell>
+                                    </asp:TableCell></asp:TableRow><asp:TableRow>
+                                    <asp:TableCell>Quantity :</asp:TableCell><asp:TableCell>
                                         <asp:TextBox ID="txtnewQty" runat="server"></asp:TextBox>
                                         <asp:RangeValidator CssClass="text-danger" ID="RangeValidator2" runat="server" Type="Integer" MinimumValue="-99" MaximumValue="999999999" ControlToValidate="txtnewQty" ErrorMessage="Invalid range" Display="Dynamic" ValidationGroup="product" />
-                                    </asp:TableCell>
-                                </asp:TableRow>
-
-                            </asp:Table>
-                            <div class="row mb-3 mx-auto">
+                                    </asp:TableCell></asp:TableRow></asp:Table><div class="row mb-3 mx-auto">
                                 <asp:Button runat="server" ID="Button1" CssClass="btn btn-success w-25 " Text="Add" Style="float: right;" OnClick="ButtonNewProdDetails_Click" />
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <p>Control your quantity</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="newModal" class="modal fade" tabindex="-1" aria-labelledby="modalLabel">
+                        <p>Control your quantity</p></div></div></div></div><div id="newModal" class="modal fade" tabindex="-1" aria-labelledby="modalLabel">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h2>Insertion</h2>
-                        <button type="button" class="btn btn-danger close" data-bs-dismiss="modal">&times;</button>
-                    </div>
-                    <div class="modal-body">
+                        <h2>Insertion</h2><button type="button" class="btn btn-danger close" data-bs-dismiss="modal">&times;</button></div><div class="modal-body">
                         <br />
                         <div class="d-flex w-50 flex-column mx-auto">
                             <div class="mb-3">
-                                <label class="form-label">New Product Name</label>
-                                <asp:TextBox ID="txtNewProductName" CssClass="form-control form-control-sm" runat="server" />
+                                <label class="form-label">New Product Name</label> <asp:TextBox ID="txtNewProductName" CssClass="form-control form-control-sm" runat="server" />
                                 <asp:RequiredFieldValidator CssClass="text-danger" Display="dynamic" runat="server"
-                        ErrorMessage="*Required" ControlToValidate="txtNewProductName" ValidationGroup="newProduct" />
+                                    ErrorMessage="*Required" ControlToValidate="txtNewProductName" ValidationGroup="newProduct" />
                             </div>
                             <div class="d-flex justify-content-between">
                                 <div class="mb-3 w-50 me-2">
-                                    <label class="form-label">Price</label>
-                                    <asp:TextBox ID="txtNewPrice" CssClass="form-control form-control-sm" runat="server" />
+                                    <label class="form-label">Price</label> <asp:TextBox ID="txtNewPrice" CssClass="form-control form-control-sm" runat="server" />
                                     <asp:CompareValidator CssClass="text-danger" runat="server" Operator="DataTypeCheck" Type="Double" ControlToValidate="txtNewPrice"
                                         ErrorMessage="*Invalid Price" Display="Dynamic" ValidationGroup="newProduct" />
                                     <asp:RangeValidator CssClass="text-danger" runat="server" Type="Double" MinimumValue="0" MaximumValue="999999999"
@@ -175,34 +156,20 @@
                             </div>
                             <div class="d-flex justify-content-between">
                                 <div class="mb-3 w-50">
-                                    <label class="form-label">Category</label>
-                                    <asp:DropDownList ID="ddlNewCategory" runat="server" CssClass="form-control form-control-sm w-100"
+                                    <label class="form-label">Category</label> <asp:DropDownList ID="ddlNewCategory" runat="server" CssClass="form-control form-control-sm w-100"
                                         DataSourceID="dsCategory" DataTextField="category_name" DataValueField="category_id">
                                     </asp:DropDownList>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between">
                                 <div class="mb-3 w-50">
-                                    <label class="form-label">Upload Image</label>
-                                    <asp:FileUpload ID="fileUpProdImg" runat="server" accept="image/*" />
+                                    <label class="form-label">Upload Image</label> <asp:FileUpload ID="fileUpProdImg" runat="server" accept="image/*" />
                                     <asp:RequiredFieldValidator CssClass="text-danger" ValidationGroup="newProduct" runat="server" Display="Dynamic" ErrorMessage="*Required" ControlToValidate="fileUpProdImg">
-                                    </asp:RequiredFieldValidator>
-                                </div>
-                            </div>
-                            <div class="mb-3 mx-auto">
+                                    </asp:RequiredFieldValidator></div></div><div class="mb-3 mx-auto">
                                 <asp:LinkButton ID="btnInsert" CssClass="btn btn-success btn-sm" runat="server" OnClick="btnInsert_Click" ValidationGroup="newProduct">
                     <i class="bi bi-plus"></i>Insert
-                                </asp:LinkButton>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <p>Add new product</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <asp:HiddenField ID="Hidden" runat="server"></asp:HiddenField>
+                                </asp:LinkButton></div></div></div><div class="modal-footer">
+                        <p>Add new product</p></div></div></div></div><asp:HiddenField ID="Hidden" runat="server"></asp:HiddenField>
 
 
         <div class="container">
@@ -212,8 +179,7 @@
                     <div class="card input-group" style="margin-bottom: 10px;">
                         <div class="card-body" style="border: solid; border-radius: 5px; border: brown 0.5px; margin-right: 5px; width: inherit">
                             <%--<div class="product-table">--%>
-                            <h3>Manage Product </h3>
-                            <div class="container" style="margin-right: 5px; margin-top: 25px;">
+                            <h3>Manage Product </h3><div class="container" style="margin-right: 5px; margin-top: 25px;">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <asp:Button ID="AddProductButton" runat="server" ClientIDMode="Static" CssClass="btn btn-primary float-end" OnClientClick="return false;" Text="Create New" data-bs-toggle="modal" data-bs-target="#newModal" />
@@ -229,18 +195,14 @@
                                         <Columns>
                                             <asp:TemplateField>
                                                 <HeaderTemplate>
-                                                    <p class="fw-bold">Product ID</p>
-                                                </HeaderTemplate>
-                                                <ItemTemplate>
+                                                    <p class="fw-bold">Product ID</p></HeaderTemplate><ItemTemplate>
                                                     <asp:Label ID="lblProductID" CssClass="text-center td-center" runat="server" Text='<%# Eval("product_id") %>' />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
                                             <asp:TemplateField>
                                                 <HeaderTemplate>
-                                                    <p class="fw-bold">Product Name</p>
-                                                </HeaderTemplate>
-                                                <ItemTemplate>
+                                                    <p class="fw-bold">Product Name</p></HeaderTemplate><ItemTemplate>
                                                     <asp:Label ID="lblProductName" runat="server" ClientIDMode="Static" Text='<%# Eval("product_name") %>' />
                                                 </ItemTemplate>
                                                 <EditItemTemplate>
@@ -252,9 +214,7 @@
 
                                             <asp:TemplateField>
                                                 <HeaderTemplate>
-                                                    <p class="fw-bold">Price</p>
-                                                </HeaderTemplate>
-                                                <ItemTemplate>
+                                                    <p class="fw-bold">Price</p></HeaderTemplate><ItemTemplate>
                                                     <asp:Label ID="lblPrice" CssClass="text-center td-center" runat="server" Text='<%# Eval("price") %>' />
                                                 </ItemTemplate>
                                                 <EditItemTemplate>
@@ -280,9 +240,7 @@
 
                                             <asp:TemplateField>
                                                 <HeaderTemplate>
-                                                    <p class="fw-bold">Product Category</p>
-                                                </HeaderTemplate>
-                                                <ItemTemplate>
+                                                    <p class="fw-bold">Product Category</p></HeaderTemplate><ItemTemplate>
                                                     <asp:Label ID="lblCategoryName" runat="server" Text='<%# Eval("category_name") %>' />
                                                 </ItemTemplate>
                                                 <EditItemTemplate>
@@ -295,9 +253,7 @@
 
                                             <asp:TemplateField>
                                                 <HeaderTemplate>
-                                                    Quantity Management
-                                                </HeaderTemplate>
-                                                <ItemTemplate>
+                                                    Quantity Management</HeaderTemplate><ItemTemplate>
                                                     <asp:Button runat="server" CommandName="Select" CausesValidation="False" CommandArgument='<%#Eval("product_id") + "," + Eval("product_name") %>' ID="ModalLink" class="ModalClick" UseSubmitBehavior="false" Text="Manage" ClientIDMode="Static" CssClass="btn btn-primary"></asp:Button>
                                                 </ItemTemplate>
                                                 <EditItemTemplate>
@@ -306,58 +262,25 @@
 
                                             <asp:TemplateField>
                                                 <HeaderTemplate>
-                                                    <p class="fw-bold">Attribute</p>
-                                                </HeaderTemplate>
-                                                <ItemTemplate>
+                                                    <p class="fw-bold">Attribute</p></HeaderTemplate><ItemTemplate>
                                                     <div class="container">
                                                         <asp:TextBox ID="attributeRecord" runat="server" Enabled="false">
-                                                        </asp:TextBox>
-
-                                                        <%--<asp:Label ID="lblAttributeId" CssClass="text-center mx-auto" runat="server" Text='<%# Eval("attribute_id") %>' />--%>
-                                                    </div>
-                                                </ItemTemplate>
-                                                <EditItemTemplate>
+                                                        </asp:TextBox><%--<asp:Label ID="lblAttributeId" CssClass="text-center mx-auto" runat="server" Text='<%# Eval("attribute_id") %>' />--%></div></ItemTemplate><EditItemTemplate>
                                                     <asp:ListBox ID="AttributeList" runat="server" multiple CssClass="chosen-select" Enabled="true" SelectionMode="multiple">
-                                                        <asp:ListItem>--Select--</asp:ListItem>
-                                                    </asp:ListBox>
-                                                    <%--<asp:TextBox ID="txtAttributeId" CssClass="form-control form-control-sm" runat="server" Text='<%# Eval("attribute_id") %>' />--%>
-                                                </EditItemTemplate>
-                                            </asp:TemplateField>
-
-                                            <asp:TemplateField>
+                                                        <asp:ListItem>--Select--</asp:ListItem></asp:ListBox><%--<asp:TextBox ID="txtAttributeId" CssClass="form-control form-control-sm" runat="server" Text='<%# Eval("attribute_id") %>' />--%></EditItemTemplate></asp:TemplateField><asp:TemplateField>
                                                 <ItemTemplate>
                                                     <div class="d-flex flex-nowrap">
                                                         <asp:LinkButton ID="btnEdit" CssClass="btn btn-primary btn-sm" runat="server" CommandName="Edit">
                                         <i class="bi bi-pencil"></i>
-                                                        </asp:LinkButton>
-                                                        <asp:LinkButton ID="btnDelete" CssClass="btn btn-danger btn-sm" runat="server" CommandName="Delete">
+                                                        </asp:LinkButton><asp:LinkButton ID="btnDelete" CssClass="btn btn-danger btn-sm" runat="server" CommandName="Delete">
                                         <i class="bi bi-trash"></i>
-                                                        </asp:LinkButton>
-                                                </ItemTemplate>
-                                                <EditItemTemplate>
+                                                        </asp:LinkButton></ItemTemplate><EditItemTemplate>
                                                     <div class="d-flex flex-nowrap">
                                                         <asp:LinkButton ID="btnUpdate" CssClass="btn btn-success btn-sm" runat="server" CommandName="Update" ValidationGroup="product">
                                         <i class="bi bi-check"></i>
-                                                        </asp:LinkButton>
-                                                        <asp:LinkButton ID="btnCancel" CssClass="btn btn-danger btn-sm" Text="Cancel" runat="server" CommandName="Cancel">
+                                                        </asp:LinkButton><asp:LinkButton ID="btnCancel" CssClass="btn btn-danger btn-sm" Text="Cancel" runat="server" CommandName="Cancel">
                                         <i class="bi bi-x"></i>
-                                                        </asp:LinkButton>
-                                                    </div>
-                                                </EditItemTemplate>
-
-                                            </asp:TemplateField>
-                                        </Columns>
-
-                                    </asp:GridView>
-                                    <%--</div>--%>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <asp:SqlDataSource ID="dsCategory" runat="server" ConnectionString="Data Source=syasyadesign.database.windows.net;Initial Catalog=syasyadb;User ID=syasya;Password=Ssdesign12@34;MultipleActiveResultSets=True;Application Name=EntityFramework" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [ProductCategory]"></asp:SqlDataSource>
+                                                        </asp:LinkButton></div></EditItemTemplate></asp:TemplateField></Columns></asp:GridView><%--</div>--%></div></div></div></div></div></div><asp:SqlDataSource ID="dsCategory" runat="server" ConnectionString="Data Source=syasyadesign.database.windows.net;Initial Catalog=syasyadb;User ID=syasya;Password=Ssdesign12@34;MultipleActiveResultSets=True;Application Name=EntityFramework" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [ProductCategory]"></asp:SqlDataSource>
         </div>
     </form>
 
@@ -380,22 +303,7 @@
             $("#ProdDesc").empty();
             $("#ProdDesc").append(desc);
         }--%>
-        var file = $('input:file');
 
-        file.onchange = function (e) {
-            var ext = this.value.match(/\.([^\.]+)$/)[1];
-            switch (ext) {
-                case 'jpg':
-                case 'bmp':
-                case 'png':
-                case 'tif':
-                    alert('Allowed');
-                    break;
-                default:
-                    alert('Not allowed');
-                    this.value = '';
-            }
-        };
 
 
     </script>
