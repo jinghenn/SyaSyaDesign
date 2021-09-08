@@ -5,36 +5,36 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="45ed27b2346c45c296efbe4fbcc06359" Name="Diagram1">
-        <EntityTypeShape EntityType="syasyadbModel.Attribute" Width="1.5" PointX="5.25" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="syasyadbModel.AttributeCategory" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="syasyadbModel.Cart" Width="1.5" PointX="7.5" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="syasyadbModel.Order" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="syasyadbModel.Payment" Width="1.5" PointX="5.25" PointY="14.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="syasyadbModel.PaymentMethod" Width="1.5" PointX="3" PointY="18.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="syasyadbModel.Product" Width="1.5" PointX="10.5" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="syasyadbModel.ProductCategory" Width="1.5" PointX="8.25" PointY="13" IsExpanded="true" />
-        <EntityTypeShape EntityType="syasyadbModel.ProductDetail" Width="1.5" PointX="12.75" PointY="9.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="syasyadbModel.User" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
-        <AssociationConnector Association="syasyadbModel.FK_Attribute_Category" ManuallyRouted="false" />
-        <AssociationConnector Association="syasyadbModel.FK_Attribute_User" ManuallyRouted="false" />
-        <AssociationConnector Association="syasyadbModel.FK_Cart_Color" ManuallyRouted="false" />
-        <AssociationConnector Association="syasyadbModel.FK_Cart_Size" ManuallyRouted="false" />
-        <AssociationConnector Association="syasyadbModel.FK_ProductDetails_Attribute" ManuallyRouted="false" />
-        <AssociationConnector Association="syasyadbModel.FK_ProductDetails_Attribute1" ManuallyRouted="false" />
-        <AssociationConnector Association="syasyadbModel.FK_AttributeCategory_User" ManuallyRouted="false" />
-        <AssociationConnector Association="syasyadbModel.FK_Cart_Product" ManuallyRouted="false" />
-        <AssociationConnector Association="syasyadbModel.FK_Cart_User" ManuallyRouted="false" />
-        <AssociationConnector Association="syasyadbModel.FK__Order__UserID__3493CFA7" ManuallyRouted="false" />
-        <AssociationConnector Association="syasyadbModel.FK__Payment__OrderID__6FE99F9F" ManuallyRouted="false" />
-        <AssociationConnector Association="syasyadbModel.FK__Payment__Payment__6D0D32F4" ManuallyRouted="false" />
-        <AssociationConnector Association="syasyadbModel.FK_Product_Category" ManuallyRouted="false" />
-        <AssociationConnector Association="syasyadbModel.FK_ProductDetails_Product" ManuallyRouted="false" />
-        <AssociationConnector Association="syasyadbModel.ProductAttribute" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="syasyadbModel.OrderDetail" Width="1.5" PointX="12.75" PointY="12.75" />
+        <EntityTypeShape EntityType="syasyadbModel.Attribute" Width="1.5" PointX="5.25" PointY="13" />
+        <EntityTypeShape EntityType="syasyadbModel.AttributeCategory" Width="1.5" PointX="3" PointY="12.875" />
+        <EntityTypeShape EntityType="syasyadbModel.Cart" Width="1.5" PointX="7.5" PointY="12.25" />
+        <EntityTypeShape EntityType="syasyadbModel.Order" Width="1.5" PointX="3" PointY="8.875" />
+        <EntityTypeShape EntityType="syasyadbModel.OrderDetail" Width="1.5" PointX="7.5" PointY="8.375" />
+        <EntityTypeShape EntityType="syasyadbModel.Payment" Width="1.5" PointX="5.25" PointY="9.375" />
+        <EntityTypeShape EntityType="syasyadbModel.PaymentMethod" Width="1.5" PointX="3" PointY="5.625" />
+        <EntityTypeShape EntityType="syasyadbModel.Product" Width="1.5" PointX="10.5" PointY="13.25" />
+        <EntityTypeShape EntityType="syasyadbModel.ProductCategory" Width="1.5" PointX="8.25" PointY="20" />
+        <EntityTypeShape EntityType="syasyadbModel.ProductDetail" Width="1.5" PointX="7.5" PointY="16.625" />
+        <EntityTypeShape EntityType="syasyadbModel.User" Width="1.5" PointX="0.75" PointY="10.625" />
         <AssociationConnector Association="syasyadbModel.FK__OrderDeta__Color__0E391C95" />
         <AssociationConnector Association="syasyadbModel.FK__OrderDetai__Size__0F2D40CE" />
+        <AssociationConnector Association="syasyadbModel.FK_Attribute_Category" />
+        <AssociationConnector Association="syasyadbModel.FK_Attribute_User" />
+        <AssociationConnector Association="syasyadbModel.FK_Cart_Color" />
+        <AssociationConnector Association="syasyadbModel.FK_Cart_Size" />
+        <AssociationConnector Association="syasyadbModel.FK_ProductDetails_Attribute" />
+        <AssociationConnector Association="syasyadbModel.FK_ProductDetails_Attribute1" />
+        <AssociationConnector Association="syasyadbModel.FK_AttributeCategory_User" />
+        <AssociationConnector Association="syasyadbModel.FK_Cart_Product" />
+        <AssociationConnector Association="syasyadbModel.FK_Cart_User" />
+        <AssociationConnector Association="syasyadbModel.FK__Order__UserID__3493CFA7" />
         <AssociationConnector Association="syasyadbModel.FK__OrderDeta__Order__7D0E9093" />
+        <AssociationConnector Association="syasyadbModel.FK__Payment__OrderID__6FE99F9F" />
         <AssociationConnector Association="syasyadbModel.FK__OrderDeta__Produ__7C1A6C5A" />
+        <AssociationConnector Association="syasyadbModel.FK__Payment__Payment__6D0D32F4" />
+        <AssociationConnector Association="syasyadbModel.FK_Product_Category" />
+        <AssociationConnector Association="syasyadbModel.FK_ProductDetails_Product" />
+        <AssociationConnector Association="syasyadbModel.ProductAttribute" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

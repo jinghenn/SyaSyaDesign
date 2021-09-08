@@ -7,7 +7,7 @@ using System.Web.Script.Services;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using System.IO;
 namespace SyaSyaDesign
 {
     public partial class Products : System.Web.UI.Page
@@ -58,14 +58,15 @@ namespace SyaSyaDesign
         {
             var db = new syasyadbEntities();
             var products = new List<Product>();
+            var availableProduct = db.Products.Where(p => !p.isDeleted);
             if (keyword != "")
             {
                 var temp = "%" + keyword + "%";
-                products = db.Products.Where(p => DbFunctions.Like(p.product_name, temp)).ToList();
+                products = availableProduct.Where(p => DbFunctions.Like(p.product_name, temp)).ToList();
             }
             else
             {
-                products = db.Products.Where(p => p.category_id == cat_id).ToList();
+                products = availableProduct.Where(p => p.category_id == cat_id).ToList();
             }
             switch (sort)
             {
@@ -92,6 +93,16 @@ namespace SyaSyaDesign
             var kw = rawValue == "" ? "" : $"&search={rawValue}";
             Response.Redirect($"~/Users/Products.aspx?category={cat_id}&sort={sort}{kw}");
 
+        }
+        public string GetImage(string name)
+        {
+            //* var imgPath = HttpContext.Current.Server.MapPath("~/Product_Images/");
+            var imgPath = "/Product_Images/";
+            var imgFile = HttpContext.Current.Server.MapPath($"~/Product_Images/{name}");
+            if (String.IsNullOrEmpty(name) || !File.Exists(imgFile))
+                return $"{imgPath}empty.png";
+            
+            return $"{imgPath}{name}";
         }
     }
 }

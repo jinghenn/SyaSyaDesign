@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace SyaSyaDesign.Users
 {
@@ -53,6 +54,16 @@ namespace SyaSyaDesign.Users
             string product_id = lnkRowSelection.CommandArgument.ToString();
 
             Response.Redirect("~/Users/Detail.aspx?product_id=" + product_id);
+        }
+        public string GetImage(string name)
+        {
+            //* var imgPath = HttpContext.Current.Server.MapPath("~/Product_Images/");
+            var imgPath = "/Product_Images/";
+            var imgFile = HttpContext.Current.Server.MapPath($"~/Product_Images/{name}");
+            if (String.IsNullOrEmpty(name) || !File.Exists(imgFile))
+                return $"{imgPath}empty.png";
+
+            return $"{imgPath}{name}";
         }
     }
 }

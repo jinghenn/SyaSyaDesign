@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -110,7 +111,7 @@ namespace SyaSyaDesign.Admins
         private void BindData()
         {
             var db = new syasyadbEntities();
-            var products = db.Products.Select(p => new ProductDetail
+            var products = db.Products.Where(p => !p.isDeleted).Select(p => new ProductDetail
             {
                 product_id = p.product_id,
                 product_name = p.product_name,
@@ -188,7 +189,7 @@ namespace SyaSyaDesign.Admins
 
             if (product != null)
             {
-                db.Products.Remove(product);
+                product.isDeleted = true;
                 db.SaveChanges();
             }
             BindData();
@@ -201,10 +202,14 @@ namespace SyaSyaDesign.Admins
             {
                 product_name = txtNewProductName.Text,
                 price = Convert.ToDecimal(txtNewPrice.Text),
-                category_id = ddlNewCategory.SelectedValue
+                category_id = ddlNewCategory.SelectedValue,
+                URL = fileUpProdImg.FileName
             };
             db.Products.Add(newProduct);
             db.SaveChanges();
+
+            var filePath = HttpContext.Current.Server.MapPath("~/Product_Images/");
+            fileUpProdImg.PostedFile.SaveAs(Path.Combine(filePath, fileUpProdImg.FileName));
             BindData();
         }
 

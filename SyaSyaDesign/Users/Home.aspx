@@ -35,14 +35,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
      <form id="form1" runat="server">
         <%--carousel--%>
-        <div class="bg-dark" style="height: 500px">
+        <div class="bg-dark pt-3" style="height: 500px">
             <div id="carouselExampleControls" class="carousel slide container w-50 pt-2" data-interval="3000" data-pause="hover">
                 <div class="carousel-inner m-auto">
                     <asp:Repeater ID="carouselRepeater" runat="server">
                         <ItemTemplate>
                             <div id="carouselItem" class="carousel-item" runat="server">
 
-                                <asp:ImageButton class="d-block img-slide" src='<%# Eval("URL")%>' runat="server" CommandArgument='<%# Eval("product_id") %>' OnClick="SlideImg_Click" />
+                                <asp:ImageButton class="d-block img-slide" src='<%# GetImage(""+ Eval("URL")) %>' runat="server" CommandArgument='<%# Eval("product_id") %>' OnClick="SlideImg_Click" />
 
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5 runat="server" style="text-shadow: 2px 2px 4px #000000;"><%# Eval("product_name")%></h5>
