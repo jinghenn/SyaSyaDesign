@@ -78,7 +78,8 @@ namespace SyaSyaDesign
                     break;
                 case POPULAR:
                     //TODO: change the function to return popular item
-                    products = products.OrderByDescending(p => p.product_id).ToList();
+                    products = products.OrderBy(p => p, new ProductPopularitycomparer()).ToList();
+                   
                     break;
                 default:
                     products = products.OrderByDescending(p => p.product_id).ToList();
@@ -103,6 +104,24 @@ namespace SyaSyaDesign
                 return $"{imgPath}empty.png";
             
             return $"{imgPath}{name}";
+        }
+
+        private class ProductPopularitycomparer : IComparer<Product>
+        {
+            public int Compare(Product x, Product y)
+            {
+                if (GetCount(x) > GetCount(y))
+                    return 1;
+                else if (GetCount(x) < GetCount(y))
+                    return -1;
+                return 0;
+            }
+            private int GetCount(Product p)
+            {
+                syasyadbEntities db = new syasyadbEntities();
+                var order = db.OrderDetails.Select(od => od.ProductID);
+                return order.Count();
+            }
         }
     }
 }
