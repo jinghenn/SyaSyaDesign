@@ -73,7 +73,7 @@
             </div>
 
             <div class="container">
-                <uc1:Header ID="Header3" Name="CodeDigest" runat="server" displayType ="New Artwork"/>
+                <uc1:Header ID="Header3" Name="CodeDigest" runat="server" displayType ="New Outfit"/>
                 <hr />
             </div>
         </div>

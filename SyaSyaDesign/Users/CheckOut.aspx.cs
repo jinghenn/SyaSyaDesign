@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -137,6 +138,16 @@ Where Cart.UserID = u.user_id and Cart.UserID=@userID and Product.product_id = C
                 string queryString = "~/Users/Payments.aspx?id=" + orderID;
                 Response.Redirect(queryString);
             }
+        }
+        public string GetImage(string name)
+        {
+            //* var imgPath = HttpContext.Current.Server.MapPath("~/Product_Images/");
+            var imgPath = "/Product_Images/";
+            var imgFile = HttpContext.Current.Server.MapPath($"~/Product_Images/{name}");
+            if (String.IsNullOrEmpty(name) || !File.Exists(imgFile))
+                return $"{imgPath}empty.png";
+
+            return $"{imgPath}{name}";
         }
     }
 }

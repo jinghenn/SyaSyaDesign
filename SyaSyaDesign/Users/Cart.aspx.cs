@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -103,6 +104,16 @@ namespace SyaSyaDesign.Users
             }
             else
                 lblError.Text = "You cannot check out with your cart empty.";
+        }
+        public string GetImage(string name)
+        {
+            //* var imgPath = HttpContext.Current.Server.MapPath("~/Product_Images/");
+            var imgPath = "/Product_Images/";
+            var imgFile = HttpContext.Current.Server.MapPath($"~/Product_Images/{name}");
+            if (String.IsNullOrEmpty(name) || !File.Exists(imgFile))
+                return $"{imgPath}empty.png";
+
+            return $"{imgPath}{name}";
         }
         private class CartItemWithImage
         {

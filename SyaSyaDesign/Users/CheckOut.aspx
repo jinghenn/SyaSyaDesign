@@ -177,7 +177,7 @@
                                 <table class="table w-100 p3 ms-auto me-auto">
                                     <tr>
                                         <td style="width: 25%; text-align: center" class="align-middle">
-                                            <asp:Image runat="server" class="img-fluid rounded" alt="Product Image" ImageUrl='<%# Eval("URL") %>' Height="150px" Width="150px"></asp:Image>
+                                            <asp:Image runat="server" class="img-fluid rounded" alt="Product Image" ImageUrl='<%# GetImage("" + Eval("URL")) %>' Height="150px" Width="150px"></asp:Image>
                                         </td>
                                         <td style="width: 20%; text-align: center" class="align-middle"><%# Eval("ProductName")%></td>
                                         <td style="width: 5%; text-align: center" class="align-middle"><%# Eval("Size")%></td>

@@ -81,7 +81,7 @@
                             <div class="card mt-2 p-4">
                                 <div class="row g-0">
                                     <div class="col-md-4">
-                                        <asp:Image runat="server" class="img-fluid rounded" alt="Product Image" ImageUrl='<%#Eval("URL")%>' Height="150px" Width="150px"></asp:Image>
+                                        <asp:Image runat="server" class="img-fluid rounded" alt="Product Image" ImageUrl='<%#GetImage( "" + Eval("URL"))%>' Height="150px" Width="150px"></asp:Image>
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">

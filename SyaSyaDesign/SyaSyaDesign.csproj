@@ -110,6 +110,21 @@
     <Content Include="lib\sweetAlert\sweetalert.css" />
     <Content Include="lib\sweetAlert\sweetalert.js" />
     <Content Include="lib\sweetAlert\sweetalert.min.js" />
+    <Content Include="Product_Images\Cotton jersey T-shirt.jpg" />
+    <Content Include="Product_Images\empty.png" />
+    <Content Include="Product_Images\Floral Embroidery Blouse.jpg" />
+    <Content Include="Product_Images\Knitted sweater-vest dress.jpg" />
+    <Content Include="Product_Images\Knitted sweater-vest long dress.jpg" />
+    <Content Include="Product_Images\Letter &amp; Cartoon Graphic Round Neck Tee.jpg" />
+    <Content Include="Product_Images\Long Shirt dress.jpg" />
+    <Content Include="Product_Images\Long shirt jacket.jpg" />
+    <Content Include="Product_Images\OversizedPrintedTshirt.jpg" />
+    <Content Include="Product_Images\Pleated skirt.jpg" />
+    <Content Include="Product_Images\Shirt dress.jpg" />
+    <Content Include="Product_Images\Short pleated skirt.jpg" />
+    <Content Include="Product_Images\Striped Notched Neck Blouse.jpg" />
+    <Content Include="Product_Images\Sweatshirt dress.jpg" />
+    <Content Include="Product_Images\Tennis skirt.jpg" />
     <Content Include="Scripts\fontawesome\all.js" />
     <Content Include="Scripts\fontawesome\all.min.js" />
     <Content Include="Scripts\fontawesome\brands.js" />
@@ -418,9 +433,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Product_Images\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
