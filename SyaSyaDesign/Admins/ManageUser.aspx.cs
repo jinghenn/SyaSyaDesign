@@ -95,12 +95,11 @@ namespace SyaSyaDesign.Admins
             }
             if (e.CommandName == "delete")
             {
-                var dtrUser = db.Users.Where(m => m.username == username);
-
-                if (dtrUser.Count() > 1)
+                var dtrUser = db.Users.Where(m => m.userType == "Manager");
+                
+                if (dtrUser.Count()>1)
                 {
                     var user = db.Users.FirstOrDefault(m => m.username == username);
-
                     db.Users.Remove(user);
                     db.SaveChanges();
 

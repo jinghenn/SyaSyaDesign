@@ -83,7 +83,7 @@
 
                         
                         <div class="row mb-3">
-                            <label for="formddlUserType" class="col-sm-3 col-form-label">Art Category</label>
+                            <label for="formddlUserType" class="col-sm-3 col-form-label">User Type</label>
                             <div class="col-sm-9">
                                 <asp:DropDownList ID="formddlUserType" CssClass="form-select" runat="server">
                                     <asp:ListItem Value="Manager"> Manager </asp:ListItem>
@@ -95,7 +95,7 @@
                     
                         
                         <div class="row mb-3">
-                            <label for="formEmail" class="col-sm-3 col-form-label">Eamil</label>
+                            <label for="formEmail" class="col-sm-3 col-form-label">Email</label>
                             <div class="col-sm-9">
                                 <asp:TextBox ID="formEmail" CssClass="form-control" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator ValidationGroup="Add Form" ForeColor="Red" ID="rfvFormEmail" ControlToValidate="formEmail" runat="server" Display="Dynamic" ErrorMessage="Phone No Cannot Be Blank"></asp:RequiredFieldValidator>
