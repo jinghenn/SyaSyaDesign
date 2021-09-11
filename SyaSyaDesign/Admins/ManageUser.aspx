@@ -125,8 +125,7 @@
                     <asp:LinkButton ID="Button1" runat="server" class="input-group-text border-0" OnClick="btnSearch_Click"><i class="fa fa-search" ></i></asp:LinkButton>
                 </div>                            
                 <asp:Button ID="btnAdd"  CssClass="btn btn-outline-success rightButton" runat="server" Text="Add" data-toggle="modal" data-target="#modalForm" OnClientClick="return false;"/>           
-             </div>    
-                         
+             </div>                            
        
              <asp:Repeater ID="rptUserList" runat="server"  OnItemDataBound="rptUserList_ItemDataBound" OnItemCommand="rptUserList_ItemCommand">
                 <HeaderTemplate>
@@ -164,8 +163,7 @@
                      
                         <td style="width: 30%">
                              <asp:TextBox ID="txtEmail" Text='<%#Eval("Email") %>' runat="server" Enabled="false" BorderStyle="None" BackColor="Transparent" ></asp:TextBox>
-                             <asp:RequiredFieldValidator ValidationGroup="Edit" ID="RequiredFieldValidator3" ForeColor="Red" Display="Dynamic" ControlToValidate="txtEmail" runat="server" ErrorMessage="Phone No Cannot Be Blank"></asp:RequiredFieldValidator>
-                         
+                             <asp:RequiredFieldValidator ValidationGroup="Edit" ID="RequiredFieldValidator3" ForeColor="Red" Display="Dynamic" ControlToValidate="txtEmail" runat="server" ErrorMessage="Phone No Cannot Be Blank"></asp:RequiredFieldValidator>                        
                          </td>
                         <td class="align-middle align-content-center" style="width: 20%;">
                          <div class="btn-group-horizontal" role="group">
@@ -184,9 +182,7 @@
                 </FooterTemplate>
             </asp:Repeater>
 
-        
-   
-
         </div>  
+       </div>  
     </form>
 </asp:Content>
