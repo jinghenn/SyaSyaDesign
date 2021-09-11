@@ -8,8 +8,9 @@
         }
 
         .card-img-top {
-            object-fit: contain;
+            object-fit: cover;
             object-position: center;
+            height:300px;
         }
 
         .sort-by-selection {

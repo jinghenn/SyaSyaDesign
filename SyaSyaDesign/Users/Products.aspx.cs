@@ -34,13 +34,11 @@ namespace SyaSyaDesign
                 rpt_product_category.DataSource = categories;
                 rpt_product_category.DataBind();
                 //Get product items for the current category
-                //var productItems = SortProduct();
                 var productItems = GetProduct();
                 rpt_product_item.DataSource = productItems;
                 rpt_product_item.DataBind();
                 //Display "no product" label if no product in list
-                var isNoProduct = productItems.Count == 0;
-                lblNoProduct.Visible = isNoProduct;
+                lblNoProduct.Visible = productItems.Count == 0;
                 //Change the category title
                 var category_title = db.ProductCategories.FirstOrDefault(pc => pc.category_id == cat_id).category_name;
                 categoryTitle.InnerText = category_title;
@@ -77,9 +75,7 @@ namespace SyaSyaDesign
                     products = products.OrderByDescending(p => p.price).ToList();
                     break;
                 case POPULAR:
-                    //TODO: change the function to return popular item
                     products = products.OrderBy(p => p, new ProductPopularitycomparer()).ToList();
-                   
                     break;
                 default:
                     products = products.OrderByDescending(p => p.product_id).ToList();
@@ -97,7 +93,6 @@ namespace SyaSyaDesign
         }
         public string GetImage(string name)
         {
-            //* var imgPath = HttpContext.Current.Server.MapPath("~/Product_Images/");
             var imgPath = "/Product_Images/";
             var imgFile = HttpContext.Current.Server.MapPath($"~/Product_Images/{name}");
             if (String.IsNullOrEmpty(name) || !File.Exists(imgFile))
