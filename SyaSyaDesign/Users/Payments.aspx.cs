@@ -46,7 +46,7 @@ namespace SyaSyaDesign
             if (payMethod.Value != "tab-card")
             {
                 Session["Bank"] = radioBank.SelectedItem.Value;
-                Session["Total"] = Session["Total"] ?? 100.00;
+                Session["Total"] = lblFinalTotal.Text;
                 Response.Redirect("Bank.aspx");
             }
             else

@@ -17,12 +17,8 @@ namespace SyaSyaDesign
             {
                 BankName.Text = Session["Bank"].ToString();
                 HttpCookie httpCookie = Request.Cookies["order"];
-
-                if (httpCookie != null)
-                {
-                    OrderId = Int32.Parse(httpCookie["id"]);
-                }
-                Amount.Text = Session["Total"].ToString().Substring(2);
+                if (httpCookie != null) OrderId = Int32.Parse(httpCookie["id"]);
+                Amount.Text = Session["Total"].ToString();
             }
         }
 
@@ -33,8 +29,7 @@ namespace SyaSyaDesign
 
         protected void PAC_Click(object sender, EventArgs e)
         {
-            AcceptBtn.Enabled = true;
-            PAC.Visible = true;
+            AcceptBtn.Enabled = PAC.Visible = true;
         }
 
         protected void Accept_Click(object sender, EventArgs e)
@@ -52,11 +47,6 @@ namespace SyaSyaDesign
 
         private void SentEmail()
         {
-
-            if (Request.Cookies["orderID"] != null)
-            {
-                OrderId = Request.Cookies["order"].Value == null ? 0 : Int32.Parse(Request.Cookies["order"].Value);
-            }
             HttpCookie httpCookie = Request.Cookies["order"];
             var orderID = "1001";
             if (httpCookie != null)
@@ -69,7 +59,6 @@ namespace SyaSyaDesign
 
             string email = Session["userEmail"].ToString();
             new Email().SendEmail(email, content, "Payment Successful");
-
             ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "successalert('Success','Payment Successfully.');", true);
             Response.Redirect(String.Format("~/Users/PurchaseSummary.aspx?OrderID={0}", orderID));
         }
