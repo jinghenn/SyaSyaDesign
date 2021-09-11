@@ -21,7 +21,7 @@ namespace SyaSyaDesign.Users
                 SqlConnection productCon = new SqlConnection(strProductCon);
 
                 productCon.Open();
-                SqlCommand cmdGetURL = new SqlCommand("SELECT Product.product_id, Product.URL, Product. product_name FROM Product WHERE product_id IN (SELECT TOP 5 OrderDetail.ProductID AS TotalQuantity FROM OrderDetail GROUP BY OrderDetail.ProductID ORDER BY SUM(OrderDetail.Quantity) DESC)", productCon);
+                SqlCommand cmdGetURL = new SqlCommand("SELECT Product.product_id, Product.URL, Product. product_name FROM Product WHERE product_id IN (SELECT TOP 5 OrderDetail.ProductID AS TotalQuantity FROM OrderDetail GROUP BY OrderDetail.ProductID ORDER BY SUM(OrderDetail.Quantity) DESC) AND product_id IN (SELECT product_id FROM ProductDetails WHERE quantity > 0)", productCon);
 
                 carouselRepeater.DataSource = cmdGetURL.ExecuteReader();
                 carouselRepeater.DataBind();

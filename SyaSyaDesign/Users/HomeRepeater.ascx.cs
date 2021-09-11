@@ -28,17 +28,17 @@ namespace SyaSyaDesign.Users
                 {
                     case "Hot Selling":
                         //Hot Selling
-                        cmdGetURL = new SqlCommand("SELECT Product.product_id, Product.URL, Product.product_name, Product.price FROM Product WHERE product_id IN (SELECT TOP 5 OrderDetail.ProductID AS TotalQuantity FROM OrderDetail GROUP BY OrderDetail.ProductID ORDER BY SUM(OrderDetail.Quantity) DESC)", productCon);
+                        cmdGetURL = new SqlCommand("SELECT Product.product_id, Product.URL, Product.product_name, Product.price FROM Product WHERE product_id IN (SELECT TOP 5 OrderDetail.ProductID AS TotalQuantity FROM OrderDetail GROUP BY OrderDetail.ProductID ORDER BY SUM(OrderDetail.Quantity) DESC) AND product_id IN (SELECT product_id FROM ProductDetails WHERE quantity > 0)", productCon);
                         break;
 
                     case "New Artwork":
                         //New
-                        cmdGetURL = new SqlCommand("SELECT Product.product_id, Product.URL, Product.product_name, Product.price FROM Product WHERE product_id IN (SELECT TOP 5 product_id FROM Product ORDER BY product_id DESC)", productCon);
+                        cmdGetURL = new SqlCommand("SELECT Product.product_id, Product.URL, Product.product_name, Product.price FROM Product WHERE product_id IN (SELECT TOP 5 product_id FROM Product ORDER BY product_id DESC) AND product_id IN (SELECT product_id FROM ProductDetails WHERE quantity > 0)", productCon);
                         break;
 
                     default:
                         heading.CssClass = "h1 text-light mb4";
-                        cmdGetURL = new SqlCommand("SELECT Product.product_id, Product.URL, Product.product_name, Product.price FROM Product WHERE product_id IN (SELECT TOP 5 OrderDetail.ProductID AS TotalQuantity FROM OrderDetail INNER JOIN [Order] on (OrderDetail.OrderID = [Order].OrderID) WHERE [Order].[Date] > (GETDATE() - 7) GROUP BY OrderDetail.ProductID ORDER BY SUM(OrderDetail.Quantity) DESC)", productCon);
+                        cmdGetURL = new SqlCommand("SELECT Product.product_id, Product.URL, Product.product_name, Product.price FROM Product WHERE product_id IN (SELECT TOP 5 OrderDetail.ProductID AS TotalQuantity FROM OrderDetail INNER JOIN [Order] on (OrderDetail.OrderID = [Order].OrderID) WHERE [Order].[Date] > (GETDATE() - 7) GROUP BY OrderDetail.ProductID ORDER BY SUM(OrderDetail.Quantity) DESC) AND product_id IN (SELECT product_id FROM ProductDetails WHERE quantity > 0)", productCon);
                         break;
                 }
 
