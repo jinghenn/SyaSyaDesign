@@ -13,6 +13,18 @@ namespace SyaSyaDesign.Admins
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["userType"] == null)
+            {
+                System.Text.StringBuilder javaScript = new System.Text.StringBuilder();
+                string scriptKey = "ErrorMessage";
+
+                javaScript.Append("var userConfirmation = window.confirm('" + "Your Session has Expired, Please login again.');\n");
+                javaScript.Append("window.location='/App_Pages/Login.aspx';");
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), scriptKey, javaScript.ToString(), true);
+
+            }
+
             Session["userNo"] = "0";
             if (!Page.IsPostBack)
             {
