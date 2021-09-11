@@ -114,7 +114,8 @@
 
     <div class="main main-raised" >
              <div class="label1">     
-                <asp:Label ID="lblTittle" runat="server" Font-Bold="true" Font-Size="Large">Manage Admin</asp:Label>            
+                <h3>Manage Admin </h3><div class="container" style="margin-right: 5px; margin-top: 25px;">             
+
              </div>
              <div class="label1" >
                 <div class="input-group rounded" style="width:30%;">
