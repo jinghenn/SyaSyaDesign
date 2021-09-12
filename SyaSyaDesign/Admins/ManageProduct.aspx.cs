@@ -129,6 +129,7 @@ namespace SyaSyaDesign.Admins
         {
             gvProduct.EditIndex = -1;
             BindData();
+            BindAttributes();
         }
 
         protected void gvProduct_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -146,14 +147,14 @@ namespace SyaSyaDesign.Admins
                 using (var dt = new syasyadbEntities())
                 {
                     var result = dt.Attributes.Select(row => row)
-                        .Where(element => element.AttributeCategory.AttributeCategoryID != 1 && element.AttributeCategory.AttributeCategoryID != 2).ToList();
+                        .Where(element => element.AttributeCategory.AttributeCategoryID != 1 && element.AttributeCategory.AttributeCategoryID != 2 && element.IsActive == true).ToList();
                     result.ForEach(row => dl.Items.Add(new ListItem() { Text = row.Description, Value = row.AttributeID.ToString() }));
 
 
                     var attGroup = (from attributes in dt.Attributes
                                     join catGroup in dt.AttributeCategories on attributes.CategoryID equals catGroup.AttributeCategoryID
                                     where catGroup.AttributeCategoryID != 1 &
-                                    catGroup.AttributeCategoryID != 2
+                                    catGroup.AttributeCategoryID != 2 & catGroup.IsActive
                                     select attributes).ToList();
 
                     var data = dt.Products.ToList();
@@ -234,10 +235,10 @@ namespace SyaSyaDesign.Admins
             using (var db = new syasyadbEntities())
             {
                 var size = (from attributes in db.Attributes
-                            where attributes.CategoryID == 1
+                            where attributes.CategoryID == 1 && attributes.IsActive == true
                             select attributes).ToList();
                 var color = (from attributes in db.Attributes
-                             where attributes.CategoryID == 2
+                             where attributes.CategoryID == 2 && attributes.IsActive == true
                              select attributes).ToList();
                 size.ForEach(element => ddlColorList.Items.Add(new ListItem(element.Description, element.AttributeID.ToString())));
                 color.ForEach(element => ddlSizeList.Items.Add(new ListItem(element.Description, element.AttributeID.ToString())));
@@ -261,27 +262,10 @@ namespace SyaSyaDesign.Admins
                     Label desc = (Label)grdrw.FindControl("lblProductName");
                     Button btn = (Button)grdrw.FindControl("ModalLink");
 
-                    var result = data.Select(dt => dt).Where(element => element.product_id.ToString() == lb.Text).FirstOrDefault().Attributes.Select(attr => attr.Description.ToString()).ToList();
+                    var result = data.Select(dt => dt).Where(element => element.product_id.ToString() == lb.Text).FirstOrDefault().Attributes.Where(row=>row.IsActive).Select(attr => attr.Description.ToString()).ToList();
                     if (result != null) lst.Text = string.Join(",", result.ToArray());
 
                 }
-
-
-
-            }
-        }
-
-        private void bindingModal(String e)
-        {
-            var result = e.Split(',');
-            ProdID.Text = result[0];
-            ProdDesc.Text = result[1];
-            using (var db = new syasyadbEntities())
-            {
-                TableQuantity.DataSource = (from data in db.ProductDetails
-                                            where data.product_id.ToString().Equals(ProdID.Text)
-                                            select data).ToList();
-                TableQuantity.DataBind();
             }
         }
 
@@ -295,8 +279,11 @@ namespace SyaSyaDesign.Admins
             using (var db = new syasyadbEntities())
             {
                 var dataList = (from data in db.ProductDetails
-                                where data.product_id.ToString().Equals(ProdID.Text)
+                                where data.product_id.ToString().Equals(ProdID.Text) && (data.Attribute.IsActive == true || data.Attribute1.IsActive == true)
                                 select data).ToList();
+                var colorList = dataList.Select(element => element.Attribute).Distinct().ToList();
+                var sizeList = dataList.Select(element => element.Attribute1).Distinct().ToList();
+
                 DataTable dt = new DataTable();
                 dt.Columns.AddRange(new DataColumn[5] {
                     new DataColumn("size", typeof(string)),
@@ -306,15 +293,15 @@ namespace SyaSyaDesign.Admins
                     new DataColumn("quantity",typeof(string)) });
 
                 dataList.ForEach(element => dt.Rows.Add(element.Attribute1.Description, element.Attribute1.AttributeID
-                    ,element.Attribute.Description, element.Attribute.AttributeID,element.quantity));
-
+                    , element.Attribute.Description, element.Attribute.AttributeID, element.quantity));
+                
                 TableQuantity.DataSource = dt;
                 TableQuantity.DataBind();
 
                 ddlSizeAdd.Items.Clear();
                 DropDownListColor.Items.Clear();
-                dataList.ForEach(element => ddlSizeAdd.Items.Add(new ListItem { Text = element.Attribute1.Description, Value = element.size.ToString() }));
-                dataList.ForEach(element => DropDownListColor.Items.Add(new ListItem { Text = element.Attribute.Description, Value = element.color.ToString() }));
+                sizeList.ForEach(element => ddlSizeAdd.Items.Add(new ListItem { Text = element.Description, Value = element.AttributeID.ToString() }));
+                colorList.ForEach(element => DropDownListColor.Items.Add(new ListItem { Text = element.Description, Value = element.AttributeID.ToString() }));
 
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "pop", "ShowStatus()", true);
             }
@@ -343,20 +330,21 @@ namespace SyaSyaDesign.Admins
             var prodID = Int32.Parse(ProdID.Text);
             var color = Int32.Parse(argsArr[0]);
             var size = Int32.Parse(argsArr[1]);
-            
+
             var db = new syasyadbEntities();
             var product = db.ProductDetails.Where(pd => pd.product_id == prodID)
                 .Where(pd => pd.color == color)
                 .Where(pd => pd.size == size).FirstOrDefault();
-            if(product != null)
+            if (product != null)
             {
                 db.ProductDetails.Remove(product);
                 db.SaveChanges();
-                
+
             }
-            
+
 
         }
+
     }
 
 }

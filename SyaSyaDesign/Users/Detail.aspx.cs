@@ -59,10 +59,12 @@ namespace SyaSyaDesign
                     {
                         db.Carts.Add(newCartItem);
                         db.SaveChanges();
+                        ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "successalert('Success','Add To Cart Successfully.');", true);
                     }
                     catch
                     {
                         lblAlreadyInCart.Visible = true;
+                        ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "failalert('Failure','Added To Cart Before.');", true);
                     }
 
                 }
@@ -76,18 +78,23 @@ namespace SyaSyaDesign
 
         protected void btnPlus_Click(object sender, EventArgs e)
         {
-            var value = Int32.Parse(txtQuantity.Text.ToString());
-            if (value < 10) txtQuantity.Text = (value + 1).ToString();
-            else btnPlus.Enabled = false;
-            btnMinus.Enabled = true;
+            if(btn_add_cart.Text!="Coming Soon") { 
+                var value = Int32.Parse(txtQuantity.Text.ToString());
+                if (value < 10) txtQuantity.Text = (value + 1).ToString();
+                else btnPlus.Enabled = false;
+                btnMinus.Enabled = true;
+            }
         }
 
         protected void btnMinus_Click(object sender, EventArgs e)
         {
-            var value = Int32.Parse(txtQuantity.Text.ToString());
-            if (value < 1) txtQuantity.Text = (value - 1).ToString();
+            if (btn_add_cart.Text != "Coming Soon")
+            {
+                var value = Int32.Parse(txtQuantity.Text.ToString());
+                if (value < 1) txtQuantity.Text = (value - 1).ToString();
 
-            if (value - 1 == 1) btnMinus.Enabled = false;
+                if (value - 1 == 1) btnMinus.Enabled = false;
+            }
         }
 
         private void BindColorAttr()
@@ -106,9 +113,17 @@ namespace SyaSyaDesign
             rblColor.DataValueField = "AttributeID";
             rblColor.DataTextField = "Description";
             rblColor.DataBind();
-            if(rblColor.Items.Count > 0)
+            if(rblColor.Items.Count > 0) { 
                 rblColor.Items[0].Selected = true;
-            BindSizeAttr();
+                BindSizeAttr();
+            }
+            else
+            {
+                var css = "btn-dark mx-auto flex-grow-1 mb-3 py-3 rounded-1 fw-bold";
+                btn_add_cart.Text = "Coming Soon";
+                btn_add_cart.CssClass = $"{css} disabled";
+                btn_add_cart.Enabled = false;
+            } 
         }
         private void BindSizeAttr()
         {

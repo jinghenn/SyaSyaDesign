@@ -47,6 +47,22 @@
         }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        function successalert(stitle, stext) {
+            swal({
+                title: stitle,
+                text: stext,
+                type: 'success'
+            });
+        }
+        function failalert(ftitle, ftext) {
+            swal({
+                title: ftitle,
+                text: ftext,
+                type: 'error'
+            });
+        }
+    </script>
 </asp:Content>
 
 <asp:Content ID="bodyContent" ContentPlaceHolderID="ContentPlaceHolder" runat="server">

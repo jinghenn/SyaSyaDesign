@@ -67,7 +67,12 @@ namespace SyaSyaDesign.Admins
                 {
                     using (var db = new syasyadbEntities())
                     {
-                        db.AttributeCategories.Find(Int32.Parse(e.CommandArgument.ToString())).IsActive = e.CommandName == "Activate";
+                        int id = Int32.Parse(e.CommandArgument.ToString());
+                        db.AttributeCategories.Find(id).IsActive = e.CommandName == "Activate";
+                        var data = (from row in db.Attributes
+                                   where row.CategoryID == id
+                                   select row.AttributeID).ToList();
+                        data.ForEach(row => db.Attributes.Find(row).IsActive = e.CommandName == "Activate");
                         db.SaveChanges();
                     }
                     StoreTable();

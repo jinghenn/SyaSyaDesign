@@ -44,13 +44,6 @@
             });
         </script>
         <div class="container">
-            <%--<div class="row justify-content-center">
-                <ul class="list-group list-group-horizontal tab">
-                    <li class="list-group-item">Cart</li>
-                    <li class="list-group-item">Shipping</li>
-                    <li class="list-group-item active" style="z-index: 1; padding-bottom: 0px;">Payment</li>
-                </ul>
-            </div>--%>
             <h2>Payment</h2>
             <div class="row container">
                 <%--Shipping details--%>
@@ -59,15 +52,10 @@
                         <div class="cart-body">
                             <div class="container">
                                 <div class="row">
-                                    <%--<page:PageTitle runat="server" ID="title" PageHeader="Payment Details"></page:PageTitle>--%>
                                 </div>
                                 <div class="row">
-                                    <%--<div class="col-6 col-sm-4">--%>
                                     <asp:Button runat="server" CssClass="tablink col" OnClientClick="openTab('tab-card', this);return false;" ID="defaultOpen" ClientIDMode="Static" Text="Card" UseSubmitBehavior="false"/>
-                                    <%--</div>--%>
-                                    <%--<div class="col-6 col-sm-4">--%>
                                         <asp:Button runat="server" CssClass="tablink col" OnClientClick="openTab('tab-online', this);return false;" Text="Online banking" UseSubmitBehavior="false" />
-                                        <%--</div>--%>
                                 </div>
                                 <div id="tab-card" class="tab-content" style="display: block;">
                                     <asp:Table ID="TableCard" runat="server" CssClass="tblCard">
