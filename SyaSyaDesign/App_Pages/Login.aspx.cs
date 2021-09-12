@@ -59,7 +59,7 @@ namespace SyaSyaDesign.App_Pages
 
         private string GetRedirectUrl()
         {
-            var url = "~/Users/Products.aspx";
+            var url = "~/Users/Home.aspx";
             var returnPage = Request.QueryString["returnPage"];
             if (returnPage!= null)
             {

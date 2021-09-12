@@ -31,6 +31,10 @@ namespace SyaSyaDesign
                 manageAdminLink.Visible = true;
                 manageProductLink.Visible = true;
                 manageAttrLink.Visible = true;
+            }else if(Session["userType"] != null && Session["userType"].ToString() == "Admin")
+            {
+                manageProductLink.Visible = true;
+                manageAttrLink.Visible = true;
             }
 
         }
@@ -40,7 +44,7 @@ namespace SyaSyaDesign
             Session.Remove("username");
             Session.Remove("user_id");
             Session.Remove("userType");
-            Response.Redirect("~/Users/Products.aspx");
+            Response.Redirect("~/Users/Home.aspx");
         }
 
         protected void btndelete_Click(object sender, EventArgs e)
