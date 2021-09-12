@@ -19,7 +19,7 @@
           <Key>
             <PropertyRef Name="AttributeCategoryID" />
           </Key>
-          <Property Name="AttributeCategoryID" Type="int" Nullable="false" />
+          <Property Name="AttributeCategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="ModifiedBy" Type="int" Nullable="false" />
@@ -127,18 +127,6 @@
           <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="userType" Type="varchar" MaxLength="50" />
         </EntityType>
-        <Association Name="FK__Order__UserID__3493CFA7">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="user_id" />
-            </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__OrderDeta__Color__0E391C95">
           <End Role="Attribute" Type="Self.Attribute" Multiplicity="1" />
           <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
@@ -284,7 +272,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Cart_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
@@ -382,10 +372,6 @@
           <EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductDetails" EntityType="Self.ProductDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Order__UserID__3493CFA7" Association="Self.FK__Order__UserID__3493CFA7">
-            <End Role="User" EntitySet="User" />
-            <End Role="Order" EntitySet="Order" />
-          </AssociationSet>
           <AssociationSet Name="FK__OrderDeta__Color__0E391C95" Association="Self.FK__OrderDeta__Color__0E391C95">
             <End Role="Attribute" EntitySet="Attribute" />
             <End Role="OrderDetail" EntitySet="OrderDetail" />
